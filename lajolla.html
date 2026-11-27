@@ -1,0 +1,1360 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="ja">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<META NAME="Keywords" CONTENT="土居, 土居丈朗, Takero, Doi, 慶應義塾大学, 経済学部">
+<META NAME="description" CONTENT="土居丈朗のサイト・ラホーヤの浜辺から">
+<LINK REV="MADE" TITLE="土居丈朗　ラホーヤの浜辺から" HREF="mailto:%74%64%6F%69%40%65%63%6F%6E%2E%6B%65%69%6F%2E%61%63%2E%6A%70">
+<TITLE>土居丈朗　ラホーヤの浜辺から</TITLE>
+<STYLE TYPE="text/css">
+<!--
+
+HTML {overflow-y:scroll; line-break:strict}
+
+BODY {background:#00AAFF; color:#000000; font-size:13.5pt}
+
+A:visited {color:#40040}
+
+A:active {color:#FF0000}
+
+A:link {color:#0000C4}
+
+A:hover {color:#008040}
+
+DIV.cnt {text-align:center}
+
+SPAN.update {color:#CC3299; font-weight:bold}
+
+SPAN.new {color:#FF0000; font-weight:bold; text-decoration:blink}
+
+H2 {color:#B51642}
+
+P.b {font-weight:bold}
+
+P.main {line-height:125%}
+
+P.small {font-size:70%}
+
+P.r {text-align:right}
+
+SPAN.time {color:#008000; font-weight:bold}
+
+-->
+</STYLE>
+</HEAD>
+<BODY>
+<DIV ALIGN="center">
+<A ID="top"><IMG WIDTH="90%" SRC="lajollat.jpg" ALIGN="middle" ALT="La Jolla Shore"></A>
+<H2>サンディエゴ時間と日本時間の時計</H2>
+<SPAN CLASS="time">ただいまの時刻</SPAN>
+<FORM METHOD="post">
+<BLOCKQUOTE>
+<TABLE SUMMARY="サンディエゴ時間と日本時間の時計">
+<TR><TD>サンディエゴ：　</TD><TD>
+<SCRIPT TYPE="text/javascript">
+<!--
+// 引数ag_yearで指定された年のサマータイム開始時刻を内部表現で返す。
+//
+function GetDstStrt(ag_year) {
+	var dst_strt = new Date(ag_year, 3, 1, 2, 0, 0); // 第2引数の3は、4月を表す。
+	for (var i = 1; i <= 7; i++) {
+		dst_strt.setDate(i);
+		if (0 == dst_strt.getDay()) {
+			break;
+		}
+	}
+	return dst_strt.getTime();
+}
+
+// 引数ag_yearで指定された年のサマータイム終了時刻を内部表現で返す。
+//
+function GetDstEd(ag_year) {
+	var dst_ed = new Date(ag_year, 9, 31, 1, 0, 0);
+	for (var i = 31; i > 24; i--) {
+		dst_ed.setDate(i);
+		if (0 == dst_ed.getDay()) {
+			break;
+		}
+	}
+	return dst_ed.getTime();
+}
+
+// まず今が何年か調べます。
+tdy = new Date();
+yr = tdy.getYear();
+if (yr < 100) {
+	yr += 1900;
+}
+// ここまでで、yrに今年の年(1998など)が入っています。
+
+pos_strt = GetDstStrt(yr);
+pos_ed = GetDstEd(yr);
+
+	var tt = new Date();
+
+	var dst_sd = 0;
+
+	var ps_t = tt.getTime() + (tt.getTimezoneOffset() - (8 * 60)) * 60 * 1000;
+
+		// サマータイム処理
+		if ((pos_strt <= ps_t) && (pos_ed > ps_t)) {
+			dst_sd = 1;
+		}
+
+
+
+var ts = new Date();
+
+var MS = ts.getMonth() + 1;
+
+var timez_sd = -8 * 60; // GMT-0800
+
+var HourSd = ts.getHours() + (ts.getTimezoneOffset() + timez_sd)/ 60;
+
+	if (HourSd > 24) {
+		var DS = 1;
+	} else {
+	if ((HourSd < 0) && (dst_sd == 1) && (ts.getTimezoneOffset() == 420)) {
+		var DS = 0;
+	} else {
+	if (HourSd < 0) {
+		var DS = -1;
+	} else {
+		var DS = 0;
+	}
+	}
+	}
+
+
+var DateS = ts.getDate() + DS;
+var MonthSd = ts.getMonth() + 1;
+var DateSd = ts.getDate() + DS;
+
+var yr = ts.getYear();
+if (yr < 100) {
+	yr = yr + 1900;
+}
+
+	if ((MS == 1) && (DateS < 1))  {
+		var MonthSd = 12;
+		var DateSd = 31;
+        }
+
+	if ((MS == 2) && (DateS < 1))  {
+		var MonthSd = 1;
+		var DateSd = 31;
+        }
+
+	if ((MS == 3) && (DateS < 1))  {
+		var MonthSd = 2;
+		var DateSd = 28;
+        }
+
+	if ((MS == 4) && (DateS < 1))  {
+		var MonthSd = 3;
+		var DateSd = 31;
+        }
+
+	if ((MS == 5) && (DateS < 1))  {
+		var MonthSd = 4;
+		var DateSd = 30;
+        }
+
+	if ((MS == 6) && (DateS < 1))  {
+		var MonthSd = 5;
+		var DateSd = 31;
+        }
+
+	if ((MS == 7) && (DateS < 1))  {
+		var MonthSd = 6;
+		var DateSd = 30;
+        }
+
+	if ((MS == 8) && (DateS < 1))  {
+		var MonthSd = 7;
+		var DateSd = 31;
+        }
+
+	if ((MS == 9) && (DateS < 1))  {
+		var MonthSd = 8;
+		var DateSd = 31;
+        }
+
+	if ((MS == 10) && (DateS < 1))  {
+		var MonthSd = 9;
+		var DateSd = 30;
+        }
+
+	if ((MS == 11) && (DateS < 1))  {
+		var MonthSd = 10;
+		var DateSd = 31;
+        }
+
+	if ((MS == 12) && (DateS < 1))  {
+		var MonthSd = 11;
+		var DateSd = 30;
+        }
+
+	if ((MS == 1) && (DateS > 31))  {
+		var MonthSd = 2;
+		var DateSd = 1;
+        }
+
+	if ((MS == 2) && (DateS > 28))  {
+		var MonthSd = 3;
+		var DateSd = 1;
+        }
+
+	if ((MS == 3) && (DateS > 31))  {
+		var MonthSd = 4;
+		var DateSd = 1;
+        }
+
+	if ((MS == 4) && (DateS > 30))  {
+		var MonthSd = 5;
+		var DateSd = 1;
+        }
+
+	if ((MS == 5) && (DateS > 31))  {
+		var MonthSd = 6;
+		var DateSd = 1;
+        }
+
+	if ((MS == 6) && (DateS > 30))  {
+		var MonthSd = 7;
+		var DateSd = 1;
+        }
+
+	if ((MS == 7) && (DateS > 31))  {
+		var MonthSd = 8;
+		var DateSd = 1;
+        }
+
+	if ((MS == 8) && (DateS > 31))  {
+		var MonthSd = 9;
+		var DateSd = 1;
+        }
+
+	if ((MS == 9) && (DateS > 30))  {
+		var MonthSd = 10;
+		var DateSd = 1;
+        }
+
+	if ((MS == 10) && (DateS > 31))  {
+		var MonthSd = 11;
+		var DateSd = 1;
+        }
+
+	if ((MS == 11) && (DateS > 30))  {
+		var MonthSd = 12;
+		var DateSd = 1;
+        }
+
+	if ((MS == 12) && (DateS > 31))  {
+		var MonthSd = 1;
+		var DateSd = 1;
+        }
+
+DaysS = "";
+var tsday = ts.getDay() + DS;
+
+if (tsday < 0) {
+     var tsday = 6;
+}
+if (tsday > 6) {
+     var tsday = 0;
+}
+
+ts.setDate(1);       //今月最初の日にセット
+
+// 休日の定義
+if(MonthSd == 1){holidays1 = 1; holidays2 = 21- (ts.getDay() + 5)%7}  //Martin Luther King, Jr. Holiday
+else if(MonthSd == 2){holidays1 = 21- (ts.getDay() + 5)%7; holidays2 = -1} //President Day
+else if(MonthSd == 3){holidays1 = -1; holidays2 = -1}
+else if(MonthSd == 4){holidays1 = -1; holidays2 = -1}
+else if(MonthSd == 5){holidays1 = 28- (ts.getDay() + 5)%7; holidays2 = -1} //Memorial Day, 最終月曜日・この式は完全には対応できていない
+else if(MonthSd == 6){holidays1 = -1; holidays2 = -1}
+else if(MonthSd == 7){holidays1 = 4; holidays2 = -1}
+else if(MonthSd == 8){holidays1 = -1; holidays2 = -1}
+else if(MonthSd == 9){holidays1 = 7- (ts.getDay() + 5)%7; holidays2 = -1}
+else if(MonthSd == 10){holidays1 = 14-(ts.getDay() + 5)%7; holidays2 = -1}  //Colombus Holiday
+else if(MonthSd == 11){holidays1 = 11; holidays2 = 28-(ts.getDay() + 2)%7} //Veterans Day Holiday, Thanksgiving Holiday
+else if(MonthSd == 12){holidays1 = 25; holidays2 = -1}
+// 休日の定義終わり
+
+dayarrays = new Array();
+dayarrays[0]="日曜日";
+dayarrays[1]="月曜日";
+dayarrays[2]="火曜日";
+dayarrays[3]="水曜日";
+dayarrays[4]="木曜日";
+dayarrays[5]="金曜日";
+dayarrays[6]="土曜日";
+
+      if(tsday == 0){
+        DaysS = "<SPAN STYLE=\"color:#ff0000\">日曜日<\/SPAN>";
+      } else if((DateSd == holidays1)||(DateSd == holidays2)){
+        DaysS = "<SPAN STYLE=\"color:#ff0000\">"+ dayarrays[tsday] +"<\/SPAN>";
+      } else if(tsday == 6){
+        DaysS = "<SPAN STYLE=\"color:#0000ff\">土曜日<\/SPAN>";
+      } else {DaysS = dayarrays[tsday];
+      }
+
+	if (MonthSd < 10) {
+		MonthSd = "&nbsp;" + MonthSd;
+	}
+	if (DateSd < 10) {
+		DateSd = "&nbsp;" + DateSd;
+	}
+
+document.write(MonthSd+"月");
+document.write(DateSd+"日");
+document.write(DaysS);
+//document.write(HourSd);
+// -->
+</SCRIPT>
+<NOSCRIPT>
+JavaScriptがオフになっています。
+</NOSCRIPT>
+</TD>
+<TD><INPUT NAME="sandiego" SIZE=8></TD>
+</TR>
+<TR><TD>　日　　本　：　</TD><TD>
+<SCRIPT TYPE="text/javascript">
+<!--
+var tj = new Date();
+
+var MJ = 1 + tj.getMonth();
+
+var timez_jp = 9 * 60; // GMT+0900
+
+var HourJp = tj.getHours() + (tj.getTimezoneOffset() + timez_jp)/60;
+
+var DJ = 0;
+
+	if (HourJp >= 24) {
+		var DJ = 1;
+	} else {
+	if (HourJp < 0) {
+		var DJ = -1;
+	} else {
+		var DJ = 0;
+	}
+	}
+
+var yr = tj.getYear();
+if (yr < 100) {
+	yr = yr + 1900;
+}
+
+var DateJ = tj.getDate() + DJ;
+
+var MonthJp = tj.getMonth() + 1;
+var DateJp = tj.getDate() + DJ;
+
+	if ((MJ == 1) && (DateJ < 1))  {
+		var MonthJp = 12;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 2) && (DateJ < 1))  {
+		var MonthJp = 1;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 3) && (DateJ < 1))  {
+		var MonthJp = 2;
+		var DateJp = 28;
+        }
+
+	if ((MJ == 4) && (DateJ < 1))  {
+		var MonthJp = 3;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 5) && (DateJ < 1))  {
+		var MonthJp = 4;
+		var DateJp = 30;
+        }
+
+	if ((MJ == 6) && (DateJ < 1))  {
+		var MonthJp = 5;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 7) && (DateJ < 1))  {
+		var MonthJp = 6;
+		var DateJp = 30;
+        }
+
+	if ((MJ == 8) && (DateJ < 1))  {
+		var MonthJp = 7;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 9) && (DateJ < 1))  {
+		var MonthJp = 8;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 10) && (DateJ < 1))  {
+		var MonthJp = 9;
+		var DateJp = 30;
+        }
+
+	if ((MJ == 11) && (DateJ < 1))  {
+		var MonthJp = 10;
+		var DateJp = 31;
+        }
+
+	if ((MJ == 12) && (DateJ < 1))  {
+		var MonthJp = 11;
+		var DateJp = 30;
+        }
+
+	if ((MJ == 1) && (DateJ > 31))  {
+		var MonthJp = 2;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 2) && (DateJ > 28))  {
+		var MonthJp = 3;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 3) && (DateJ > 31))  {
+		var MonthJp = 4;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 4) && (DateJ > 30))  {
+		var MonthJp = 5;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 5) && (DateJ > 31))  {
+		var MonthJp = 6;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 6) && (DateJ > 30))  {
+		var MonthJp = 7;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 7) && (DateJ > 31))  {
+		var MonthJp = 8;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 8) && (DateJ > 31))  {
+		var MonthJp = 9;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 9) && (DateJ > 30))  {
+		var MonthJp = 10;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 10) && (DateJ > 31))  {
+		var MonthJp = 11;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 11) && (DateJ > 30))  {
+		var MonthJp = 12;
+		var DateJp = 1;
+        }
+
+	if ((MJ == 12) && (DateJ > 31))  {
+		var MonthJp = 1;
+		var DateJp = 1;
+        }
+
+DaysJ = "";
+var tjday = tj.getDay() + DJ;
+
+if (tjday < 0) {
+     var tjday = 6;
+}
+if (tjday > 6) {
+     var tjday = 0;
+}
+
+tj.setDate(1);       //今月最初の日にセット
+
+// 休日の定義
+if(MonthJp == 1){holiday1 = 1; holiday2 = 14- (tj.getDay() + 5)%7; holiday3 = -1}  //成人の日
+else if(MonthJp == 2){holiday1 = 11; holiday2 = -1; holiday3 = -1}
+else if(MonthJp == 3){
+  ed =  20.8431 + 0.242194 * (yr - 1980) - Math.floor((yr - 1980)/4);  //春分の日
+  holiday1 = Math.floor(ed);
+  holiday2 = -1;
+  holiday3 = -1;
+}
+else if(MonthJp == 4){holiday1 = 29; holiday2 = -1; holiday3 = -1}
+else if(MonthJp == 5){holiday1 = 3; holiday2 = 4; holiday3 = 5}
+else if(MonthJp == 6){holiday1 = -1; holiday2 = -1; holiday3 = -1}
+else if(MonthJp == 7){holiday1 = 20; holiday2 = -1; holiday3 = -1}
+else if(MonthJp == 8){holiday1 = -1; holiday2 = -1; holiday3 = -1}
+else if(MonthJp == 9){holiday1 = 15;
+  ed =  23.2488 + 0.242194 * (yr - 1980) - Math.floor((yr - 1980)/4);  //秋分の日
+  holiday2 = Math.floor(ed);
+  holiday3 = -1
+}
+else if(MonthJp == 10){holiday1 = 14-(tj.getDay() + 5)%7; holiday2 = -1; holiday3 = -1}  //体育の日
+else if(MonthJp == 11){holiday1 = 3; holiday2 = 23; holiday3 = -1}
+else if(MonthJp == 12){holiday1 = 23; holiday2 = -1; holiday3 = -1}
+// 休日の定義終わり
+
+dayarray = new Array();
+dayarray[0]="日曜日";
+dayarray[1]="月曜日";
+dayarray[2]="火曜日";
+dayarray[3]="水曜日";
+dayarray[4]="木曜日";
+dayarray[5]="金曜日";
+dayarray[6]="土曜日";
+
+      if(tjday == 0){
+        DaysJ = "<SPAN STYLE=\"color:#ff0000\">日曜日<\/SPAN>";
+      } else if((DateJp == holiday1)||(DateJp == holiday2)||(DateJp == holiday3)){
+        DaysJ = "<SPAN STYLE=\"color:#ff0000\">"+ dayarray[tjday] +"<\/SPAN>";
+      } else if((tjday == 1) && ((DateJp-1 == holiday1)||(DateJp-1 == holiday2)||(DateJp-1 == holiday3))){
+        DaysJ = "<SPAN STYLE=\"color:#ff0000\">月曜日<\/SPAN>";
+      } else if(tjday == 6){
+        DaysJ = "<SPAN STYLE=\"color:#0000ff\">土曜日<\/SPAN>";
+      } else {DaysJ = dayarray[tjday];
+      }
+
+	if (MonthJp < 10) {
+		MonthJp = "&nbsp;" + MonthJp;
+	}
+	if (DateJp < 10) {
+		DateJp = "&nbsp;" + DateJp;
+	}
+
+
+document.write(MonthJp+"月");
+document.write(DateJp+"日");
+document.write(DaysJ);
+//document.write(HourJp);
+// -->
+</SCRIPT>
+<NOSCRIPT>
+JavaScriptがオフになっています。
+</NOSCRIPT>
+</TD>
+<TD><INPUT NAME="japan" SIZE=8></TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+</FORM>
+
+<SCRIPT TYPE="text/javascript">
+<!--
+
+// 引数arg_yearで指定された年のサマータイム開始時刻を内部表現で返す。
+//
+function GetDstStart(arg_year) {
+	var dst_start = new Date(arg_year, 3, 1, 2, 0, 0); // 第2引数の3は、4月を表す。
+	for (var i = 1; i <= 7; i++) {
+		dst_start.setDate(i);
+		if (0 == dst_start.getDay()) {
+			break;
+		}
+	}
+	return dst_start.getTime();
+}
+
+// 引数arg_yearで指定された年のサマータイム終了時刻を内部表現で返す。
+//
+function GetDstEnd(arg_year) {
+	var dst_end = new Date(arg_year, 9, 31, 1, 0, 0);
+	for (var i = 31; i > 24; i--) {
+		dst_end.setDate(i);
+		if (0 == dst_end.getDay()) {
+			break;
+		}
+	}
+	return dst_end.getTime();
+}
+
+
+// まず今が何年か調べます。
+today = new Date();
+year = today.getYear();
+if (year < 100) {
+	year += 1900;
+}
+// ここまでで、yearに今年の年(1998など)が入っています。
+
+var tz_offset = today.getTimezoneOffset();
+
+
+
+pos_start = GetDstStart(year);
+pos_end = GetDstEnd(year);
+
+tz_sd = -8 * 60; // GMT-0800
+tz_jp = 9 * 60; // GMT+0900
+
+
+function nowat(now_t, tz, st) {
+	var hour, min, sec;
+
+	var pos_t = now_t + (tz_offset + tz) * 60 * 1000;
+
+	if (0 != st) {
+		// サマータイム処理
+		if ((pos_start <= pos_t) && (pos_end > pos_t)) {
+			pos_t += 60 * 60 * 1000;
+		}
+	}			
+	var t = new Date();
+	t.setTime(pos_t);
+
+	hour = t.getHours();
+	min = t.getMinutes();
+	sec = t.getSeconds();
+	if (hour < 10) {
+		hour = "0" + hour;
+	}
+	if (min < 10) {
+		min = "0" + min;
+	}
+	if (sec < 10) {
+		sec = "0" + sec;
+	}
+	return hour + ":" + min + ":" + sec; 
+}
+
+function update_watch() {
+	now = new Date();
+	n_t = now.getTime();
+	sd = nowat(n_t, tz_sd, 1);
+	jp = nowat(n_t, tz_jp, 0);
+
+	document.forms[0].elements[0].value = sd;
+	document.forms[0].elements[1].value = jp;
+
+	setTimeout('update_watch()', 999); // 1000msec = 1sec
+}
+
+update_watch();
+// -->
+</SCRIPT>
+<P CLASS="small">
+（サンディエゴ時間は、サマータイムを自動的に調整します）</P>
+</DIV>
+
+<BR>
+　サンディエゴ、ラホーヤ界隈の地図、名所へのリンクは<A HREF="sandiego.html">サンディエゴの地図</A>をご覧下さい。
+　　<!--<SPAN CLASS="update">updated</SPAN>-->
+<BR>
+<BR>
+　2001年　<A HREF="#sep">９月</A>　<A HREF="#oct">10月</A>　<A HREF="#nov">11月</A>　<A HREF="#dec">12月</A><BR>
+　2002年　<A HREF="#jan">１月</A>　<A HREF="#feb">２月</A>　<A HREF="#mar">３月</A>　<A HREF="#apr">４月</A>　<A HREF="#may">５月</A>　<A HREF="#jun">６月</A>　<A HREF="#jul">７月</A>　<A HREF="#aug">８月</A>へジャンプ<BR>
+
+<BR>
+<P CLASS="b">
+<BR><A ID="sep">2001年９月１日</A></P>
+<P CLASS="main">
+　この８月からアメリカ・カリフォルニア州のサンディエゴに滞在しております。９月１日から、私は<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>客員研究員となりました。私が滞在する<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校(UCSD)</A>は、サンディエゴのダウンタウンよりも北のラホーヤ(La Jolla)という所にあります。ラホーヤは高級リゾート地で、この８月はちょうど夏休みを楽しむ人々が訪れていました。表題の写真にある浜辺が見渡せるところに、別荘やホテルがあって、賑わっています。別荘の中には、１軒＄３millionもする別荘が立ち並ぶ通りもあって、日米の景況の差を感じさせます。</P>
+<P CLASS="main">
+　ただ、こちらも、不況が忍び寄ってきていますが、ちょうど日本でいえば1991～1992年頃の雰囲気です。つまり、株価や地価はピーク時より下がっているものの、人々はそれほど悲観的ではなく、好景気（の恩恵、名残(!?)）を謳歌している雰囲気です。街中には、ベンツ、ボルボ、ＢＭＷが目立ち、アパートメント（日本のマンション）は建設ラッシュで、前述の１軒＄３millionの別荘が売買されているという現状は、どこかしら日本のバブル期と似ているというのは気のせいでしょうか（私は、アメリカ経済が10年前の日本経済のようにはならないことを望んでいますが）。もちろん、アメリカは広いですから、これはカリフォルニアだけのことかもしれません。否、カリフォルニアといっても（日本全土の面積よりも）広いですから、サンディエゴだけのことかもしれません。</P>
+<P CLASS="main">
+　このページは、私がサンディエゴに滞在している間に抱いた雑感、見聞きしたことなどを盛り込んで随時更新致します。また、ラホーヤの浜辺から、眼前の太平洋の彼岸にある日本を、違った角度から見つめてみたいと思っています。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年９月８日</P>
+<P CLASS="main">
+　最近、私の帰宅後の楽しみの１つと言えば、<A HREF="http://abc.go.com/"
+ TARGET="_blank">ＡＢＣ</A>で放映されているGame Show <A HREF="http://abc.go.com/primetime/millionaire/millionaire_home.html"
+ TARGET="_blank">&quot;Who Wants To Be A Millionaire&quot;</A>を見ることです。もともとイギリスで大人気となった同名の番組のアメリカ版で、日本でもフジテレビ系列で放映されているものです。日本では放映されているのは知っていましたが、あまり見ませんでした（この番組のルールは基本的に日本と同じですが、もしこの番組のルールをご存知でない方は、日本版<A HREF="http://www.fujiint.co.jp/quiz/home/"
+ TARGET="_blank">「クイズ＄ミリオネア」</A>（<A HREF="http://www.fujitv.co.jp/"
+ TARGET="_blank">フジテレビ</A>系列）の<A HREF="http://www.fujiint.co.jp/quiz/rule/officialrule.html"
+ TARGET="_blank">公式ルールのページ</A>をご覧下さい）。この番組は、人気が陰り始めているとはいえ、（当時は）アメリカでも<A HREF="http://tv.yahoo.com/nielsen/"
+ TARGET="_blank">Nielsen Ratings (Yahoo! TV)</A>で視聴率がしばしば全米第１位となるほどの人気番組です。また、日米英以外の世界各国でも放映されているようです。<A HREF="http://www.gridlockjoe.com/cgi-bin/framed/2439/Millionaire/MillWorld.htm"
+ TARGET="_blank"></A></P>
+<P CLASS="main">
+　アメリカ<A HREF="http://abc.go.com/"
+ TARGET="_blank">ＡＢＣ</A>で放映されている<A HREF="http://abc.go.com/primetime/millionaire/millionaire_home.html"
+ TARGET="_blank">&quot;Who Wants To Be A Millionaire&quot;</A>は、ホストの<A HREF="http://abc.go.com/primetime/millionaire/abouttheshow/regis_philbin.html"
+ TARGET="_blank">Regis Philbin</A>氏のテンポのよい進行が絶妙で、とてもエキサイティングです。Regisの司会ぶりは（親しみを込めてfirst nameで呼んでしまいましたが）、<A HREF="http://abc.go.com/primetime/millionaire/showhighlights/showhighlights.html"
+ TARGET="_blank">公式サイトのShow Hightlightsのページ</A>にある<A HREF="http://abc.go.com/primetime/millionaire/showhighlights/video/millionaire_video_carpenter.html"
+ TARGET="_blank">VIDEO HIGHLIGHTS</A>で見ることができます。</P>
+<P CLASS="main">
+　ちなみに、本家本元イギリスの&quot;Who Wants To Be A Millionaire?&quot;を私は見たことがありませんが、<A HREF="http://www.millionaireonline.tv/"
+ TARGET="_blank">公式サイト</A>（うまく表示されないことがあるので注意）や、イギリス版の<A HREF="http://www.tigertoys.co.uk/millionaire/"
+ TARGET="_blank">PCゲームのサイト(Tiger Electronics)</A>で聞くことができるイギリス版での（元祖!）ホストChris Tarrant氏の司会ぶり（ChrisはBritish Englishなので、RegisのAmerican Englishと聞き比べるのも面白い）もなかなかのものと察せられます。本家イギリス版&quot;Who Wants To Be A Millionaire?&quot;については、<A HREF="http://www2.itv.com/millionaire/"
+ TARGET="_blank">放送局ITVのページ</A>や<A HREF="http://www.qwertyuiop.co.uk/gs/atoz/programmes/w/who_millionaire/index.htm"
+ TARGET="_blank">Game Shows Who Wants To Be A Millionaireのページ</A>で色々と知ることができます。</P>
+<P CLASS="main">
+　英米での人気は、番組だけでなく、ゲームにまで及んでいます。アメリカの<A HREF="http://abc.go.com/" TARGET="_blank">ＡＢＣ</A>のサイトには、<A HREF="http://abc.go.com/primetime/millionaire/funandgames/funandgames.html"
+ TARGET="_blank">FUN &amp; GAMESのページ</A>があり、その中に、<A HREF="http://abc.go.com/primetime/millionaire/funandgames/fastestfinger/"
+ TARGET="_blank">Firstest Finger</A>（日本版では「早押し並べ替えクイズ」）や、<A HREF="http://abc.go.com/primetime/millionaire/games/"
+ TARGET="_blank">&quot;Who Wants To Be A Millionaire&quot; Online Game</A>（<!--&quot;Skip Sweepstakes&quot;のボタンをクリックすると-->番組本番と同じBGMが流れて&quot;Who Wants To Be A Millionaire&quot; Online Gameが始まります）が、いつでもどこでもインターネットで楽しめます。もちろん、英語で出題されます（イギリス版のOn Lineゲームも、<A HREF="http://www.itv.com/millionaire/game/"
+ TARGET="_blank">こちら</A>にあります。）。皆さんも、&quot;Let's play 'Who Wants To Be A Millionaire' with you.&quot;（Regis流に）。</P>
+<P CLASS="main">
+　番組に出場したい人用に<A HREF="http://www.mindfun.com/millionaire/"
+ TARGET="_blank">Who Wants to Be a Millionaire Practice Center</A>まであります。これでも飽き足らない方は、パソコンにインストールすることができるPCゲームが発売されています。PCゲームも<A HREF="http://www.eidosinteractive.co.uk/games/embed.html?gmid=92"
+ TARGET="_blank">イギリス版（Chrisがホスト；Eidos Interactive社製）</A>と<A HREF="http://bvinteractive.go.com/"
+ TARGET="_blank">アメリカ版（Regisがホスト；Buena Vista Interactive社製）</A>があります。さらには、<A HREF="http://www.pressmangames.com/ido.html"
+ TARGET="_blank">&quot;Who Wants To Be A Millionaire&quot;のボードゲーム(Pressman Toy社製)</A>まで街中のお店で売っています。私は、ゲームにハマって仕事がおろそかになってはいけないので、これらは買っていません（わが子をダシに買おうにも、まだ幼いですし…）。</P>
+<P CLASS="main">
+　いきおい&quot;Who Wants To Be A Millionaire(以下、&quot;WWTBAM&quot;と略す)&quot;の話で勝手に盛り上がってしまいましたが、この番組を見ていて、私は目下の日米の経済状況の差を思い知らされました。まず、アメリカ版&quot;WWTBAM&quot;では（当時）週に４日も放送される上に、毎回賞金として＄32000や＄64000を大盤振る舞いしています。＄125000を獲得する人も珍しくありません。しかも、top prizeは＄１millionで、日本版（1000万円）の１０倍以上です（イギリス版は￡１millonですが、＄１millionよりも高い価値があるので、やはり本家本元はすごい）。そして、俳優やスポーツ選手などの有名人(celebrity)が参加する&quot;WWTBAM&quot;も日本版などと同様にありますが、番組で彼らが稼いだ賞金＄125000や＄250000は、アメリカでは当然のように、番組内で予告して寄付することにしています。</P>
+<P CLASS="main">
+　日本では、公正取引委員会による規制があるのと、（恐らく）景気低迷の影響でスポンサーが大盤振る舞いできないことがあって、アメリカのようには賞金を出せないと思われます。賞金の上限についての規制撤廃ができない日本では、番組参加者（英語ではcontestant）が大儲けできず、それだけ競争(contest)抑制的です。賞金をいくらまで出すかを決めるのは、政府ではなく、民間の主催者（番組制作者やスポンサー）であるべきで、それができない日本では、それだけ自由な経済活動（番組制作）ができないと考えます。そうした規制下で競争が抑制されて自由な経済活動が阻害されているために、景気をも低迷させ、景気低迷による企業の業績不振がこうしたエキサイティングな番組のスポンサーを減らしているように思われます。単なる一番組にも、日本の規制緩和の不徹底ぶりをうかがい知ることができます。</P>
+<P CLASS="main">
+　また、アメリカと違い、日本の俳優やスポーツ選手らが番組で賞金を稼いでも寄付しませんから、日本の所得再分配政策（構造）の欠陥を感じます。日本よりも所得格差が大きいとされるアメリカでは、番組が招いた俳優やスポーツ選手らは、既に本業で高額の所得を稼いでいるわけで、番組で得た賞金まで自分のものにする必要はないので、自ら進んで寄付して社会的貢献をしようとします。日本で寄付をしないのが悪いと言いたいわけではありません。民間の高額所得者が自ら進んで所得格差の是正に取り組まなければ、経済に所得格差が存在することを口実に、政府が税金を使って所得再分配（所得格差是正）をすることになりますが、政府が所得再分配政策を政治的な恣意なくできるはずはなく、政府が行った所得再分配政策は、必ず別の経済的な歪みをもたらす、ということが私は言いたいのです。政府が所得再分配政策を適切に行うことがいかに難しいかは、日本の現状を見れば明らかです。農業や衰退産業の従事者の所得が低いと言っては、彼らを過度に保護して成長産業に負担を強い、過疎の地方の所得が低いと言っては、地方に過度な補助金を与え都市の納税者に負担を強いて、景気を低迷させています。高額所得者が自発的に寄付などを通じて所得格差の是正に努めれば、またそうした自発的な所得格差是正を歓迎・評価する社会的評価システムを構築すれば、政府が不必要に介入しなくてよくなるので、そうした経済構造の方がより国民を幸せにすると考えます。</P>
+<P CLASS="main">
+　アメリカを礼賛することを望んではいませんが、この番組に現れている現象だけをとって見れば、日本の経済構造の方が明らかに国民を不幸にしていると思われ、日本は抜本的な構造改革が必要だという思いをさらに強くしたのでした。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年９月１１日</P>
+<P CLASS="main">
+　2001年９月１１日は、世界史上でも最悪のテロ事件として記憶されることでしょう。西海岸はまだその日の生活が始まっていない早朝に事件が起きたので、日本の両親からの電話で初めて事件を知りました。ニュース番組が放映されている時間帯である日本の方が、事件発生当時は西海岸よりもリアルタイムの情報が詳しかったようです。テレビをつけると、目を疑いたくなるおぞましい映像が映し出されていました。どのチャンネル（といってもこちらのケーブルＴＶは８０ほどある）もニュースかと思いきや、それは横並びが好きな日本の話で、<A HREF="http://abc.go.com/"
+ TARGET="_blank">ＡＢＣ</A>、<A HREF="http://www.cnn.com/"
+ TARGET="_blank">ＣＮＮ</A>、<A HREF="http://www.msnbc.com/"
+ TARGET="_blank">ＭＳＮＢＣ</A>などだけで、料理番組、子供向け番組、通信販売番組、映画とバラエティーが豊富でした（さすがに、数時間たつと、これらの番組はほとんどが一時中止されましたが…　この日放送予定の&quot;Who Wants To Be A Millionaire&quot;も当然中止です）。</P>
+<P CLASS="main">
+　ＴＶやインターネット上のニュースでは&quot;National Tragedy&quot;、&quot;Terrorism Hits America&quot;、&quot;Day of Terror&quot;の文字が目立ちました。アメリカの金融市場は全て閉まり、その後の再開の見通しが立たない状況で、今後の世界経済への悪影響が非常に心配されます。よもや、World Trade Center Towersの倒壊がアメリカの繁栄の終焉の象徴にならなければよいがと願ってやみません。さらには、アメリカ経済が失速しつつもまだ好調だから深刻になっていないだけの日本の財政・金融問題にも、今後深刻な悪影響を及ぼす可能性があります。ともかく陰鬱な雰囲気が私の頭を支配しました。他にも、ニュースによると、さらなるテロの可能性があるので避難するため、西海岸でもダウンタウンの目立つ建物は皆退去し、学校は休校となり、飛行機だけでなく、電車も止まりました。ディズニーランドも動物園も閉まりました。メキシコとの国境も閉めました（サンディエゴのすぐ南はメキシコです）。</P>
+<P CLASS="main">
+　そこでわが身に振り返って、世界経済よりもアメリカ経済よりも日本経済よりも、自分の家計にはどういう悪影響があるのか、と考えました。そうだ、このパニックでガソリンの値段が急騰するに違いない、私の車はガソリンが空に近かったからガソリンを入れなければ、と思い車に飛び乗りガススタンドへ行きました。外に出ると、私の先ほどの陰鬱な雰囲気とは違い、私の住むアパートメントでは、ハウスキーバーが何事もなかったように掃除や芝刈りをしていました（いかにも、陽気なカリフォルニアの雰囲気）。街中では、いつもより車が少なく、ガススタンドはこれまた何事もない様子でした。同じ９月１１日でも、東海岸と西海岸ではこれほど違うのかと驚かされました。</P>
+<P CLASS="main">
+　夕方になってニュースを見ている（「東京で阪神大震災のニュースを１日中見ている」のと同じ状況）と、論調が硬化してきているのに気がつきました。それまで「信じられない恐ろしいことが起こった」という論調（驚きと恐怖）でしたが、このことからニュースの見出しが&quot;Attack on America&quot;とする放送局がいくつも出てきて、「こんなことをするテロリストはけしからん」というかなり攻撃的な論調（怒り）に変わってきました。&quot;Attack on America&quot;は、日本の真珠湾攻撃が当然念頭にあります（日本が半世紀余前にこの日の事件と同じようなことをしたと認識されているのも、おぞましいものがあります。この日の衝撃的な映像とともに、真珠湾攻撃の映像も放映されていました）。罪を犯したものには必ずや処罰（報復）せよ、という論調です。もちろん、アメリカのアンカーマンは（日本のどこかの「ニュースキャスター」と違い感情的でなく）冷静ですから、いたって穏やかな口調ですが、言っていることはかなり厳しいものでした。私は、この日の事件だけでもきな臭いのはもうコリゴリなので、これ以上きな臭いことになって欲しくありません。できる限り平和的に解決して頂きたいものです。</P><P CLASS="main">
+　おまけですが、今回の事件に対して、小泉首相が<A HREF="http://www.kantei.go.jp/jp/koizumispeech/2001/0912sourikaiken.html"
+ TARGET="_blank">「民主主義社会に対する重大な挑戦」（内閣総理大臣記者会見・首相官邸）</A>という、アメリカ大統領がよく使う発言をしたというニュースが入ってきました。皮肉を言えば、このセリフは、確かにこの事件向けですが、日本国内に構造改革に抵抗する過疎の農村、衰退産業従事者、特殊法人、官僚がいて、彼らに対しても「民主主義社会に対する重大な挑戦」と言うべきです。構造改革は国民の多数である都市の有権者・納税者が望んでいるにもかかわらず、「抵抗勢力」はこれに対して「重大な挑戦」をしているのですから。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年９月１８日</P>
+<P CLASS="main">
+<IMG WIDTH="30%" SRC="starstrp.jpg" ALIGN="right" ALT="クレーンにひらめく星条旗">
+　テロ事件から１週間が経ちました。カリフォルニアは、先の大統領選挙でゴア候補を支持したところで、テロ事件以前はブッシュ大統領にあまり好意的ではなかったのですが、それでも、戦争前の愛国ムードで、店先、家の玄関や車、私の住むアパートメントの入口、高層アパートメントの建設現場のクレーン、大学のオフィスのドアなど、多くのところで星条旗を掲げています。スーパーでも星条旗が売れていて、店から出てくる人が、星条旗を買って出てきているのをよく見ます。ＴＶのニュースでは「報復すべき」と（日本のニュースキャスターは口が避けても言えないようなことを）言っています。</P>
+<P CLASS="main">
+　ただ、私が滞在する<A HREF="http://irps.ucsd.edu/"
+ TARGET="_blank">国際関係・環太平洋地域研究大学院(IRPS)</A>の１７日に開かれたレセプションで何人かの教授と話をしていると、いつどのような攻撃をすべきかについては、意見が大きく分かれています。これは、私の周辺だけでなく、ニューヨーク市民の間でもそうだというニュースを見ました。大々的な戦争をすべきだとする人から、兵士が殺されるような戦闘は避けるべきだという人までいます。アメリカ国内の世論がどこまで攻撃すべきかでは意見が集約できていない段階だと、ブッシュ政権も今後の軍事行動について迅速な決断が難しいのではないかと思います。</P>
+<P CLASS="main">
+　その中で、日本の方から頂くメールには、「戦争はいつ始まるのか」という問いかけが多く見られ「悲壮感」がただよっています。でも、９月１１日のところでも書いたように、（西海岸だからか）こちらはそんな「悲壮感」はありません。戦争が始まると経済学の研究どころではないと思われがちですが、実際、第２次世界大戦中アメリカでは、サミュエルソン教授らが後世にも残る経済理論を編み出したわけで、戦争が始まってもこの国では経済学は不滅なのです。日本のように、「ホシガリマセンカツマデハ」という理不尽な禁欲を強要する国ではなく、ブッシュ大統領がこのテロ事件後に強調した「自由」の国なのです。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年９月２０日</P>
+<P CLASS="main">
+　この日は、アメリカ連邦議会で２つの重要な演説・証言がありました。午前中、<A HREF="http://www.federalreserve.gov/"
+ TARGET="_blank">連邦準備理事会</A>の<A HREF="http://www.federalreserve.gov/BIOS/Greenspan.HTM"
+ TARGET="_blank">グリンスパン議長</A>が<A HREF="http://www.senate.gov/"
+ TARGET="_blank">連邦上院</A>の<A HREF="http://www.senate.gov/~banking/"
+ TARGET="_blank">銀行委員会</A>で証言しました。そのときの模様は、今も<A HREF="http://www.msnbc.com/"
+ TARGET="_blank">ＭＳＮＢＣのウェブサイト</A>で<A HREF="http://www.msnbc.com/m/mw/mw.asp?sk=msnbc&amp;id=c_greenspan_010920&amp;name=mpv3&amp;fix=1"
+ TARGET="_blank">ビデオ</A>と<A HREF="http://www.msnbc.com/news/631267.asp"
+ TARGET="_blank">記事</A>が提供されています。また、<A HREF="http://www.federalreserve.gov/"
+ TARGET="_blank">連邦準備理事会</A>で<A HREF="http://www.federalreserve.gov/boarddocs/testimony/2001/20010920/default.htm"
+ TARGET="_blank">証言全文</A>が提供されています。テロ事件があってから、現時点でのアメリカ経済の状況と今後の行方について、様々なエコノミストの発言をニュース等で聞きましたが、その中でも最も「公的」な発言です。その中で、私が一番印象に残った彼の発言は、&quot;I am confident that we will recover and prosper as we have in the past.&quot;です。アメリカ経済は年内にも回復するだろうという予想は、これまで多くの人が述べていて、その予想自体は目新しくありませんが、グリンスパン議長が述べたということは他と比較にならない重みがあります。ただ、彼の確信の根拠は、必ずしも私が納得できるものではありませんでした。極端に言えば、目下アメリカ経済が悪くなる要因がない、ということしか根拠がありません。</P>
+<P CLASS="main">
+　今後のアメリカの景気動向を先取りするアメリカの株価の予想も、テロ事件に伴う株価下落は一時的なもので、またすぐに戻る、という予想が多く出されていますが、その予想も多くが「悪くなる要因がない」ことを根拠としています。これらは、私にとって不吉な過去を思い出させます。バブル景気を経験した日本で、景気が下降し始めた1990年代初頭、「悪くなる要因がない」と言っていたにもかかわらずバブル崩壊に直面した、という過去です。</P>
+<P CLASS="main">
+　さらに、Dow Jones &amp; Companyが発行している投資情報週刊誌<A HREF="http://www.barrons.com/"
+ TARGET="_blank">Barron's</A>の9月17日号に掲載されたJonathan R. Laing氏の記事&quot;Act of War&quot;には、これまでのＮＹダウ平均株価の推移を示しながら、次のようなことが書かれています。過去60年間で、1940年のフランス陥落、1941年の真珠湾攻撃、1963年のケネディ大統領暗殺、1993年のWorld Trade Center爆破事件など、28件のアメリカが経験した危機（経済的要因以外の外部ショック）の直後に、ＮＹダウ平均株価は大きく下落するものの、数年以内に必ず危機直前の水準を回復している、とのことです。これは確かに事実です。しかし、この論理は、日本の株式市場で、日経平均株価が最高値を記録した1989年末段階で、「2000年には平均株価は６万円になる」と予想したり、1990年代初頭に日経平均株価が下がり始めたにもかかわらず、「今までもそうだったから、必ず元の水準に回復する」と言ったりした論理と全く変わりません。マクロ経済のトレンドが上昇傾向にある経済の下で起こった外部ショックが株価に与える影響は、所詮一時的な下落があったとしてもほどなく危機直前の水準を回復します。問題は、今後もその上昇トレンドが続くのかということです。計量経済学の言葉を用いれば、「外挿の誤謬」はないのか、ということです。日本の株価の場合、1990年代は明らかに1980年代までのトレンドから乖離しました。こうしたことが、アメリカで起こらないのか（私は起きないことを望んでいますが）を客観的に検証する必要があると考えます。</P>
+<P CLASS="main">
+　アメリカ経済が今後どうなるかは、日本経済にも影響を与えるだけに、私は非常に関心を持っていますが、その動向に関する議論には（本当のところは根拠が薄弱だからなのか）私は必ずしも納得できないものがあります。アメリカ経済がどういう要因で「良くなる」のかという議論の立て方が必要で、この際「悪くなる要因がない」という議論の立て方は敢えて排すべきではないかと考えます。</P>
+<P CLASS="main">
+　次に、ブッシュ大統領が連邦議会で演説を行いました。
+そのときの模様は、<A HREF="http://www.whitehouse.gov/"
+ TARGET="_blank">ホワイトハウス</A>で<A HREF="http://www.whitehouse.gov/news/releases/2001/09/20010920-8.v.smil"
+ TARGET="_blank">ビデオ</A>と<A HREF="http://www.whitehouse.gov/news/releases/2001/09/20010920-8.html"
+ TARGET="_blank">演説全文</A>が提供されています。<A HREF="http://usembassy.state.gov/tokyo/wwwhjmain.html"
+ TARGET="_blank">在日米国大使館</A>では、<A HREF="http://usembassy.state.gov/tokyo/wwwhjp0026.html"
+ TARGET="_blank">日本語訳</A>が提供されています。あるいは、<A HREF="http://www.msnbc.com/"
+ TARGET="_blank">ＭＳＮＢＣのウェブサイト</A>で<A HREF="http://www.msnbc.com/m/c/ctv_emailthis.asp?id=n_bush01_010920&amp;sk=msnbc&amp;sl=&amp;0mw=x92"
+ TARGET="_blank">ビデオ</A>が、<A HREF="http://www.yahoo.com/"
+ TARGET="_blank">Yahoo!</A>で<A HREF="http://dailynews.yahoo.com/h/ap/20010920/us/bush_text.html"
+ TARGET="_blank">演説全文</A>が提供されています。</P>
+<P CLASS="main">
+<!-- http://www.msnbc.com/news/631906.asp -->
+　この日の大統領の演説の中で、ニュースで最も引用されていたのは、&quot;Justice will be done.&quot;でした。この言葉とともに、歴史に残りそうなブッシュ大統領の言葉は、テロ事件当日９月１１日のテレビ演説で述べた&quot;Terrorist attacks can shake the foundations of our biggest buildings but they cannot touch the foundation of America.&quot;でしょう。そのときの模様は、<A HREF="http://www.msnbc.com/"
+ TARGET="_blank">ＭＳＮＢＣのウェブサイト</A>で<A HREF="http://www.msnbc.com/m/c/ctv_emailthis.asp?id=n_bushaddress_010911&amp;sk=msnbc&amp;sl=&amp;0mw=x92"
+ TARGET="_blank">ビデオ</A>と<A HREF="http://www.msnbc.com/news/627486.asp"
+ TARGET="_blank">演説全文</A>が見られます。あるいは、<A HREF="http://www.whitehouse.gov/"
+ TARGET="_blank">ホワイトハウス</A>で<A HREF="http://www.whitehouse.gov/news/releases/2001/09/20010911-16.html"
+ TARGET="_blank">演説全文</A>が提供されています。大統領のスピーチライターが過去の戦争時の様々な大統領演説（<A HREF="http://www.whitehouse.gov/history/presidents/fr32.html"
+ TARGET="_blank">フランクリン・ルーズベルト大統領</A>の真珠湾攻撃後の&quot;Day of Infamy&quot; speech（<A HREF="http://www.nara.gov/exhall/originals/fdr.html"
+ TARGET="_blank">演説原稿</A>が<A HREF="http://www.nara.gov/"
+ TARGET="_blank">アメリカ国立公文書館(U.S. National Archives and Records Administration)のサイト</A>に、<A HREF="http://abcnews.go.com/sections/us/DailyNews/pearlharbor_intro.html"
+ TARGET="_blank">演説の肉声</A>が<A HREF="http://abcnews.go.com/"
+ TARGET="_blank">ABCNEWS.com</A>にあります）、<A HREF="http://www.whitehouse.gov/history/presidents/ww28.html"
+ TARGET="_blank">ウィルソン大統領</A>の第１次世界大戦や現大統領の父の<A HREF="http://www.whitehouse.gov/history/presidents/gb41.html"
+ TARGET="_blank">ブッシュ大統領</A>の湾岸戦争などのときの演説）を一生懸命ひも解いていたとニュースは伝えています。それだけのことがあるのか、巧みなレトリックを使って勇ましい言葉でテロ事件の犠牲者を前にしてテロリストに対する報復を誓っています。</P>
+<P CLASS="main">
+　これらを重ね合わせると、テロ事件の犠牲者に対して、これからのアメリカの政治・外交・経済について消極的なことを言うのは申し訳が立たない、という雰囲気すら感じます。目下のアメリカは、テロリストに対しては「報復」と、今後の景気については「回復」と言わなければ収まりがつかないのかもしれません。<!--
+<A HREF="http://www.msnbc.com/news/631486.asp"
+ TARGET="_blank">
+-->
+</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年９月２５日</P>
+<P CLASS="main">
+　日本の小泉首相が、この日<A HREF="http://www.whitehouse.gov/"
+ TARGET="_blank">ホワイトハウス</A>でブッシュ大統領と日米首脳会談をしました。この首脳会談は、日本外交のいつものパターンで「遅きに失した」のと、「相手の内に秘めた本音の要求にうまく応えられない」結果に終わったと私は評価しています。まず、ワシントンに来る時期は、フランスのシラク大統領（１８日）やイギリスのブレア首相（２０日）が来たのと同じ週に来るべきでした。もちろん、外交辞令で、最大限歓迎し日本の必要性を強調しましたが、アメリカにとっては今後の方針をもうほぼ固めた後なので、この首脳会談は形式だけの話という感じです。</P>
+<P CLASS="main">
+　さらに、小泉首相が「土産」として持ってきたのは、自衛隊による米軍の後方支援など軍事面の話でしたが、これがアメリカにとって喉から手が出るほど欲しい支援であったとは思えません。これは、1991年の湾岸戦争のときに軍事的な協力がほとんどできず評価されなかった苦い経験だけで日本政府が先走った感すらあります。９月１８日のところでも述べたように、日本人は「戦争」のことを気にし過ぎていると思います。案の定、アメリカの本音として、ブッシュ大統領は「早く不良債権問題を片付けろ」と催促しました。目下の日本にとって最大の「国際貢献」は、日本経済を建て直して世界経済の景気減速を食い止めることでしょう。日本経済がダメになって世界経済の足を引っ張ることが、アメリカが「テロリズムに対する戦争」に望むに当たっての一つの心配事なのです。</P>
+<P CLASS="main">
+　日本人として残念なのは、サンフランシスコ講和条約５０周年を迎えたばかりの記念すべきときの日米首脳会談が、アメリカで外交上あまり重要視されなかったことです。翌日の<A HREF="http://www.nytimes.com/"
+ TARGET="_blank">New York Times</A>の記事でも扱いは小さく、同日に行われたベルリンでの独露首脳会談の方が大きい扱いでした。ＴＶやインターネットなど色々とメディアの伝え方を見ましたが、これとほぼ同様の扱いでした（比較的大きく扱われたとしても、アメリカ大統領の行動としてアメリカにとって重要だという意味でしかない扱われ方です。別の言い方をすれば、外交のニュースとして国際面で重視されたのではなく、ブッシュ大統領の動向として国内政治面で重視されたということです）。やはり日本の首相の扱いはこんな程度かとがっかりした頃、街のショッピングモールに出かけると、そこにあった自動販売機で売っていた<A HREF="http://www.latimes.com/"
+ TARGET="_blank">Los Angeles Times</A>に、日米首脳会談の記事が１面トップで写真つきで載っていたのを見てほっとしたのでした。<!--
+<A HREF="http://www.nytimes.com/2001/09/26/international/26PREX.html?searchpv=nytToday"
+ TARGET="_blank">
+-->
+</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="oct">2001年１０月７日</A></P>
+<P CLASS="main">
+　ついに「テロリズムに対する戦争」が始まりました。この朝のアメリカのメディアの対応は、これまでの政府首脳の言動や取材から準備ができていたからか、いたって冷静で、９月１１日のような殺気は感じられませんでした。速報で番組を中断したのは、ごく一部の局だけで、この日の昼間はのどかな日曜日の番組（ドラマ、映画、スポーツなど）が放映されていました（この日、<A HREF="http://www.mlb.com/"
+ TARGET="_blank">ＭＬＢ（大リーグ野球）</A>の多くのチームは最終戦を迎えていました）。</P>
+<P CLASS="main">
+　これまでのアメリカ政府の対応は、戦略的には成功しているように思われます。戦端を開くための軍事的準備に時間をかけ（これはアメリカ国民の多くが望んでいたものです）、先進諸国との調整や中東諸国との交渉を入念に行って、制裁を解除したり経済的援助を行ったり食糧援助を申し出たりして、テロリストを孤立させることに成功しました。テロ事件当初の高揚した交戦論に流されることなく、ブッシュ政権はうまく立ち回ったと思います。ただ、この戦闘が短期間で終わるかどうかは、今のところ不透明です。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１０月１２日</P>
+<P CLASS="main">
+　このところ、細菌テロ疑惑が高い関心を集めています。つい先ほど、<A HREF="http://www.cnn.com/"
+ TARGET="_blank">ＣＮＮ</A>から送られて来たニュース速報のメールによると、フロリダの会社員だけでなく、ジャーナリストも炭そ菌に感染したという情報が流れてきました。ちなみに、私は９月のテロ事件以降、アメリカのマスメディアのウェブサイトで私のメールアドレスを登録して、ニュース速報をメールで流してもらうようにしています。一旦収まりかけていたこの疑惑も、これでまた騒がしくなりそうです。</P>
+<P CLASS="main">
+　私の素人的「分析」では、このように物騒な「戦時下」のアメリカでも、人口密度が低いところにいれば、身の危険は少ないと思っています（もちろん、そこでも警戒は怠りませんが）。テロリストは、大勢の人々に恐怖を与えることを目的としています。だから、極端に言えば、人が誰も住んでいない砂漠にテロ攻撃をすることはないでしょう。でも、ニュースによればにわかに緊張感が高まっています。このように世相はあまりよくありませんが、それでもアメリカの景況は日本よりもまだましなので、サンディエゴの人々はいたって陽気です。世の中は世の中、自分は自分と割り切っているので、世相が暗くても、我が身に災いが特になければとても明るく振舞っています。私の周り（住まいも職場も）は、大学・研究所関係者が多く、それ以外の人（低所得者やホームレスなど）が少ないので、その意味で他の所と隔離されている環境だからなのかもしれません。治安がよい上にあまり世相に振り回されず、多くの人々は品がよく穏やかなので、非常に過ごしやすく、ニュースを見なければ、今アメリカが戦争をしていると感じさせません（ただし、品がよいといっても、日本人の美的感覚を基準にして「品がよい」というわけではなく、男性で言えば紳士的だということです。どんなに紳士的な教授でも、ここはカリフォルニアで形式張らないため、机の上に座って話をしたり、腰がずり落ちそうになりながら椅子に座ったり、日本人の作法でいえば行儀が悪いところはありますが…）。</P>
+<P CLASS="main">
+　アメリカ人の品の話はともかく、アメリカの雰囲気を日本から見ると、物騒に見えるかもしれませんが、サンディエゴは、人口密度が低く、気候も人々も穏やかなので、日本で想像されるよりも「平和」です。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１０月２０日</P>
+<P CLASS="main">
+　今日は<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校(UCSD)</A>の学園祭、A Celebration of UCSD's 40 Yearsが開かれました。キャンパス全体が会場で、キャンパス自体が広いので、人で大混雑ということはありませんでした。<IMG WIDTH="30%" SRC="ScrippsPier.jpg" ALIGN="right" ALT="スクリプス海洋学研究所の艀">学園祭でも、家族で楽しめるイベントやアトラクションが用意されていたので、私は家族とともに足を運びました。各学部が高校生や一般の近隣住民のためにＰＲする場を設けたり、学生や近隣住民のサークルの催し物があったり、子供広場のようなものが設けられたりして、大いに楽しみました。ハロウィーンが近いこともあり、パンプキンに絵付けをするコーナーもあって、絵付けしたパンプキンを記念に持ち帰りました。娘は、日本のデパートの屋上によくあるジャンプして遊ぶエアークッションのようなものがあったので、そこに入って大喜びしていました。学園祭で小さな子供のことまでケアしているあたりは、日本の大学ではなかなか見られない配慮だと思います。</P>
+<P CLASS="main">
+　その後、<A HREF="http://www.sio.ucsd.edu/"
+ TARGET="_blank">スクリプス海洋学研究所</A>の艀（右の写真）に行ってきました。普段は一般向けには開放されていませんが、学園祭の一環で開放されていました。この艀は、ラホーヤの写真にたいてい写っているほど有名で、一度行ってみたいと思っていました。艀の先からは、ラホーヤの海が見渡せました。艀の上では、海の底に沈めて写真をとる機械や、海の生物の標本なども展示されていて、海洋学のアカデミックな雰囲気に少し浸りました。これでも、こちらは「戦時下」なのですが、「不況下」の日本とどちらの雰囲気が明るいのだか…<A HREF="PiertoLand.jpg" TARGET="_blank"><IMG WIDTH="100%" SRC="PiertoLand.jpg" ALT="艀の先から陸を見た眺め(パノラマ写真)
+クリックすると写真を拡大できます"></A></P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１０月２８日</P>
+<P CLASS="main">
+　２８日日曜日の午前２時に、アメリカはサマータイム（正式名称は、Daylight Saving Time）が終わり、標準時間に戻りました。２８日のサマータイム午前２時が、２８日の標準時間の午前１時となりました。そのため、２８日の午前１時が２回ありました。テレビ欄も午前１時が２回出てきました。いまではパソコンのＯＳもきちんと対応していて、自動的にサマータイムから標準時間に調整してくれました（２８日サマータイム午前１時５９分５９秒の次は、２８日標準時間午前１時００分００秒になりました）。サマータイムがある国に長くお住まいの日本人には、珍しいことではなく当たり前のことを何を今さら大げさに書いているのかと思われるでしょうが、サマータイムのない日本にずっと住んでいて初めてサマータイムを経験する私にとっては、これも特筆すべき出来事の１つです。ＴＶのニュース番組でもマスメディアのサイトでも、（毎年恒例のようですが）サマータイムが終わるというニュースを報道していました。今夜は１時間得して、睡眠時間が長くできますが、来年４月７日にまたサマータイムに戻るときは、逆に睡眠時間が１時間短くなります。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１０月３１日</P>
+<P CLASS="main">
+　今日は、ハロウィーンの日です。今年は、テロ事件の影響もあって、多少引き締め気味ということですが、大いに盛り上がりました。私は家族と、<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校(UCSD)</A>の<A HREF="http://orpheus.ucsd.edu/icenter/"
+ TARGET="_blank">インターナショナル・センター</A>でボランティアをしている方が誘ってくれた場所に行って、ハロウィーンを楽しみました。このように、ＵＣＳＤのみならずアメリカの大学では、大学に客員できた研究者やその家族向けに、学外での活動や催し物を色々と用意してくれるのです。ここにも、アメリカの大学の懐の深さを感じます。日本の大学も、こうした面でもアメリカのレベルに劣らないように努力しなければならないと痛感しました。</P>
+<P CLASS="main">
+　それはさておき、仮装した私達が訪れたのは戸建ての家が並ぶ住宅街で、一軒一軒とっても工夫したハロウィーンの飾りつけがしてありました。私も少し変装しました（そういえば、昼間もスーパーに変装した大人が普通に歩いていて、結構笑えました）。その住宅街を&quot;trick or treat&quot;と言ってキャンディーやチョコをもらいながら練り歩きました。といっても、大の大人の私が&quot;trick or treat&quot;と言って家々を訪ね歩いたわけではなく、仮装した私の娘が一軒一軒訪ねてはお菓子をもらっていました。私の娘は練り歩くのにはまだ幼いのですが、行った先々でお菓子がもらえることがわかり、俄然やる気を出してもらいに行っていました。困ったことに、家の人からお菓子をもらったにもかかわらず、勢い余ってその家の中に入ろうとしました。「入れないのよ」と言って娘を外に連れ出すと、泣き出し大変でした。要するに、&quot;trick or treat&quot;の意味がわかっていなかったようです（１歳半では当然といえば当然ですが…）。</P>
+<P CLASS="main">
+　道中いろんなグループに出くわしましたが、皆それぞれに怖いお面をかぶったり、セクシーなドレスを着たりしていて、ハロウィーンを大いに楽しんでいる様子でした。中にはパイレーツの格好をした男の子達が&quot;Anthlax（炭そ菌）!!&quot;と言いながら煙の出るおもちゃのピストルを打ったりして、ブラックながらもかなりウケました（このあたりが、アメリカ人の余裕なのでしょうか）。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="nov">2001年１１月２日</A></P>
+<P CLASS="main">
+　私は、所属する経済学部で助教授昇格審査を受けるべく、一時帰国することになりました。私が日本を離れていたこの３ヶ月あまり、わが母国日本は、景気後退が進んで、失業率の上昇、大手企業の破綻、そして狂牛病騒動も相まって、サンディエゴにいると、戦時下のアメリカよりも悲壮な状況に直面していると想像されました。インターネットの発達で、日本のニュースは、必要なときに必要な情報を入手することがほぼできました。文字による情報が多いのですが、インターネット上で伝える日本の状況は、少なくとも文面から窺える状況は、先に述べたような状況でした。</P>
+<P CLASS="main">
+　しかし、１２時間余り飛行機に乗り、日本に久しぶりに降り立ってみると、私が目にしたのは予想に反した状況でした。第１印象を述べれば、「日本人はまだまだ元気だ」という状況でした。日本人の多くは、不況に打ちひしがれた様子もなく、構造改革が進まないからといって国会前で大規模なデモを起こす様子もないようです（皮肉を言えば、こんな今の日本なのに、日本国民は、なぜか日銀券をとても信用しているようです。だから、デフレになるのですね。その割には、日本国民が日本銀行総裁を信頼しているとは思えませんし、日本の財政も破綻の危機から逃れられていないのですが…）。インターネット上のニュースの文面からは深刻な状況と読み取れる日本でしたが、ニュースの背景にある「現場」の雰囲気までは、さすがにインターネットといえどもうまくは伝えられていなかった（少なくとも私には認識できなかった）ようです。別の言葉でいえば、ニュースに込められた真意は、記者会見する首相や大臣らの顔の表情、ニュースに出てくる人々の表情まで見なければわからない、映像でなければわからない部分があるのではないかと思いました。</P>
+<P CLASS="main">
+　ニュースの話で言えば、もう１つ日本に一時帰国して驚いたことがあります。それは、「アメリカ軍がアフガニスタンにこんなに爆弾を落としていたのか」ということです。アメリカでは、テレビを見る子供に配慮して、残虐な戦闘シーンや爆撃シーンはほとんど放映していません。ですから、アメリカでニュースを見ていても、Carpet Bombingという言葉や何ポンドの爆弾を落としたかは出てきますが、それを証明する生々しい映像は出てきません。日本人は、どうやら日頃からこのような爆撃シーンをニュースで見ていたのか、と日本に一時帰国した私は思い知らされました。どうりで、テロ事件後、日本の企業はこぞってアメリカへの出張を中止したり、アメリカへの旅行客が激減したりするわけですね。さらには、どうりで、日本では、「ビン・ラディン氏」と敬称をつけたりして、アフガニスタンに対して、アメリカに比べて同情的なのですね。</P>
+<P CLASS="main">
+　でも、「日本人はまだまだ元気」なので、私は安心しました（一抹の不安＝構造改革に対する切迫感の欠如はありますが）。私は、多くの日本人に元気が残っているうちに、日本経済がよりよい方向に向かってくれることを切望しています。そのためには、日本のニュースで、アメリカ国内ですら放映しない爆撃シーンを映している場合ではないと思います。景気がなぜ悪くなっているのか、経済政策の現場では何が議論されているのか、構造改革に誰が何を根拠に「抵抗」しているのか、そうしたことを伝えるために、もっと多くの時間を費やすべきときだと思います。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１１月１４日</P>
+<P CLASS="main">
+　この日、Gene Grossmanプリンストン大学教授が、<A HREF="http://irps.ucsd.edu/"
+ TARGET="_blank">国際関係・環太平洋地域研究大学院(IRPS)</A>のセミナーで研究発表されました。こちらのセミナーは、スタイルこそ日本と同じ（というよりか、日本でのセミナーのスタイルがアメリカから輸入したもの）ですが、スピーカーが錚錚たる顔ぶれで、日本の大学から見ればうらやましい限りです。私が<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校(UCSD)</A>に来てから、秋学期（ＵＣＳＤではクォーター制を採っています）だけでも、Jean Jacques Laffontトゥールーズ大学教授、Roger Farmerカリフォルニア大学ロサンジェルス校教授、Robert Staigerウィスコンシン大学教授といったビッグネームが、<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">ＵＣＳＤ</A>の<A HREF="http://irps.ucsd.edu/"
+ TARGET="_blank">ＩＲＰＳ</A>や<A HREF="http://www.econ.ucsd.edu/"
+ TARGET="_blank">経済学部</A>のセミナーで研究報告をされました。アメリカの南西の端にあるサンディエゴですらこうなので、シカゴや東海岸の大学なら、顔ぶれはもっとすごいことでしょう。</P>
+<P CLASS="main">
+　さらに驚いたことに、スピーカーには旅費は払うが研究報告についての謝金は払わないのが、アメリカでは通例になっているとのことです（ご存知の方にとっては驚くほどのことではないのかもしれませんが）。日本では、大抵の大学では研究報告についての謝金を支払っていますから、日本の学者はその分だけ恵まれているのかもしれません（給料が年功序列で能力給ではない部分は、若い学者はその分損をしています）。でも、セミナーの後で、スピーカーに夕食を振舞うのは、日米とも同じです。お酒を飲みながら、日頃できないような話をフランクに色々と話をするのは、洋の東西を問わないようです。それにしても、あの教授が別の大学へ移るだの、この教授とあの教授は仲が悪いだの、どこの大学人も人事ネタが好きですね、日本の芸能ニュースのように…</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１１月２２日</P>
+<P CLASS="main">
+　今日は、サンクスギビング・デーで休日です。この日にパーティーを開くということで、妻子とともに、私が<A HREF="http://irps.ucsd.edu/"
+ TARGET="_blank">国際関係・環太平洋地域研究大学院(IRPS)</A>でお世話になっている星教授のお宅にお邪魔しました。お宅はサンディエゴの郊外にある素敵な住宅街にあり、立派なお宅です。テーブルには見事なターキーやオードブル類が並び、驚いたことにほとんど星先生ご自身がお作りになったのだそうです。先生の焼いたターキーもおいしく、他にも色々とたくさんおいしく頂きました。パーティーには、同じ<A HREF="http://irps.ucsd.edu/"
+ TARGET="_blank">ＩＲＰＳ</A>に日本から留学されている銀行の方や、ご近所の方も来られました。話によると、日本銀行から今アメリカに留学されている方の中で、ＵＣＳＤ在籍者が意外にも多いのだそうです（９月のテロ事件時に安否を確認するために点呼を取ったときに気が付かれたのだとか）。</P>
+<P CLASS="main">
+　その後、<A HREF="http://ejf.cside.ne.jp/review/pictionary.html"
+ TARGET="_blank">「ピクショナリー（Pictionary）」</A>というゲームを皆でしました（ゲームの紹介は、<A HREF="http://ejf.cside.ne.jp/"
+ TARGET="_blank">「名古屋EJF・ゲームよもやまカタログ」</A>より）。このゲームは、動物やものの名前など与えられた単語を１人だけが見てそれを絵だけで表現し、他の人は何が描かれているのかを当てることで進める双六ゲームです。数人１組のいくつかのチームに分かれて、順番が回ってきたとき、チームの中で１名だけが単語を見て紙に絵を描くことができ、他のメンバーがそれを１分以内に当てられれば、サイコロを振って進むことができます。</P>
+<P CLASS="main">
+　チームは、夫婦・家族、そして論文共著者（！；星先生と私ということですが）は以心伝心ということがあるので、別々にすることになりました。そこで、星先生が課題を見て絵を描く番になり、縦軸と横軸を描いたグラフに、趨勢的に右上がりのギザギザの折れ線グラフを描き始めました。結局、星先生のチームは正解が出ませんでしたが、与えれた単語は「インフレーション」でした。そこで、私が「その折れ線グラフの右端に、的を表す◎を描いてインフレーション・ターゲティグを描けば、わかったのではないですか」と星先生に言ったら、「そうだった」と後悔しておられました。星先生のチームには、日銀から留学されている方もおられました。</P>
+<P CLASS="main">
+　ちなみに、星先生は、2001年１０月５日に、伊藤隆敏一橋大学教授と深尾光洋慶應義塾大学教授とともに、「日本の金融システム再建のための緊急提言」を発表され、その中で、インフレーション・ターゲティング（物価安定数値目標）の導入を提言しておられます（この緊急提言は、<A HREF="http://www.nikkei.co.jp/pub/newbooks01-11/14948/14948.html"
+ TARGET="_blank">伊藤隆敏・著『インフレ・ターゲティング』</A>
+<A HREF="http://www.nikkei.co.jp/pub/"
+ TARGET="_blank">日本経済新聞社</A>に全文が掲載されています）。他方、日銀は、インフレーション・ターゲティングの導入には反対しています。たかがピクショナリー、されどピクショナリーという一幕でした。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2001年１１月２５日</P>
+<P CLASS="main">
+　<A HREF="http://www.nfl.com/"
+ TARGET="_blank">ＮＦＬ（全米フットボール連盟）</A>の<A HREF="http://www.chargers.com/"
+ TARGET="_blank">サンディエゴ・チャージャーズ</A>を応援しに、クァルコム・スタジアムに行きました。星先生はチャージャーズ・ファンで年間予約の席を買っておられるので、先日お宅に伺ったときこの日の試合を見に行くという話になったので、私も家族と観戦しに行くことにしました。この日の観衆は約５万人で、地元ファンが大いに熱狂していました（このスタジアム自体は最大７万人入るのだそうですが）。地元ファンは、試合前、駐車場でバーベキューなどをしながら大いに盛り上がっていました。チケットを買おうとしたら親切にもチケットを無料で譲って下さる方がおられ、我々は無料で入場できました。しかも、その席はクラブ・レベルという、フィールド全体が見渡せる実に良い席でした。</P>
+<P CLASS="main">
+　試合は、今シーズンのチャージャーズを象徴する結果になりました。序盤チャージャーズ有利の試合展開でしたが、第３クォーターに<A HREF="http://www.azcardinals.com/"
+ TARGET="_blank">アリゾナ・カーディナルズ</A>に逆転されたものの、第４クォーター残り２分でチャージャーズが同点のタッチダウン！、とせっかく盛り上がったのに、残り１０秒でカーディナルズにフィールドゴールを決められ、あえなく敗戦となりました。（今シーズンのチャージャーズは、結局５勝１１敗に終わりました。序盤は５勝２敗と、今シーズンのスーパーボウルの覇者<A HREF="http://www.patriots.com/"
+ TARGET="_blank">ニューイングランド・ペイトリオッツ</A>よりも勝る勢いだったのですが、その後なんと９連敗してしまいました。）</P>
+<P CLASS="main">
+　サンクスギビングが終わると、あっというまに街はクリスマスの準備が始まりました。我が家の隣にあるホテルハイアット・リージェンシー・ラホーヤでは、ホテル前の並木にクリスマス・イルミネーションを派手に付け始めました。我が家のバルコニーからは、夜になるとこれから毎晩、並木のイルミネーションが無料（!!）で見られます。公共経済学で言う、外部経済の典型例です。別の棟にある我が家と同じ間取りの家は、全く同じ家賃なので、そう思うと少し得した気分です感じられます。<IMG WIDTH="100%" SRC="HYATTLight.jpg" ALT="ホテル沿いの並木のイルミネーション(パノラマ写真)"></P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="dec">2001年１２月７日</A></P>
+<P CLASS="main">
+　今日、アフガニスタン・タリバーン政権最大の拠点カンダハールが北部同盟軍の手により陥落したとのニュースが入ってきました。今後は山地の洞窟の探索が始まるようですが、「テロリズムに対する戦争」も２ヶ月で趨勢を決するところまで来ましたから、アメリカでは安堵感が出始めています。これから、クリスマスを迎えるので、できればテロや戦争のことなど気にせずに盛り上がりたいと思っているのが本音ではないかと思います。ただ、油断は禁物でしょう。なにせ、太平洋戦争でも趨勢を決したといわれるミッドウェー海戦は1942年6月で、開戦からたったの６ヶ月目でした。しかし、その後終戦までの消耗戦が３年以上かかっているのですから。</P>
+<P CLASS="main">
+　太平洋戦争といえば、60年前の今日は真珠湾攻撃の日&quot;Day of Infamy&quot;でした。ブッシュ大統領も演説をしましたが、「テロリズムに対する戦争」で日米の結束が必要な時期だという配慮があってか、日本を強く非難するような内容はありませんでした。日本人として、私はほっとしました。</P>
+<P CLASS="main">
+　太平洋戦争については、左翼が言うような見方は私として全く受け入れられませんが、右翼の言うこともナンセンスなところがあります。純粋に国家戦略として、当時の日本政府の戦争計画はお粗末なもの（今の日本政府もひょっとすると同レベルかも）だったと言わざるを得ません。その上、根本的な問題として、当時の日本陸軍や海軍には、「国民の生命と財産を守る」という重要な責務が欠けていました。近代国家において、軍隊の最重要の任務は「国民の生命と財産を守る」ことです。アメリカも今、「国民の生命と財産を守る」ためにテロリストと戦争をしている（とアメリカ国民は理解している）わけです。それに比べると、当時の日本軍上層部だけでなく、理不尽にも徴兵されて戦線に赴いた一般の日本国民の兵士にも、「国民の生命と財産を守る」という認識が欠けていたと言わざるを得ません。その結果、日本本土は空襲され、多くの国民の生命と財産が失われました。その意味で、当時の日本軍の行動は、どんなに零戦や戦艦大和に憧れがあろうと、全く賞賛に値しません。また、Ａ級戦犯だけでなく、理不尽にも徴兵されようと彼らもその意味で同罪だ、と後世を生きる私は思います（たとえ私の先祖に唾することになろうとも）。Ａ級戦犯や軍上層部だけが悪くて、当時の徴兵された一般国民は悪くない、むしろ被害者だ、という現在の日本国民の多くが持っている２分法的発想は、理解に苦しみます。</P>
+<P CLASS="main">
+　この誤った発想は、戦後の日本とドイツの対応の違いになって現れていると考えます。ドイツ政府は、ナチスがやった行為、さらに当時のドイツ国民が行った、他国・他民族が不利益になるような行為は全て悪い行為で、二度とそのような行為はしないと全面的に反省の意を表し、ヨーロッパ諸国から歓迎されました。しかし、日本政府は、いまだに中途半端な反省しかしておらず（かといって、左翼が言う子供だましのようなことはすべきではありません）、中国や韓国からことあるごとに干渉を不必要に受ける羽目になっていて、過去と決別できていません。さりとて、右翼の言うように、（開き直って）日本軍は戦時中アジアのためになる良いこともしたとか、アメリカだって原爆投下や無差別爆撃をしたではないか、などと決して言うべきではありません。</P>
+<P CLASS="main">
+　ドイツ政府は、ナチス時代のことは（極言すれば全て）悪かった、と言っているのに対して、日本政府は、戦前のことは軍部だけが悪かったのであって、それ以外は悪くなかったと内心は思っているから、いまだにこの問題を解消できずにいると考えます。今のドイツ政府はナチスをかばうことは一切していません。これに対し、日本国民は、いまだに誰か（戦時中の自分の先祖？、遺族会？、天皇？、あるいは「日本人」としての自尊心？）をかばっているから「全て悪かった」と言えないのです。だから、１２月７日（日本時間では８日）になると、妙に気まずい雰囲気になるのだと思います。太平洋戦争のことは日本があらゆる面で悪かったと言い切れば、今の日本は戦前とは完全に違うと心の底から思えるようになるから、毎年１２月８日や８月１５日が来ても気まずくなる必要はなく、中国や韓国から不必要な干渉を受けずに済むのだと考えます。</P>
+<P CLASS="main">
+　アメリカでは、太平洋戦争時の日本（軍のみならず政府の行動もあらゆる面）を賞賛しません。だから、毎年１２月７日になると真珠湾で日本はひどいことをしたと繰り返し言っていますし、（日本では一部に不評の）映画「パールハーバー」のように当時の日本軍を描いたりするわけです。その一方で、ワシントンの<A HREF="http://www.si.edu/"
+ TARGET="_blank">スミソニアン協会</A>の<A HREF="http://www.nasm.si.edu/"
+ TARGET="_blank">国立航空宇宙博物館</A>には<A HREF="http://www.nasm.si.edu/galleries/gal205/gal205.html#ZERO"
+ TARGET="_blank">零戦</A>が展示されています。それは、日本軍の行動がすばらしかったからでは全くなく、航空技術の面でその当時優れていたからです（先に私が、零戦を賞賛すべきでないと言ったのは、そういう意味です）。アメリカの方が、「戦争」に対する割り切り方が日本よりもうまいと思います。</P>
+<P CLASS="main">
+　前述の２分法的発想は、日本国民が「戦争」を考えるときの、妙に腰の引けた姿勢にも現れています。「戦争」や「有事法制」、はたまた「憲法９条改正」を考える、と言い出した人を、直ちに「好戦論者」、「軍国主義者」と決めつけてしまう雰囲気が、それです。前述のような２分法的発想から抜け出せず戦前と完全に決別できていないから、「有事」＝「戦時中のような軍部の暴走と民間人の悲惨な状況」と連想してしまって、こうした貧困な発想になってしまうのです。しかし、有事法制を考えることと、戦争の準備をすることとは明らかに別次元の話です。これらを同一視すべきではありません。</P>
+<P CLASS="main">
+　もちろん、戦争はないに越したことはありません。しかし、今日に至るまで人類は戦争を避けて通ることができません。経済学的発想でこの問題を考えれば、そうである以上、次善の方法、つまり戦争や軍隊のあり方、を考えておかなければなりません（繰り返しますが、私は戦争はなくなって欲しいと真剣に思っています）。ゲーム理論の言葉でいえば、戦争はオフ・パス（均衡経路上でない戦略）であって欲しいが、オフ・パスだからといって、その手番のときにどのような戦略をとるかを全く考えないというわけにはいかない、ということです。いかに「国民の生命と財産を守る」か、そのために「戦争」というリスクに対するヘッジ・保険をいかにかけるか、を真剣に考えなければなりません。多くの日本国民がリスクに対する経済学的理解を深めれば、「戦争」を火事や地震と同じ次元（リスクの度合いは違いますが）で考えられるようになれるでしょう。</P>
+<P CLASS="main">
+　最後におまけで言えば、こんなアンタッチャブルな話題を経済学者がよくも堂々とウェブサイトに書くなぁ、あるいはここまで旗幟を鮮明にしてしまって大丈夫か、上記の主張は過激（極右に近い）だ、と思われた方、「戦争」について思考停止状態に陥っていませんか？　戦争が起きて欲しくないから戦争のことを真剣に考えないといけないし、これについて主張しなければならないと私は考えています。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="Dec13">2001年１２月１３～１４日</A></P>
+<P CLASS="main">
+　東京の<A HREF="http://www.i-house.or.jp/"
+ TARGET="_blank">国際文化会館</A>で開催される<A HREF="http://www.nber.org/~confer/2001/trio01/Program.html"
+ TARGET="_blank">the 14th Annual NBER-CEPR-TCER Conference</A>で研究報告をするため、再び一時帰国することになりました。日本で開催されるといっても、国際カンファレンスなので、当然英語で研究報告をしなければなりません。私は博士号を取るまで全ての教育を日本で受けてきたので、英語でのプレゼンテーションは誰からも教えてもらえず完全な我流で、なかなかうまく話せないのが悩みの種です。</P>
+<P CLASS="main">
+　学会で発表しに行くとき、行きの飛行機の中ではその準備のために時間を当てることにしているのですが、今回は（まだ準備が終わっていないのに）なぜかやる気が起こらず、つい座席にあるモニターで、私としては珍しく映画を見てしまいました。その映画は、アメリカで2001年夏公開された&quot;The Princess Diaries&quot;（日本では<!-- http://www.disney.co.jp/movies/pretty/ -->「プリティ・プリンセス」というタイトルで2002年に公開）という映画でした。</P>
+<P CLASS="main">
+　ストーリーは、サンフランシスコで普通に暮らす高校生の少女が、実の父親がある国の王様であることを知らずに母子家庭で暮らしていて、そこに父親の死の知らせとともにその少女を後継ぎの王女として迎えたい、と女王である祖母（父親の母親）が突然やってきました。女王は王女になりたがらない少女を説得しつつ、王女になるための教育をしますが、内気で目立ちたがらない性格の少女は、なかなか王女になりたがりません。それでも、死んだ父親が残した誕生日プレゼントの中にあったメッセージを読んで、最後にやっとその少女が王女になると決意してハッピーエンド、という映画です（<A HREF="http://www.unzip.jp/review/0201/princess.html"
+ TARGET="_blank">ストーリーの詳細</A>は、<A HREF="http://www.unzip.jp/"
+ TARGET="_blank">UNZIP</A>にあります）。</P>
+<P CLASS="main">
+　その少女が、内気な性格（だから王女になりたがらなかったのですが）なので、高校でのディベートの授業で指名されて意見をクラスメイトの前で発表（もちろん英語で）しなければならなかったとき、言葉に詰まるし、どもるし、しまいには緊張のあまり吐き気を催してしまうありさま（をうまく演じていたの）でした。しかし、死んだ父親が残したプレゼントの中に書かれていたメッセージを、この少女が読んで、うまく話せなくても人前でも勇気を持ってしゃべることを思い立ち、王女になる決意を皆の前で宣言する演説をして、この映画は終わります。</P>
+<P CLASS="main">
+　私は、こんなに言葉に詰まり、どもり、うまく人前で話せないアメリカ人を見たのが初めてだったので、アメリカ人でも人前で英語がうまくしゃべれない人がいるのだ（といっても、映画の中のフィクションに過ぎませんが）と勇気付けられたことと、うまく話せなくても人前でも勇気を持って話せば、うまく話せる（それは、ネイティブだから当然で、私が共感したところでうまく話せるわけではありませんが）ということが、これから英語で発表しなければならない私を勇気付けてくれました（この映画の面白さは別のところにあるのでしょうが、このときの私はそこが特に印象に残りました）。</P>
+<P CLASS="main">
+　報告当日は、何とか大過なく報告することができました。<A HREF="http://www.tcer.or.jp/images/trio-1.jpg"
+ TARGET="_blank">カンファレンスで発表する私の（アリバイ?!）写真</A>（OHPの前で立っているのが私。私の左はこの論文の共著者である井堀利宏東京大学教授、私の右は座長の林文夫東京大学教授、その右には星岳雄カリフォルニア大学サンディエゴ校教授）が、<A HREF="http://www.e.u-tokyo.ac.jp/org/tcer/"
+ TARGET="_blank">東京経済研究センター（ＴＣＥＲ）</A>のウェブサイトに載っています。</P>
+
+<!--<P CLASS="b">
+<BR>2001年１２月２５日</P>
+<P>
+クリスマス
+
+レストランや観光地もお休みだったりするようで、
+
+</P>
+-->
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="jan">2002年１月１日</A></P>
+<P CLASS="main">
+　我が家の近所では、クリスマスが終わっても年を越すまでは衰えることなく盛り上がりました。我が家の隣のホテルでは、大晦日の夜に、New Year's Eve Partyが盛大に開かれました。このパーティーは、２１歳未満は入場禁止なので、当然、子連れでは入れません。しかし、我が家のバルコニーから、絶好のアングルでこのイベントのクライマックス、新年のカウントダウンを、無料でちゃっかり拝見しました（入場料は＄１００ぐらいします）。近所の人たちも、パーティー会場に入らないで、会場の外からこのカウントダウンを見ようと押しかけて、我が家とホテルの間の道は、黒山の人だかりプラス見に来た人たちの車で埋め尽くされました。</P>
+<P CLASS="main">
+　このイベントは、<A HREF="http://www.timessquarewest.com/"
+ TARGET="_blank">「タイムズ・スクエア・ウエスト」</A>と言っています。この名は、もちろん、ニューヨークの本場のタイムズ・スクエアにちなんでいます。「ウエスト」と言っているのは、西（海岸）のタイムズ・スクエア（のような盛大なイベント）と言いたいのでしょう（ちなみに、我が家の隣のこのホテルには、どこにもタイムズ・スクエアと言う広場はありません）。さらに言えば、サンディエゴの「タイムズ・スクエア・ウエスト」は、時差の都合で、ニューヨークのタイムズ・スクエアよりも３時間遅れで新年のカウントダウンをします。</P>
+<P CLASS="main">
+　ニューヨークのタイムズ・スクエアでは、「ボール・ドロップ」と呼ばれる、光り輝く球が上から落ちてくる仕掛けが、カウントダウンにあわせて行われます。<A HREF="NewYear.JPG"
+ TARGET="_blank"><IMG WIDTH="30%" SRC="NewYear.JPG" ALIGN="right" ALT="カウントダウンにあわせて下りてくる球
+クリックすると写真を拡大できます"></A>それにあやかって、こちらでも「ボール・ドロップ」でカウントダウンをしました。カウントダウンが始まると、会場の外側に仕掛けられていた花火が一斉に吹き上がりました。そして、ホテルの建物の屋上からつるされた球が、まぶしい光を放ちながら、カウントダウンにあわせて降りてきました。</P>
+<P CLASS="main">
+　そして私も日本より１７時間遅れて新年を迎えました。新年を迎えても、光と音楽と花火のページェントは続きました。このパーティーは、サンディエゴでは有名だそうで、昨年、一昨年に続き、今年も複数のテレビ局がその様子を写しに来ていました。もちろん、生放送でこのカウントダウンを放映して年を越す放送局もありました。日本では、地上波の放送局は各地域に４～８しかなく、年越しの番組は全国統一の番組しかありません。しかし、アメリカではケーブルテレビが主流でチャンネルが８０近くもありますから、このように、地元の年越しイベントをテレビで生放送することもできるわけです。それとともに、アメリカの標準時はアメリカ本土で４つ（ハワイ・アラスカを入れれば６つ）もありますから、１時間ずつ遅れて４回も年越しのイベントが各地で行われるので、「全国統一」と言うわけにはいかないのでしょう。</P>
+<P CLASS="main">
+　右のような写真が撮れるほど近くで、新年早々盛り上がりました。サンディエゴの人々がテレビのインタビューで言っていましたが、2002年が&quot;a peaceful and prosperous year&quot;となってほしいものです。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="Jan3">2002年１月３～６日</A></P>
+<P CLASS="main">
+　私は、<A HREF="http://www.vanderbilt.edu/AEA/"
+ TARGET="_blank">アメリカ経済学会(American Economic Association)</A>の年次大会に出席するべく、ジョージア州アトランタへ行きました。この年次大会は、毎年年始早々に開かれます。そのため、日本に居ると正月３ヶ日のしがらみでなかなか行きにくいので、サンディエゴ滞在中に是非行きたいと思っていました。アトランタまでは、<A HREF="http://www.aal.co.jp/"
+ TARGET="_blank">アメリカン航空</A>のセントルイス経由のワン・ストップ便で行きました。<A HREF="http://www.atlanta-atl.com/"
+ TARGET="_blank">アトランタ国際空港</A>には、予定時刻より約１０分ほど早く無事到着しました。私がアトランタに到着した時刻前後は、ちょうど日が差していて、飛行機の着陸に支障がない天候でした。アトランタに着くと、セントルイスよりもはるかに南にあるにもかかわらず、セントルイスでは見られなかった雪が積もっていました。この年始、アトランタを始めとするアメリカ南部は雪の嵐に見舞われていて、映画「風とともに去りぬ(Gone with the Wind)」の風景と全く違う風景が広がっていました。さすがに、積もるといっても車にチェーンをつけるほどではなく、フリーウェイはもう雪が解けていました。しかし、気温は華氏２７度、摂氏マイナス３度です。この時期サンディエゴでは、日中摂氏１０～１８度で過ごしていますから、アメリカ「南部」に来てまで氷点下の気温で寒さに震えなければならないとは…</P>
+<P CLASS="main">
+　アトランタは寒いという予想は、事前にインターネットの天気予報を見て知っていて、私はさすがにサンディエゴを発つときから寒さ対策をしていたので、縮み上がることはありません。でも、北海道にすら行ったことがない私にとって、氷点下をまさかアトランタで経験するとは、予想外でした。後で聞いた話では、<A HREF="http://www.atlanta-atl.com/"
+ TARGET="_blank">アトランタ国際空港</A>をハブとしている<A HREF="http://www.delta.com/"
+ TARGET="_blank">デルタ航空</A>の便では、アトランタの雪の影響で、欠航したり遅れたりしたそうです。そのため年次大会初日は報告のキャンセルや討論者の交代がありました。</P>
+<P CLASS="main">
+　私がアトランタで泊まったホテルは、<A HREF="http://www.vanderbilt.edu/AEA/"
+ TARGET="_blank">アメリカ経済学会</A>の年次大会が開催されるホテルである、<A HREF="http://marriott.com/property/propertyPage/ATLMQ"
+ TARGET="_blank">Atlanta Marriott Marquis</A>です。Atlanta Marriott Marquisは、とても変わった造りになっていて、ホテルの中に下から最上階の４５階ぐらいまでの巨大な吹き抜けがあって、その吹き抜けの中にエレベーターがあって、そのエレベーターで客室の階まで行くのです。エレベーターから見える眺めは、絶景というべきか、目が回るような光景でした。Atlanta Marriott Marquisの建物の写真は、<A HREF="http://mywebpages.comcast.net/rlinger/Georgia/Atlanta/Downtown/marriott.html"
+ TARGET="_blank">Marriott Marquis</A>
+(<A HREF="http://mywebpages.comcast.net/rlinger/"
+ TARGET="_blank">Robert's home page</A>)で見ることができます。</P>
+<P CLASS="main">
+　<A HREF="http://www.vanderbilt.edu/AEA/"
+ TARGET="_blank">アメリカ経済学会</A>の年次大会に初めて参加しましたが、「シカゴ大学の天下」を改めて痛感しました。経済学界が「シカゴ大学の天下」であることは、近年のノーベル経済学賞受賞者がシカゴ大学の教授や出身者で多くが占められていることで、既に有名な話です。１日目のランチョンで、John Campbellハーバード大学教授が講演をしたのですが、その演壇の左右には、日本の国会のようにひな壇があって、錚錚たる経済学者が並んで座っていました。司会のGeorge Constantinidesシカゴ大学教授が、そのひな壇に座っている人を紹介したときのことが、象徴的でした。「向かって右から紹介します、Nancy Stoky, University of Chicago, Robert Lucas, University of Chicago, John Cochrane, University of Chicago.　ここにはシカゴ大学の人しかいないわけではありません」と言って、場内が大笑いとなりました。さらに、翌日のランチョンは、2000年のノーベル経済学賞受賞者の講演で、James Heckmanシカゴ大学教授とDaniel McFaddenカリフォルニア大学バークレー校教授が講演をしました。そのときも、McFadden教授は「私はシカゴ大学の人間ではないが」と、ジョークを言って笑いを誘いました。</P>
+<P CLASS="main">
+　報告が行われたセッションでは、金融政策に関するものが多く目につきました。それに比べて、財政、公共経済学のセッションの数は少なく、今日のアメリカにおける政策の重要性の度合いを示しているように思えました。財政、公共経済学のセッションでも、議論されていることは（恒久的な）税制や社会保障など、長期的な財政運営に関するものがメインでした。今日のアメリカでは、短期的な景気調整は金融政策によって主に行われるものであり、何かにつけ財政政策に頼ろうとする日本とは明らかに異なっています。</P>
+<P CLASS="main">
+　隣り合ったいくつかのホテルに学会会場が分かれていて、多くのセッションが同時に行われていることもあって、各セッションの聴衆の数にばらつきが大きいのも、大きな学会ならではのことです。<IMG SRC="AEA2002.jpg" WIDTH="30%" ALIGN="right" ALT="学会に出席したことのアリバイ(!?)写真">今回の学会では、私が聴きに行った所得格差と階層化に関するセッションで、松山公紀ノースウエスタン大学教授やDanny Quahロンドン大学教授らというビッグネームが報告するにも関わらず、聴衆は私を含めたったの６人。この学会に出席された井堀先生の話では、Alan Auerbachカリフォルニア大学バークレー校教授、Kenneth Juddスタンフォード大学教授、James Potarbaマサチューセッツ工科大学教授が報告し、Jerry Hausmanマサチューセッツ工科大学教授らが討論者となった資本所得課税のセッションでも、これ程ビッグネームが揃っていても聴衆は数名だったそうです。日本経済学会のプログラム委員をした私の経験から言えば、日本の学会でこれらのセッションを開けば６０～７０人は堅いところです。なんとももったいない話です。かと思えば、聴衆が部屋からあふれて立ち見をしているセッションもあったりします。こういうことも、アメリカ経済学会だからこそなせる技なのかもしれません。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2002年１月２８日</P>
+<P CLASS="main">
+　<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校(UCSD)</A>では１月第２週から冬学期が始まりました。学期が始まると<A HREF="http://www-bookstore.ucsd.edu/"
+ TARGET="_blank">UCSD Bookstore</A>で教科書販売が始まります。アメリカでの教科書の出版事情を聞くと、非常に面白いことがわかりました（すでにご存知の方もおられるかもしれませんが）。アメリカでは、日本のような再販価格維持制度がないのと古物商の認可制度がないので、一般の本屋でも新刊本と古本を同時に販売できます。しかも、新刊本も自由に値段がつけられます。学期が始まると、教科書売り場には、同じ教科書でも新刊本と古本（去年学生が使って売りに出た本）が隣り合わせに並んでいました（ここで「新刊本」とは、まだ誰も消費者が買ったことがない状態の本（古本の反対語）の意味です）。<A HREF="PriceCenter.jpg"
+ TARGET="_blank"><IMG SRC="PriceCenter.jpg" ALT="UCSD BookStoreがあるプライス・センター(2002年6月撮影)
+クリックすると写真を拡大できます。" WIDTH="30%" ALIGN="right"></A>日本では、まずありえない光景です。私が見たのはＵＣＳＤだけですが、どうやら他のアメリカの大学もだいたい同じようです。学生は、どちらか好きな方（きれいだが高い新刊本か、汚いが安い古本か）を選んで買っています。さらに、教科書販売の季節が終わりに近づく（すでに講義は先に進んでいます）と、<A HREF="http://www-bookstore.ucsd.edu/"
+ TARGET="_blank">UCSD Bookstore</A>は売れ残っている教科書の新刊本の値段を下げ始めました。</P>
+<P CLASS="main">
+　もちろん、この時点の値下げは、本屋の利益が直接的に減るもので、出版社の利益が直ちに減るわけではありません。しかし、中期的に見れば、値下がりした新刊本を買った消費者がそれを古本として売れば、古本の値段はより安くなり、次の教科書販売の季節が訪れたときに、古本の値段が安い分だけ古本の方が売れて新刊本がそれだけ売れなくなります。そうして、新刊本の値下がりは、タイムラグを伴って間接的に出版社と著者の利益を減らします。こうした環境では、新刊本を値崩れしないように売るのはなかなか大変そうです。</P>
+<P CLASS="main">
+　でも、このような本の販売事情を反映して、当然、出版社および著者は戦略的に行動しています。その戦略とは、「本を分厚くすること」と「改訂を頻繁にすること」です。「本を分厚くすること」で、初めて世に出すときに高い値段をつけて売ることができ、改訂して前の版の本を陳腐化させることによって（経済学者が嫌いな規制によってではなく）古本の供給を抑制し、新刊本が値崩れしないようにしているようです。本を書くアメリカの経済学者は、やはり経済学（価格メカニズム）をわかっているようです。もちろん、値崩れしないようにする努力は、出版社および著者の利得を増やします。それを知って、本の供給側（私もこちら側にいることがあります）にとっては、なるほど「改訂は重要だ」と思いました。</P>
+<P CLASS="main">
+　これは、ある程度まとまった冊数が売れる教科書の話ですが、他方の専門書でも、私は事実を知って驚きました。日本では、専門家しか読みそうにない専門書は、４桁の部数が売れれば御の字という市場です。日本語を使うのが全世界で高々１億2000万人プラスαという中での1000部、2000部という数字です。この比率で考えれば、英語で専門書を書いて英語を使う全世界に向けて売れば、たとえ専門書といえども日本語の専門書の５～１０倍は売れるだろう、と私は思っていました。ところが、それは間違いでした。英語で専門書を書いても、全世界で2000部も売れれば御の字なのだそうです（発行部数で見れば日本とほとんど同レベルではないか！）。英語圏は広し（英語の本を買う日本人も含む）といえども、専門書を読む人は高学歴の一部の人に限られるためというのがその理由です。英語圏はそれだけ階層化されているというべきなのかもしれません。日本人の大学進学率がまんざら低くないことが、こんなところに反映しているのでしょうか！？</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="feb">2002年２月１１日</A></P>
+<P CLASS="main">
+　２月８日から<A HREF="http://www.saltlake2002.com/"
+ TARGET="_blank">ソルトレイクシティー・オリンピック</A>が始まりました。地元の開催ということで、どんなに盛り上がることかと思いきや、案外さっぱりしたものでした。１月１５日にサンディエゴにも聖火リレーがやってきましたが、私の周りで知っていたのは私ぐらいでした（もちろん、サンディエゴのダウンタウンではイベントが開かれましたが）。</P>
+<P CLASS="main">　それには理由がいくつかあるように思います。<BR>
+　(1)アメリカの選手は（特定の種目を除いて）あまり強くない、とアメリカ人に思われていて、あまり期待されていないようです。<BR>
+　(2)３大ネットワークの１つ<A HREF="http://www.nbc.com/"
+ TARGET="_blank">ＮＢＣ</A>が放映権を独占していて、他の放送局はオリンピックを放送できません。そのため、他の放送局は、自分の局の番組を見てもらうためにはオリンピックの宣伝をわざとしておらず、おまけに<A HREF="http://www.nbc.com/"
+ TARGET="_blank">ＮＢＣ</A>以外でのニュースでは、オリンピックの開会式や試合結果は静止画像（！　おそらく<A HREF="http://www.nbc.com/"
+ TARGET="_blank">ＮＢＣ</A>から映像を買わないと放映できないからなのでしょう）でしか伝えず、オリンピックの話はすぐに終わってしまいます。<BR>
+　(3)放映権を持っている<A HREF="http://www.nbc.com/"
+ TARGET="_blank">ＮＢＣ</A>ですら、視聴率の高いレギュラー番組を平常通りきちんと放送しているため、オリンピックの試合は（ペイパービューを除き）夜７時半頃（太平洋標準時）からのダイジェスト番組しかやっていません。さすがに、オリンピック中盤の時期には、日中も放送していましたが、太平洋標準時の地域では生放送はほとんどありませんでした。<BR>
+　(4)ソルトレイク・オリンピックでは、アメリカで視聴率を稼ぐことを目的とした試合時間設定を積極的にはしていないようです。ソルトレイクシティーは山地標準時で、人口の多い中部標準時、東部標準時、太平洋標準時の地域と時差があり、試合の開催時間と人々がテレビを見たい時間と微妙にずれています。例えば、<A HREF="http://www.nfl.com/"
+ TARGET="_blank">ＮＦＬ（全米フットボール連盟）</A>のスーパーボウルは、今年はニューオーリンズ（中部標準時）で行われましたが、視聴率を考えて、試合開始時間を１７時２０分（東海岸では１８時２０分、西海岸では１５時２０分）と設定していました。アメリカで視聴率を稼ぐなら、この時間帯に設定しなければなりません。</P>
+<P CLASS="main">
+　そんなわけで、１日目、２日目とも私はテレビを見ましたが、ソルトレイクシティーとは１時間しか時差がないのに、生放送では見られませんでした。開会式は、ブッシュ大統領も出席したぐらいですから、多くの人が見ていたと思います（大統領も視聴率があまりないイベントならわざわざ出ようとは思わないでしょうから）。しかし、１０日は<A HREF="http://www.nba.com/"
+ TARGET="_blank">ＮＢＡ（全米バスケットボール協会）</A>のオールスターの試合を、オリンピックの放映権を独占している<A HREF="http://www.nbc.com/"
+ TARGET="_blank">ＮＢＣ</A>が、<A HREF="http://www.nfl.com/"
+ TARGET="_blank">ＮＦＬ</A>のスーパーボールとちょうど同じ時間帯に放映していました（同じ時間帯にオリンピックの試合をしているにもかかわらず）。アメリカのメダルが取れそうな種目（事実１０日にアメリカは１つ金メダルを取りました）の試合より、復活したマイケル・ジョーダン（オールスターゲームに出た）の方が視聴率が取れると踏んだのでしょう。日本でなら、逆にオリンピック開催中に重ならないようにオールスターの試合日程をずらしたりするのに…</P>
+<P CLASS="main">
+　オリンピックの番組はそれなりに良い視聴率のようですが、私の周りではこんな程度の盛り上がり方です。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2002年２月２４日</P>
+<P CLASS="main">
+　最近、<A HREF="http://www.thumbdrive.com/"
+ TARGET="_blank">Thumb Drive</A>（日本では、ソースネクストが「速ドライブ」として売っているもの）になんと１ＧＢ版が出たそうです。Thumb Driveとは、名前の通りちょうど親指ほどの大きさをした、ＵＳＢポートに接続するモバイルディスクです。私は以前から、３２ＭＢのThumb Driveを愛用しています。持ち運びの負担がほとんどなく、フロッピーディスクよりも容量が圧倒的に大きく、ＵＳＢポートに差し込むだけでよく、処理速度もかなり速いので、自宅と大学の研究室の間でファイルを運ぶのに大変便利です。<A HREF="http://www.mcafee.com/"
+ TARGET="_blank">McAfee.com</A>のサイトでも<A HREF="http://mcafee.digitalriver.com/dr/v2/ec_MAIN.Entry10?V1=371443&amp;PN=1&amp;SP=10023&amp;xid=39692"
+ TARGET="_blank">販売されている</A>のですが、この日現在で＄６００はちょっと高いですが、親指大のドライブ１個で１ＧＭもファイルが入ることを思えば、思い切って買ってみようかなとも思っています。ちなみに、上記サイトで、日本からでも注文でき、送料はかかりますが日本に送ってくれるようです。</P>
+<P CLASS="main">
+　<A HREF="http://online.wsj.com/home"
+ TARGET="_blank">Wall Street Journal</A>でも
+<A HREF="http://ptech.wsj.com/archive/ptech-20020221.html"
+ TARGET="_blank">紹介記事</A>が２１日に出た程なので、アメリカではThumb Driveが普及するかもしれません。今アメリカでの記憶媒体は、ＣＤ－Ｒ、ＣＤ－ＲＷが主流、ＺＩＰはその次、という感じで、フロッピーは次第に廃れつつある感じです（ただ、お金のない学生の間では、依然フロッピーですね）。日本ではメジャーなＭＯディスク（光磁気ディスク）は、サンディエゴ界隈では置いてある店をいまだに見たことがありません（１．３ＧＭ対応ＭＯドライブを日本で買って、しかも太平洋を越えてはるばるサンディエゴに持ってきた私の立場は…　日本に今度一時帰国するときには１．３ＧＭのＭＯディスクを買って帰らなければ；；）。ＭＯディスクの値段（この日現在で１．３ＧＭは千数百円）と比較すれば、Thumb Driveはまだまだ高いので、日本のユーザーには、Thumb Driveの魅力はあまりないかもしれません。でも、アメリカは主流のＣＤ－ＲやＣＤ－ＲＷやＺＩＰでは１ＧＭも容量がないので、それだけThumb Driveのメリットがあるといえるでしょう。</P>
+<P CLASS="main">
+　アメリカはＩＴ先進国などと言われている割には、電気屋の品揃えは日本の方がはるかに「先進国」だと思います。こちらの電気屋に行っても、売れ筋のものしか置いていません。少しマイナーでも、パソコン関係のものでちょっと凝ったことをするときに欲する品物が、こちらの電気屋ではたいてい置いていません。アメリカは土地が広いですから、売り場だって桁違いに広いのにもかかわらずです。</P>
+<P CLASS="main">
+　ちょっと凝ったパソコン関係のものを買うときは、アメリカ人はほぼ皆、オンラインショッピングです。便利といえば便利ですが、不便な面も結構あります。それは、私がアメリカではれっきとした「外国人」であることに伴うものです。「外国人」である日本人の私は、クレジットカードをアメリカではなかなか作ってもらえません。その理由は、私がこれまでアメリカでクレジットカードを作ったことがないため、私が信用できる人間かどうか、わからない（クレジット・ヒストリーがない）」からです。このことは、アメリカにビザで渡航しようとする人の間では有名な話です。だから、私は日本のクレジットカードしか持っていません。それは店先では使えますが、オンラインショッピングだと日本のクレジットカードを受け付けてくれない場合がほとんどです。例外的に受け付けてくれたところでは買えましたが、それでも注文後にメールが来て、有効期限は記入したもので合っているのかとか質問を受け、すんなりとは受け付けてくれませんでした。上記のMcAfee.comのウェブサイトは、アメリカ以外にでも配送するといっているので、日本のクレジットカードでも、日本への配送も可能ですが、そんなところは稀です。</P>
+<P CLASS="main">
+　どうして、日本のクレジットカードであることがばれるかというと、Billing Address、つまりクレジットカード会社に登録している住所がアメリカ国内でない、ということで通常ばれます。確かに、クレジットカードは偽造されたりしますから、店先ならクレジットカードを持つ私とカードにある私の写真とで、このクレジットカードは本人のものだと確認できますが、オンラインショッピングだと、店の人は私の顔を見られないわけですから、外国のクレジットカードを安心してすんなりと受け付けてくれないのも、仕方がないですね。</P>
+<P CLASS="main">
+　ついでに、アメリカのパソコン市場の話もしましょう。こちらでは、ＤＥＬＬの１人勝ちの様相です。サンディエゴに本社があるゲートウェイはあまり芳しくありません。ＤＥＬＬは、大学に社員が来て、教授、学生らに商品の見本の展示会を開くのに大変熱心です。通常講義をする教室にまで、講義のない時間帯にやってきて（もちろん許可をとって）、実物でプレゼンテーションをして宣伝をしています。私も見に行きました。ＵＣＳＤのキャンパスはキャンパス全域で無線ＬＡＮが使用可能な状態になっている（!!　日本の大学ではまだそんなにはないのでは）ので、そのプレゼンテーション会場でも、サクサクとインターネットにつなげて商品の宣伝をしていました。ＡＴ互換機ですから、どこのメーカーのものでも極言すればあまり差はないのですが、どうやら販売員の持つ知識（社員教育によるものか）や顧客へのアフターケアが、他社より良いことがＤＥＬＬの人気につながっているようです。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="mar">2002年３月１８～１９日</A></P>
+<P CLASS="main">
+　<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>で星先生と共同で執筆している論文を<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ（全米経済研究所）</A>の<A HREF="http://www.nber.org/~confer/2002/struct02/PROGRAM.html"
+ TARGET="_blank">Conference on Structural Impediments to Growth in Japan</A>で報告するべく、三度一時帰国することになりました。まさか、サンディエゴに来てこの短い間に日本へ３往復もするとは予想だにしていませんでした。私と家族は、昨年７月末にサンディエゴにやってきたときには、１年以内には帰国しないだろうと予想して（１年以内に帰国するなら復路の搭乗便を後日変更できる割引航空券があります）、割高な普通運賃の片道航空券（１人２０万円弱）を買ってやってきたほどでした。昨年９月のテロ事件前でしたから当然怪しまれませんでしたが、もしこれがテロ事件後だったら、アメリカ人でない人間が「アメリカ行きの片道航空券」で搭乗するということで、当局に何か質問でもかもしれません。私に何もやましいところはありませんが…</P>
+<P CLASS="main">
+　このカンファレンスの名は、1990年頃に日本の閉鎖的な経済構造が日米貿易摩擦の原因だ（というアメリカ側の主張）として始まった日米構造協議(Structural Impediments Initiative)にちなんでいます。今となっては、日本の経常収支黒字は依然続いているものの、かつての勢いが日本にないため、「日米構造協議」も懐かしく感じられますが、カンファレンスの名にふさわしい日本経済の成長を阻害する構造が至るところにあって、何とか解消したい（あるいは、して頂きたい）、と私は思います。</P>
+<P CLASS="main">
+　星先生との<A HREF="download.html#FILP" TITLE="全文がダウンロード可能、ただしカンファレンス後の改訂版">共同論文</A>は、日本の財政投融資で、不健全な特殊法人や地方自治体のへの貸付で損失がいくら生じたか、あるいはその損失処理のために今後いくら国民が税負担しなければならないか、を定量的に分析したものです。１９日午後に報告した際には、討論者の岩本康志京都大学助教授（当時）から、我々の論文の分析の中で、特殊法人の財務分析で悲観的過ぎる部分があるのと、財投機関債に関する評価で楽観的過ぎる部分がある、とのコメントを頂きました。このコメントを踏まえて、サンディエゴに戻った後で改訂して、より妥当な分析結果を示せるようにしたいと思います。その暁には、このカンファレンスで報告された他の論文とともに、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>のConference Report Seriesの１冊として<A HREF="http://www.press.uchicago.edu/cgi-bin/hfs.cgi/00/16123.ctl"
+ TARGET="_blank">Structural Impediments to Growth in Japan</A>と題して<A HREF="http://www.press.uchicago.edu/"
+ TARGET="_blank">University of Chicago Press</A>から刊行される予定です。</P>
+<P CLASS="small">
+　この報告論文は、加筆修正の後、2002年12月に<A HREF="download.html#nber1"
+TITLE="全文がダウンロード可能">National Bureau of Economic Research Working Paper No.9385</A>として最終稿を公刊しました。</P>
+<P CLASS="main">
+　我々の論文について、カンファレンスに参加していたイングランド銀行の方が私に、日本の政府債務について今まで知らなかったことを分析していてとても為になった、との感想を仰って下さるとともに、日本語で発表する予定はないのか、とも尋ねられました。（カンファレンスの時点では）その予定がない、と私が言うと、それは日本国民にとって不幸だ、と半分冗談を言っておられました。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="apr">2002年４月３日</A></P>
+<P CLASS="main">
+　４月３日から７日まで、ボストンに行きました。４月４日から６日まで開かれる<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ（全米経済研究所）</A>のカンファレンスに招かれ出席するためです。これは、<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>で共同研究をしている星先生がお声がけ下さったお蔭で実現しました。報告された論文からも多くの示唆を得ましたし、多くの優秀な経済学者とも直接話ができて、大変有意義でした。</P>
+<P CLASS="main">
+　ボストンに行くのは、今回が生まれて初めてです。アメリカの南西にあるサンディエゴから正反対の北東にあるボストンに行くせっかくの機会なので、マサチューセッツ工科大学（ＭＩＴ）の大学院４年間をボストンで過ごされた星先生に、ボストンの見所を伺いました。３月の<A HREF="#mar">Conference on Structural Impediments to Growth in Japan</A>のときには、ボストンが故郷のホリオカ大阪大学教授からもボストンのお話を伺いました。</P>
+<P CLASS="main">
+　朝４時半に、マイカーで<A HREF="http://www.san.org/"
+ TARGET="_blank">サンディエゴ国際空港</A>に向けて自宅を出発しました。私が乗るのは、サンディエゴを朝６時半に出る飛行機ですが、この便は<A HREF="#Jan3">去る１月にアトランタへ行くとき</A>に乗ったのと同じ便です。このときまでには、もうセキュリティーチェックは厳しくなくなっていたので、９０分前に空港に着いても十分間に合いました。</P>
+<P CLASS="main">
+　セントルイス経由でボストンに着くと、そこは都会でした。サンディエゴのダウンタウンには、それほど多くのビルは建っていませんし、高層ビルもありません。しかも、日頃はサンディエゴのダウンタウンよりも北にある（より田舎の）ラホーヤで暮らしていますから、なおさらです。また、サンディエゴにない歴史を感じさせる街並みが、<A HREF="http://www.massport.com/logan/"
+ TARGET="_blank">ローガン国際空港</A>からの道中でタクシーの車窓から見えました。</P>
+<P CLASS="main">
+　ボストンでは、カンファレンスが開催される<A HREF="http://www.sonesta.com/boston/"
+ TARGET="_blank">ロイヤル・ソネスタ・ホテル</A>に宿泊しました。このホテルは、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の定宿のようで、ボストン市街の中心とは、チャールズ川をはさんで対岸にあり、 <A HREF="http://www.ci.boston.ma.us/"
+TARGET="_top">ボストン市</A>ではなく、ハーバード大学やＭＩＴのある<A HREF="http://www.ci.cambridge.ma.us/"
+ TARGET="_blank">ケンブリッジ市</A>にあります。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="Apr4">2002年４月４日</A></P>
+<P CLASS="main">
+　４日は、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の<A HREF="http://www.nber.org/~confer/2002/social02/program.html"
+ TARGET="_blank">社会保障ワークキンググループの研究会</A>が開かれ、それに出席しました。研究会の会場は、ホテルではなく、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の本部の会議室でした。朝ホテルの玄関に、ＮＢＥＲの本部へ行くシャトルバンが迎えに来ました。たどり着いた所は、１階には家具屋が家具を展示しているごく普通の６階建てぐらいのビルでした。その中央の入り口からエレベーターに乗って３階に行くと、そこが世界に名立たる<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の本部でした。私は、本部は、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>自身が持つビルで、ワシントンにある<A HREF="http://www.federalreserve.gov/"
+ TARGET="_blank">連邦準備理事会</A>の本部ビルのような小ぢんまりとしてはいるが壮麗な建物を勝手に想像していたので、意外でした。見た目は、日本でいえば、ごく普通のビルの中に入っている民間シンクタンクのオフィスとあまり変わらない感じです。しかし、ここから世界の経済学を動かす研究をいくつも発信しているのです。</P>
+<P CLASS="main">
+　経済学の学術的な研究（別の言い方をすれば、経済学を知らない人が見れば何をやっているか良くわからない研究）に、資金とメディアを提供してくれる<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>のような形態の研究所が日本にないのが、悔やまれてなりません。日本の経済学における研究環境は、スポンサー側が経済学を理解する努力もないのに研究成果の説明だけを過剰に要求するか、経済学がわからないならわからないなりに「何だかよくわからないことをやっているようだがすごいことをやっているなら研究資金を出そう」という形態の研究資金は稀です（文部科学省の科学研究費は後者かもしれませんが、使途の制約が厳し過ぎて使い勝手が極めて悪いのです）。そうなると、極言すれば「素人にわかる研究」しかできず、世界の経済学に貢献できる研究を行うインセンティブが生じにくい状況に陥ってしまいます。</P>
+<P CLASS="main">
+　<A HREF="http://www.nber.org/~confer/2002/social02/program.html"
+ TARGET="_blank">社会保障ワークキンググループの研究会</A>は、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の２０人ぐらいが入れるごく普通の会議室で行われました。こんな小さなごく普通の会議室に、著名な経済学者がたくさんいて、密にディスカッションできるのは、日本の大学から見ればうらやましい限りです。最初の報告は、Smettersペンシルベニア大学助教授の報告でした。Smetters助教授は、昨年１２月の<A HREF="#Dec13">the 14th Annual NBER-CEPR-TCER Conference</A>で井堀東京大学教授と私の共同論文の討論者になって頂いたので、コーヒーブレイクのときに会って話をし、御礼を述べました。Smetters助教授の目下メインの立場は<A HREF="http://www.ustreas.gov/"
+ TARGET="_blank">アメリカ財務省</A>のDeputy Assistant Secretary for Policy Coordinationというポジション（ペンシルベニア大学にも籍はありますが）で、昨年１２月は、<A HREF="http://www.csss.gov/"
+ TARGET="_blank">President's Commission to Strengthen Social Security</A>の<A HREF="http://www.csss.gov/reports/"
+ TARGET="_blank">最終報告</A>を提出する直前（１２月２１日提出）で、研究スタッフとして忙しかったとの話でした。</P>
+<P CLASS="main">
+　Smetters助教授に限らず、アメリカでは学界と政官界との間の人事交流が多いので、学者もしばし大学の研究室を離れてワシントンで働いています。そして、そうしたことがむしろ良い経験として、評価されているようです。日本のように、こうした経験を「御用学者」などと言って揶揄したり、政官界に取り入る学者を見下すような態度を取ったりするのとは、大違いです。その差は、民主主義に対する理解と政権交代の頻度にあると私は思います。アメリカは、建国以来民主主義の国ですから、政府は国民全体のものという認識も手伝って、学者が政府の仕事に貢献することは国民全体に貢献することだとした高い評価を受けています。これに対して、日本は民主主義の発想が国民から自発的に出た国でないせいか、政府は国民のものという認識が明らかに薄く、政府は官僚（という一部の国民）のもの、ないしは自民党のもので、多数の国民にとっては共有できない縁遠いもの、という認識が強くあります。この認識に立って、政官界と交流する学者は、政府や政治家に取り入って立身出世を図ろうとする卑しい人間だと見下す場面が多くあります（これには、多少の妬みもあるのでは…）。このような日本人にありがちな認識は、明らかに民主主義をきちんと理解していない認識で、改めるべきでしょう。</P>
+<P CLASS="main">
+　また、アメリカでは共和党と民主党が政権交代をしばしばしますから、様々な主張を持つ学者を広範に受け入れる政界の懐の広さがあります。共和党政権の見解と異にする主張を持つ学者でも、民主党の政治家のブレーンになることができます。そして、民主党が政権につけば政権のブレーンとなるのです。これに対し、日本では政権交代がこれまでほとんどなかったので、政府に貢献できる学者は自民党あるいは霞ヶ関寄りの主張を持つ人だけに限られました。これを、自民党や霞ヶ関に批判的な人が「御用学者」と揶揄しています。しかし、民主主義国家なら、政府は国民全体のものですから、自民党や霞ヶ関の見解に近かろうが遠かろうが「御用学者」は国民全体に貢献する良い仕事をしている学者、として高く評価されるべきでしょう。このように、日本の学界と政官界の関係は、日本人にありがちな奇妙な認識によって、不当に低く評価されてしまっていると思います。</P>
+<P CLASS="main">
+　さて、話を元に戻しましょう。Smetters助教授の報告は、公的年金制度が賦課方式から積立方式へ移行するのが世界の趨勢になっているが、それはどのような要因が働いてその移行のための改革が実行されるか、という話でした（まだ、論文の形にはなっていませんでしたが）。改革が行われた国を挙げて、クロス・カントリーの実証分析を行い、従来から言われている改革の要因では、なぜ改革が実行されたかをうまく説明できないことを示していました。そして、改革を促した強い動機は、公的年金を運営する政府に対する信用の喪失である、というところが報告の中心的な主張でした。</P>
+<P CLASS="main">
+　その詳細は、次のような話でした。先進国は、人口の高齢化（日本も同様）が進んで、賦課方式での世代間の受益と負担が乖離して、これによって（今の若い世代が自分の老後には公的年金をほとんど受け取れないのではないか、という意味で）公的年金に対する信用が失われ、改革を促した。しかし、その改革は劇的なものではなく、漸進的な改革だった。途上国は、公的年金を運営する政府の対外債務の増大、汚職・不正の横行、年金の負担や受給に伴う不公平や逆進性があって、これによって公的年金に対する信用が失われ、年金制度そのものが崩壊する危機に直面し、劇的な年金改革が実現した。</P>
+<P CLASS="main">
+　この報告についてのディスカッションでは、途上国でサンプルとなったところは、（もちろん改革が行われた国ですが）ハーバード大学大学院出身者が政府高官にたくさんいるところというサンプリング・バイアスがあるのではないか、という指摘が出て一堂大笑いとなりました。途上国で年金改革に携わった人は、年金の民営化を主張しておられるFeldsteinハーバード大学教授・ＮＢＥＲ所長の影響を強く受けた人が多く、途上国での年金改革の背景には、Smetters助教授が説明したような政治経済構造や所得分配の共通した特徴があるかもしれないが、ハーバード出身者が多いという要因が効いているのではないか、という冗談半分の話です。</P>
+<P CLASS="main">
+　次に、前述の<A HREF="http://www.csss.gov/"
+ TARGET="_blank">President's Commission to Strengthen Social Security</A>の<A HREF="http://www.csss.gov/reports/"
+ TARGET="_blank">最終報告</A>に関して、パネルディスカッションが行われました。Commissionはもう終わっているので、この最終報告について、実際にCommissionで仕事をした学者が概要を報告し、それに対して討論者が最終報告で残された問題点を指摘する、というスタイルで行われました。</P>
+<P CLASS="main">
+　アメリカの現行制度では、（日本より緩やかですが）高齢化に伴い保険料収入が不足して、このままでは持続可能でないから、今から改革を行うべきだと提言しています。最終報告が、&quot;Strengthening Social Security and Creating Personal Wealth for All Americans&quot;と題していることからもわかるように、低い貯蓄率のアメリカ国民に対して、いかに公的年金を民営化して安定的な社会保障を構築するかに中心テーマとなっています。<A HREF="http://www.nytimes.com/"
+ TARGET="_blank">New York Times</A>の社説では、これに対して反対の立場を表明しているようですが、やはり<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の所長でもあられるFeldstein教授の影響が強いので、パネルディスカッションでも、最終報告は基本的に良い出来だと好評でした。年金基金の運用についても言及していて、年金基金は全て国債で運用すべきだ、というFeldstein教授が以前から主張している案が最終報告に盛り込まれています。日本で、この３月の年度末にもＰＫＯとして年金資金が裁量的に株に投じられたことを思うと、事前に年金基金の運用について最終報告で言及している点は感心しました。日本では、年金給付や年金保険料についてと、年金積立金の運用については、別々に議論されています。しかし、年金財政全体のことを考えれば、これらは分離すべきではないと考えます。</P>
+<P CLASS="main">
+　私にとって最も興味深かったのは、社会保障制度を通じて、個人が生涯で直面するリスクをどうシェアするか、という論点です。日本の社会保障制度は、所得再分配の性格が強く打ち出されていますが、ここの議論には、所得再分配政策のツールとして社会保障を位置付けようという発想はなく、あくまでも、民間の経済主体の間で必ずしもうまく出来ないリスクシェアリング機能を、政府がいかに社会保障制度を使って担うか、という発想が強く出ていました。この研究会最後の報告のMankiwハーバード大学教授の論文が、特に象徴的です。</P>
+<P CLASS="main">
+　研究会には、Feldstein教授は最初から最後まで出ておられました。ランチのときに、私が参加させてもらったことの御礼を含めてご挨拶しました。幸い好意的にお話して下さり、日本の年金事情はとても深刻だから研究会で色々と学んで帰ってください、仰って下さいました。</P>
+<P CLASS="main">
+　午後からは、Boersch-Supanマンハイム大学教授がヨーロッパの年金改革についての論文を報告しました。ドイツ・イタリア・フランス・スペインの大陸４カ国の事例を実証分析し、世論調査のデータを使いながら、年金改革（純受益が高齢世代で減り、若年世代で増える改革）に高齢世代がより多く反対し、若年世代がより多く賛成する、という直観と一致する推定結果が得られただけでなく、年金財政の（危機的な）実情について知っている人は年金改革に賛成する人が多く、年金財政の実情についてほとんど知らない人は年金改革に賛成する人がより少ない、という推定結果が得られ、政府が年金財政の実情を国民に知らせることが年金改革を促す、という結論を示しました。</P>
+<P CLASS="main">
+　Alwyn Youngシカゴ大学教授の報告(<A HREF="http://papers.nber.org/papers/W8530" TITLE="NBER Working Paperを購読している方、大学なら無料でダウンロード可能"
+ TARGET="_blank">NBER Working Paper No.8530</A>)は、世代重複(OLG)モデルを拡張して、各期の人口が確率的に決まるモデルで、ある期に突然人口が増大した（ベビーブームになった）ときの変化に対応するべく、１人当たり資本が減って経済厚生が低下しないようにするような&quot;demographic gift&quot;を政府（social planner）がどのように行うのが望ましいかを議論しました。結論自体はそれほど奇抜なものではなく、人口の変化が世代間移転や各世代の厚生にどのような影響を与えるかについて、理論的にうまくサーベイした論文という感じになっています。</P>
+<P CLASS="main">
+　Young教授は、朝ホテルのロビーで<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>のオフィスへ行くシャトルを待っていたときに初めて会いました。そこで自己紹介をしながら、日本の財政の話になり、Young教授は、なぜ日本国債の残高が累増しているのに極めて低い金利で発行できるのか、と私に質問しました。私は、政府が資金運用を決めている郵貯や年金資金が買い支えているからだと答えたところ、なぜ日本国民は郵貯に預けるのか、郵貯はなぜ民間銀行よりも高い金利をつけられるのか、郵貯は政府が法的に（債務）保証しているのか、郵貯は（民間と同様の）預金保険に入っているのか、といった質問に私が答えて、話が盛り上がりました。そのときに、ちょうど<A HREF="download.html#jwe01">Japan and the World Economyに掲載されたの私達の共同論文</A>の抜刷を持っていたので、日本の財政赤字について書いた論文ということで、Young教授に差し上げました。</P>
+<P CLASS="main">
+　研究会の最後にMankiw教授(<A HREF="http://papers.nber.org/papers/W8270" TITLE="NBER Working Paperを購読している方、大学なら無料でダウンロード可能"
+ TARGET="_blank">NBER Working Paper No.8270</A>)が世代間リスクシェアリングの論文を報告しました。今回の研究会で、私が一番刺激を受けた論文です。簡単な世代重複(OLG)モデルで、貯蓄の収益率が確率的に決まり（貯蓄をリスキーな資産に投じる）、そのときに均衡でどのような状態になるか、その経済で政府が介入する意義があるか、を分析しています。１つの均衡は、各世代が完全に独立して行動し、貯蓄に伴うリスクは各世代がそれぞれ独自に受ける（世代間リスクシェアが全くない）均衡、もう１つの均衡は、世代間でリスクシェアする取引が市場で成り立ち、貯蓄に伴うリスクが世代間でシェアされる均衡です。</P>
+<P CLASS="main">
+　この均衡において、政府が介入する余地は、次のようなところにあります。１つの方法は、年金基金が家計から積立方式の年金保険料を徴収して、家計に代わり年金基金がリスキーな資産を購入し、世代間でリスクシェアしつつ、年金収益率をその期に実現するリスキーな資産の収益率と正の相関を持つようにする決める方法で、もう１つの方法は、年金基金が家計から積立方式の年金保険料を徴収しつつ、世代間移転だけをする政府が公債を発行して、その公債費を家計から税金で徴収して、年金基金がこの公債だけを買い（家計の貯蓄は全てリスキーな資産に投じられる）、年金収益率は公債の収益率とする方法です。これはどちらも経済厚生は同じで、パレート最適です。この論文では、上記のようなリスクシェアリングの方法が望ましいという結論を導いています。</P>
+<P CLASS="main">
+　さらに、この論文で明らかにしたことは、９０年代のアメリカで議論されていた年金改革案は、その案が持つ世代間リスクシェアリングに対する性質・経済効果を明示的に議論していませんでしたが、それをここで明らかにしたことです。クリントン政権の改革案は、前者の方法を意図していて、Feldstein教授の改革案は後者の方法を意図していました。ただし、この論文での結論ではいずれも経済厚生では差がないので、甲乙をつけているわけではありません。</P>
+<P CLASS="main">
+　この論文に対する、討論者のZeldesコロンビア大学教授のコメントも秀逸でした。非常に簡単なモデルなのに、経済効果の核心をつく典型的なMankiw-styleの論文だ、という誉め言葉に始まり、Feldstein教授の改革案に象徴される後者の方法による世代間リスクシェアリングは、年金基金の財政方式としては積立方式であっても、均衡で起こっていることで見れば、家計が払った税金が公債費の支払を通じて年金給付に充てられているから、President's Commissionの最終報告でも提言した年金のpersonal account導入とは相容れない性質をもつ結論に、この論文ではなっている、というモデルの核心をつくコメントがありました。</P>
+<P CLASS="main">
+　その理由は、モデルの線形近似に伴って、誤って捨象した効果があるからであり、Zeldes教授は、もう少しモデルを複雑にすれば、後者の方法による世代間リスクシェアリングでもpersonal account導入とは矛盾しない結論が出てくる（Zeldes教授が現在執筆中の論文で分析しているそうです）という話でした。</P>
+<P CLASS="main">
+　カンファレンスの後、<A HREF="http://www.hfc.harvard.edu/"
+ TARGET="_blank">ハーバード・ファカルティー・クラブ</A>でディナーを参加者とご馳走になりました。ファカルティー・クラブとは、簡単に言えば、大学の教職員専用の会食・会議・宿泊施設で、全世界的にそういう施設を「ファカルティー・クラブ」と称しているようです。慶應にもＵＣＳＤにもファカルティー・クラブはありますが、ハーバード大学のものは、これらと比較にならないほど、聞きしに勝る壮麗さでした。先ほどの研究会ではカジュアルな服装で出席していた教授も、ここではスーツにネクタイをして来られました。</P>
+<P CLASS="main">
+　ディナーでは、Potarbaマサチューセッツ工科大学教授の司会で、Boskinスタンフォード大学教授がスピーチをしました。その内容は、アメリカで将来に繰り延べられた徴税額がいくらあるか、という話でした。データは他の研究者が分析した結果から引用していましたが、Sabelhaus(2000, <A HREF="http://ntanet.org/national_tax_journal.htm"
+ TARGET="_blank">National Tax Journal</A>)などによると、所得等に伴う繰り延べられた徴税額の割引現在価値は、３．２５兆ドル、資産等に伴う繰り延べられた徴税額の割引現在価値は、１１．７兆ドル、にのぼるという話です。もちろん、試算方法にもよるわけですが、結構大きな額です。Feldstein教授は、これだけ大きな額の税収が将来あるわけだから、もっと減税すべきだ、としきりに仰っておられました。Boskin教授は、これはあくまでも試算だから、と減税もほどほどに、というニュアンスの回答で、過去に<A HREF="http://www.whitehouse.gov/cea/"
+ TARGET="_blank">アメリカ大統領経済諮問委員会</A>の<A HREF="http://www.whitehouse.gov/cea/previous.html"
+ TARGET="_blank">委員長</A>を務めた２人のやり取りは見ていて面白かったです。</P>
+<P CLASS="main">
+　カンファレンスでの議論は、日本から見ると、アメリカの年金問題は「贅沢な悩み」に思えました。ただ、日本では誰が得して誰が存するかという所得分配の問題に焦点が集まりすぎているように私は思うので、日本でももう少し前向きな議論が年金問題で出来ればと思いました。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2002年４月５日</P>
+<P CLASS="main">
+　５日からは、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>が毎年<A HREF="http://mitpress.mit.edu/catalog/item/default.asp?ttype=4&amp;tid=47"
+ TARGET="_blank">&quot;NBER Macroeconomics Annual&quot;</A> (<A HREF="http://mitpress.mit.edu/"
+ TARGET="_blank">MIT Press</A>刊)として刊行している論文が報告される、<A HREF="http://www.nber.org/~confer/2002/macros02/macroprg.html" TITLE="このページで、カンファレンスで報告された論文をダウンロードできます"
+ TARGET="_blank">Macroeconomic Annualカンファレンス</A>が開かれ、出席しました。このカンファレンスには、私が是非会いたいと思っていた著名な経済学者がたくさん出席しておられたので、非常に刺激的でした。大勢が出席する大きな学会の年次大会とは違い、人数は限られているものの経済学界の中心にいる学者が一堂に会した密度の濃い会合なので、年次大会などに出席するよりもはるかに今後の研究のためになり、学界の最先端を知ることができるものでした。大きな学会の年次大会は学界の最先端を学ぶためのものではなく学界の旧友と会う同窓会のようなものだ、という言葉は至極明言だと思います。</P>
+<P CLASS="main">
+　カンファレンス最初の報告は、Stokeyシカゴ大学教授の財政金融政策の裁量とルールに関する論文でした。この分野の研究の焦点は、政策の時間的不整合性(time inconsistency：単純化して言えば、政策の朝令暮改)がどのような悪い結果をもたらし、それをどのように防ぐかという点でした。この報告に対するIrelandボストン・カレッジ教授の討論は、この研究の文脈を要領よくまとめたもので、秀逸でした。金融政策は、当局が政策を事前にコミットしないとインフレ・バイアス（単純化して言えば、政策の結果としてインフレ率が偏って高くなる傾向）が生じます。しかし単純にインフレ・バイアスをなくしただけでは安定化バイアス（stabilization bias：単純化して言えば、ＧＤＰが望ましい水準から乖離してしまう傾向）が生じます。このインフレ・バイアスと安定化バイアスをうまく最小化する（理論的な）方法として、Rogoffプリンストン大学教授・ＩＭＦ局長が提案した「保守的な中央銀行総裁(conservative central banker：単純化して言えば、制度的制約がなくても自らの好みとしてインフレを嫌う中央銀行総裁)」の登用が重要だ、というものでした。</P>
+<P CLASS="main">
+　同じく討論者として、Svenssonプリンストン大学教授も重要なコメントを述べました。Svensson教授は、金融政策を中心に、私が高い関心を持つ政治経済学的な研究をしておられ、お目にかかりたかった学者の１人で、コーヒーブレイクのときにお話できました。私の本籍は慶應だというと、Svensson教授はずいぶん前に慶應にビジターで滞在したことがあり、そのときのホストの大山教授にはお世話になった、と仰っておられました。</P>
+<P CLASS="main">
+　次は、Kraay世界銀行上級エコノミストとVenturaマサチューセッツ工科大学准教授が、家計が海外資産を持つ動機について、新しい見地からの分析を報告しました。内容は、報告タイトル「緩衝在庫としての海外資産(Foreign Assets as a Buffer Stock)」が表す通りのものでした。そもそも、マクロ経済学の文脈で、「緩衝在庫(buffer stock)としての貯蓄」の理論があります。それは、家計の所得と消費の関係は、強い正の相関と持っている（所得が増えれば消費も増える）が、所得の急な落ち込みや急な支出に備えて、バッファーとして少額の貯蓄（これが、緩衝在庫としての貯蓄）をする、というものです。この理論は、実際のデータからも裏付けられています。この報告では、この論理を家計の国内資産と海外資産の選択に応用したものです。</P>
+<P CLASS="main">
+　なぜ人々は地の利のない海外に自分の資産（ストックの貯蓄）の一部を託そうとするかについては、これまでの純粋な理論で説明できるほど現実は単純ではありませんでした。もっとも単純で純粋なマクロ経済理論から推論できることは、次のようなものです。まず家計は年によって消費額を多くしたり減らさざるを得なくなったりしないように、できるだけ消費額をならす「消費平準化」を行うのが望ましい（その理由を単純化して言えば、消費を減らさざるを得なくなったときに惨めな思いをしたくないからです）。そうなると、年によって消費額を極端に増やしたり減らしたりしないようにするため、自分の生涯得られるであろう所得「恒常所得」（の年平均）よりも、今年得た所得が多ければ多めに貯蓄をし、今年の所得が少なければ貯蓄を減らしたり取り崩したりします（もちろん、「恒常所得」自体が増えるようなことになれば、消費額自体を増やす。逆も同様）。したがって、今年いくら貯蓄するかは、家計の所得と消費の関係には依存するが、今現在国内に資産を託すべきもの（投資先）が多いか少ないかとは無関係だ、ということになります。貯蓄は、金庫の中に眠らせていても仕方がないので、しかるべき投資先に託して資産を増やすのが望ましいのですが、国内に投資先が少ないと、貯蓄を持っていても国内で投資先を探す限り低い収益率（資本の限界生産性）を甘んじて受けなければなりません。そんなときに、家計が自分の財産を好きなだけ自由に海外に移せるなら、家計が国内よりも収益率の高い海外資産を持つ動機が生じます。つまり、国内の貯蓄と投資は相関しない、ということになります。これが、純粋な理論から導かれる推論です。</P>
+<P CLASS="main">
+　しかし、この理論と現実の間には乖離がありました。1980年に学術雑誌<A HREF="http://www.res.org.uk/econ.html"
+ TARGET="_blank">&quot;Economic Journal&quot;</A>に掲載された<A HREF="http://links.jstor.org/sici?sici=0013-0133%28198006%2990%3A358%3C314%3ADSAICF%3E2.0.CO%3B2-4" TITLE="JSTORに接続できる場合、ここからダウンロードできます。その場合、接続した次のページの上方にある&quot;DOWNLOAD&quot;をクリックして下さい"
+ TARGET="_blank">論文</A>で有名になったフェルドシュタイン＝ホリオカ・パズルは、世界２１カ国のクロス・カントリーで分析したところ、国内の貯蓄と投資には強い相関があることを示していました。つまり、多く貯蓄をしている国は投資先が多く、それだけ海外に資産を移さない（海外資産を持つ動機が強くない）、ということです。その理由は、容易に想像できます。現実は、海外に財産を自由に移せなかったり、為替レートの変動リスクを負いたくなかったりすれば、海外に自分の財産を移さない（移せない）ので、たとえ国内に収益率の高い投資先が少なくといえども、国内の低い収益率の投資先に甘んじて投資するでしょう。目下の日本がそうだともいえます。</P>
+<P CLASS="main">
+　でも、海外資産を全く持たないということはありません。日本は、これまで輸出で稼いだお金（経常収支黒字）の多くを海外資産として持っていて、世界最大の対外債権国です。日本の家計が直接的に海外資産を持っているというのは少ないですが、金融機関などを通じて持っています。諸外国でも、しかるべき額の海外資産を持っています。では、なぜ海外資産を持つのでしょうか。</P>
+<P CLASS="main">
+　この問いについて、新しい見解を示したのが、この報告でした。この報告では、実証分析の結果、各国の家計の資産選択（国内資産を持つ割合と海外資産を持つ割合）は長期では顕著に安定的であること、そして各国の家計は短期的に増加した貯蓄は主に海外資産に投じていること、が示されました。これらの結果は、これまでに出された多くの研究結果も加味すれば、各国の家計は短期的な消費を平準化すると同時に、国内（資産）への投資も平準化している、と解釈できます。さらに言えば、海外資産はあたかも「緩衝在庫」として保有する動機がある、という結論が導かれていました。</P>
+<P CLASS="main">
+　この結論は、場内では概ね同意が得られていたようです。討論者のvan Wincoopヴァージニア大学教授は、結論には同意しつつ、日本の県別データを用いながら分析に関する細かいコメントをしていました。van Wincoop教授は、学術雑誌<A HREF="http://www.iser.osaka-u.ac.jp/~ier/"
+ TARGET="_blank">&quot;International Economic Review&quot;</A>に岩本一橋大学教授と<A HREF="http://www.ingenta.com/isis/searching/ExpandTOC/ingenta?issue=infobike://bpl/iere/2000/00000041/00000001&amp;index=11" TITLE="論文の要約が見られます。INGENTAに接続できる場合、論文の全文がダウンロードできます"
+ TARGET="_blank">共同論文</A>で、フェルドシュタイン＝ホリオカ・パズルについて分析し、ＯＥＣＤ加盟国でのデータで観察される貯蓄と投資の相関は、日本の都道府県でのデータで観察される相関よりも強いことを示しました（このことから、国内で地元以外の他地域の投資先に自分の資産を移すことに比べると、国際間での資金移動の方が障壁が高く容易でないために、強い相関になっているとしています）。van Wincoop教授のコメントに対して、Barroハーバード大学教授は、この報告での議論で用いたようなデータが日本の都道府県にあるのかと質問していました。Barro教授は、Sala-i-Martinコロンビア大学教授と共同で、日本の都道府県データで経済成長の収束について分析した論文を学術雑誌<A HREF="http://www.elsevier.com/homepage/sae/econworld/econbase/jjie/frame.htm" TITLE="Journal of the Japanese and International Economies"
+ TARGET="_blank">&quot;Journal of the Japanese and International Economies&quot;</A>に載せていて、日本には「土地勘」があるようです。日本の地方財政の研究をしている私にとって、経済学の都とも言うべきボストンで（アメリカの経済学界から見れば田舎というべき）日本の都道府県の話が話題になるとは意外でしたが、大変喜ばしいことです。</P>
+<P CLASS="main">
+　van Wincoop教授の研究の中で、地域間リスクシェアリングに関するものがあります。私は<A HREF="chizai.html">拙著『地方財政の政治経済学』</A>の中で、日本の地域間リスクシェアリングの分析を行っています。そんな訳で、van Wincoop教授とお話したいと思い、コーヒーブレイクのときに話ができました。van Wincoop教授は、岩本教授と共同研究していた頃はボストン大学におられ、京都大学にも客員研究員として滞在され、昨年までは<A HREF="http://www.ny.frb.org/"
+ TARGET="_blank">ニューヨーク連銀(Federal Reserve Bank of New York)</A>におられました。ニューヨークは騒々しかったので、静かなヴァージニアに来られてよかった、と仰っておられました。コーヒーブレイクのときには、Barro教授やMankiw教授とも話をしましたが、他の方に比べて早口なように感じられ、ついていくのが大変でした。頭の回転が速いと早口になるのでしょうか。</P>
+<P CLASS="main">
+　昼食をはさんで、午後最初の報告は、DeLongカリフォルニア大学バークレー校教授の、2000年からの10年間におけるアメリカの生産性についての分析でした。DeLong教授は、貫禄ある体格で、ジョークを交えながらレトリックに長けた表現でプレゼンテーションをしました。この報告は今後10年間も1990年代（程ではないがある程度近い）のようにアメリカは成長できる要因がある、という結論で面白かったですが、若干楽観的な見方ではないかと私は思いました。サンディエゴに戻ってから星先生と話していて、DeLong教授の話題になったとき、星先生がマサチューセッツ工科大学（ＭＩＴ）の大学院生の頃にDeLong教授もハーバードの大学院生ながら、InstructorとしてＭＩＴに教えに来ていた（この頃は院生ながら正規に教えることが結構あった）とのことでした。そして、DeLong教授は、師であるSummersハーバード大学学長（前財務長官）に最近特に似てきて、師に倣っているかのようだ、と星先生は仰っておられました。DeLong教授も、Summers学長が財務省にいたとき、Deputy Assistant Secretary for Economic Policyとして財務省におられました。</P>
+<P CLASS="main">
+　Stockハーバード大学教授とWatsonプリンストン大学教授の景気循環に関する報告を終えた後、ディナーをご馳走になりました。ディナーでは、Charles Engelウィスコンシン大学教授、Flavinカリフォルニア大学サンディエゴ校教授、Stockmanロチェスター大学教授やvan Wincoop教授と一緒のテーブルとなり、研究室事情の話で盛り上がりました。どこの大学でも大なり小なり研究室には不満があるようです。研究室が駐車場から遠いのが困る、というのは車社会のアメリカならではですね。ディナーが終わると、１日目は散会となりました。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR>2002年４月６日</P>
+<P CLASS="main">
+　<A HREF="http://www.nber.org/~confer/2002/macros02/macroprg.html" TITLE="このページで、カンファレンスで報告された論文をダウンロードできます"
+ TARGET="_blank">Macroeconomic Annualカンファレンス</A>の２日目は、Charles Engelウィスコンシン大学教授の為替政策に関する報告で始まりました。Engel教授は、前日のディナーのときにお話した際、今回報告する論文は説明するために作ったグラフがたくさんあって、カンファレンス前の論文提出に手間取った上に、報告は２０分しか与えられていないのは辛いと仰っておられました。しかも、報告論文は、カンファレンス後に改訂して<A HREF="http://www.nber.org/books/macro17/"
+ TARGET="_blank">&quot;NBER Macroeconomics Annual 2002&quot;</A>として刊行される予定だが、その際にはきっと出版社からグラフを極力減らせと言われるだろう、とも仰っておられました。確かに、出版社にとって、同じ本を刊行するにしても、図表が多いとそれだけ図表作成費用がかさむので、図表が多いと嫌がります。３月に<A HREF="#mar">Conference on Structural Impediments to Growth in Japan</A>で報告した星先生と私の共同論文も図表が多いので、出版時には図表を減らすよう言われています。そういう意味で、図表は学者にとって費用対効果を考えさせられる切実なものといえます。</P>
+<P CLASS="main">
+　カンファレンス最後の報告は、Alesinaハーバード大学教授、Barroハーバード大学教授とハーバード大学大学院生のTenreyro氏の最適通貨圏に関する報告でした。この報告は、これまでの最適通貨圏に関する研究と異なる意欲的なものでした。それは、実際のマクロ経済データを用いて、世界各国をドル・ユーロ・円の通貨圏に分類する（露骨なイメージで言えば、世界地図に通貨圏の境界を線引きする）という、これまでに試みられていない包括的な実証分析でした。貿易取引の大きさや景気循環の連動性や物価変動の連動性などをみて、同じ通貨を用いた方が双方にとって利益があると、同じ通貨圏に入るのが望ましいという論理です。この分析結果は、日本にとってショッキングなものでした。それは、円の通貨圏に入る方が、他の通貨圏に入るよりも利益が大きいという国はインドネシアただ１国だけだが、物価動向の連動性を見れば円よりドルの通貨圏に入る方が良いから、円は世界的に見て魅力的な基軸通貨ではない、というものでした。</P>
+<P CLASS="main">
+　Alesina教授は、イタリア出身ということもあってか、会場で話しているときでもとても陽気な雰囲気を振り撒いていました。Alesina教授は、私が高い関心を持つ政治経済学的な研究の第一人者で、中でも特に会いたかった学者でした。私の質問にも律儀に答えてくれて、とても人柄のよい方でした。</P>
+<P CLASS="main">
+　このカンファレンスの報告論文は、<A HREF="http://www.nber.org/books/macro17/index.html"
+ TARGET="_blank">&quot;NBER Macroeconomics Annual 2002&quot;</A>として刊行される予定です。<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>は、地理的にハーバード・ＭＩＴ人脈が中心になっていますが、去る１月の<A HREF="#Jan3">アメリカ経済学会の年次大会</A>で見たシカゴ大学の勢いに勝るとも劣らぬものがあることを、このカンファレンスに出席して感じました。</P>
+<P CLASS="main">
+　今回のボストン滞在は、世界の経済学の先端を垣間見ることができ、私にとって得がたい経験でした。このページではラホーヤからの話を書くべきところですが、ラホーヤ（<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>）に来たからこそ得られたボストン滞在の機会、ということで、こじつけですが、ここに記すことにしました。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="may">2002年５月</A></P>
+<P CLASS="main">
+　論文執筆等に忙しかったため、この時期の話については、いずれ更新時にでも書きたいと思います。
+</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="jun">2002年６月９日</A></P>
+<P CLASS="main">
+　サッカーのワールドカップが始まってはや１週間が経ちました。日本時間の９日夜、サンディエゴでは同日早朝、日本がワールドカップで歴史的な１勝を上げました。私はアメリカでも生放送されたこの試合をビデオにとって見ました。星先生は早朝に生放送で試合ご覧になられたそうです。</P>
+<P CLASS="main">
+　サッカーの人気が芳しくないことで有名なアメリカでは、日本のゴールデンタイムがこちらの未明であることが逆に幸いして、チャンネルが空いているので、ほぼ全試合生放送でやっています。ちょうど、日本で海外のオリンピックの生放送を未明に見る感じと同じです。日本対ベルギー戦は、午前２時から生放送で見ました。<A HREF="http://www.espn.com/" TARGET="_blank">ＥＳＰＮ</A>というスポーツ専門放送局が試合を放映していますが、試合中には、他のスポーツの速報ニュースを入れたりして、&quot;Don't forget the French Open Tennis!&quot;とかいって、左下４分の１の画面でテニスの結果を速報したりしています。これが象徴的ですが、アメリカではサッカーは何かと他のスポーツの後塵を拝するようです。この時期、バスケットボールは<A HREF="http://www.nba.com/"
+ TARGET="_blank">ＮＢＡ（全米バスケットボール協会）</A>ファイナルがちょうど行われていますし、<A HREF="http://www.mlb.com/"
+ TARGET="_blank">ＭＬＢ（大リーグ野球）</A>もワールドカップと無関係に（日本のプロ野球と違って）休むことなくやっています。アメリカなら、ほぼ全試合生放送でやっているだけでもすごいというべきなのかもしれません（日本だと当たり前というべきですが）。</P>
+<P CLASS="main">
+　でも、スペイン語の放送局は熱心です。我が家のテレビでも、スペイン語のＴＶ局は１局見られますが、いつもはニュース、バラエティー番組、歌謡曲番組、クイズ番組など、色々とやっている局です。しかし、今は何かにつけワールドカップです。やはり、中南米、アフリカからの移民が見ているからなのでしょう。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+
+<P CLASS="b">
+<BR><A ID="jul">2002年７月３０日</A></P>
+<P CLASS="main">
+　ついにサンディエゴを発つ日が来ました。当初の予定では、大学で今年度後期の講義が始まる９月末に間に合うように、９月初旬に帰国しようと思っていました。しかし、サンディエゴ滞在中に、ありがたくも、<A HREF="http://www.mof.go.jp/"
+ TARGET="_blank">財務省</A>
+<A HREF="http://www.mof.go.jp/jouhou/soken/soken.htm"
+ TARGET="_blank">財務総合政策研究所</A>に主任研究官として招聘される話があり、それをお受けすることにしたため、帰国時期を早めることにしました。<A HREF="http://www.mof.go.jp/"
+ TARGET="_blank">財務省</A>
+<A HREF="http://www.mof.go.jp/jouhou/soken/soken.htm"
+ TARGET="_blank">財務総合政策研究所</A>には８月８日から勤務することと、８月１日には、ボストン（ケンブリッジ）で開かれる<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>のSummer Instituteに出席することを考慮して、７月３０日にサンディエゴを発つことにしました。</P>
+<P CLASS="main">
+　昨年の７月３０日は、私達家族がサンディエゴに到着した日でした。それからちょうど１年間、サンディエゴではアメリカの良いところをたくさん知りました。私がサンディエゴに行く前、アメリカに滞在したことにある日本の方々にサンディエゴの評判を聞いたとき、誰１人としてサンディエゴの悪口を言わなかった理由が、よくわかりました。アメリカが景気が後退したといえどもそれほど深刻ではない状況だったので、景気低迷にあえいで人間関係までギクシャクする日本とは正反対だったからなのかもしれません。</P>
+<P CLASS="main">
+　サンディエゴでは、私達にとても親切にして下さる方にたくさん出会いました。特に、幼い娘を育てるには、とてもよい環境でした。サンディエゴだけではないのかもしれませんが、周りの方々（全くの見ず知らずの方でさえ）が、娘の多少迷惑な行為にも、温かい目で見守ってくれました。日本では、特に子育てを終えたぐらいの中高年の人々（男女問わず）が、電車の中や店内などで、幼い子のちょっとした泣き声や振る舞いに対して、冷たい目で迷惑そうに注視しています。日本とアメリカで、子供を社会の中で尊重する雰囲気がこうまでも違うのかと思い知らされました。今の日本の悪しき雰囲気は、私１人でも是非とも改めたいと思いました。</P>
+<P CLASS="main">
+　サンディエゴは、夏でも湿度が低く、日差しは強いものの２２～２３℃と過ごしやすい気温でした。もしサンディエゴから東京に直行していれば、きっと気温と湿度の差に滅入ってしまったことでしょう。幸い（?!）にして、私は日本に帰国する前に、サンディエゴよりも湿度が高く、気温が３０℃ほどあるこの時期のボストンに寄ることになりました。ボストンで、気温と湿度を東京向けに多少なりとも慣らすことができそうです。サンディエゴを発つこの日、日本の方向とは逆のボストンへ、アメリカ大陸を再び横断するとは、１年前は想像もしていませんでした。こうして、私はサンディエゴでの良き思い出を胸に、デンバー行の<A HREF="http://www.flyfrontier.com"
+ TARGET="_blank">フロンティア航空</A>５１６便でサンディエゴを後にしたのでした。</P>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+
+<P CLASS="b">
+<BR><A ID="aug">2002年８月１日</A></P>
+<P CLASS="main">
+　私は、<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>の<A HREF="http://www.nber.org/confer/2002/si2002/si2002.html"
+ TARGET="_blank">Summer Institute</A>に出席するべく、ボストンにやってきました。<A HREF="http://www.nber.org/"
+ TARGET="_blank">ＮＢＥＲ</A>のSummer Instituteは、大学の夏期休暇期間中に、分野ごとに１～４日間かけて作成中の論文を発表し討論するワークショップを、断続的に開いているイベントです。全米から同じ分野の研究者がこの機会に集まってくるので、アメリカでの最新の研究動向を集約的に知ることができます。私は、このSummer Instituteに出席する機会を得たので、サンディエゴから東京に直接帰国せず、ボストンによってから帰国することにしました。サンディエゴからは、<A HREF="http://www.flyfrontier.com"
+ TARGET="_blank">フロンティア航空</A>で、デンバーで乗り継いで、７月３０日の夜にボストンに到着しました。ボストンは、アメリカでの研究滞在中２度目です。</P>
+<P CLASS="main">
+　この日は、<A HREF="http://www.sonesta.com/boston/"
+ TARGET="_blank">ロイヤル・ソネスタ・ホテル</A>で、<A HREF="http://www.nber.org/~confer/2002/si2002/petprg.html"
+ TARGET="_blank">Economics of Taxation</A>のワークショップがあって、それに私は出席しました。オーガナイザーはGoolsbeeシカゴ大学教授です。ワークショップで発表された論文の中で一番印象に残ったのは、Altshulerラトガース大学教授とGoodspeedニューヨーク市立大学教授の&quot;Follow the Leader?: Evidence on European and U.S. Tax Competition&quot;でした。この論文では、国際間の租税競争を理論的・実証的に分析した論文です。特徴的なのは、アメリカとヨーロッパ諸国との間の租税競争を、両者が同時に戦略的に行動するナッシュ均衡的な状況や、アメリカが先導者で、ヨーロッパ諸国が追従者となるシュタッケルベルグ均衡的な状況を、理論モデルで描写し、それを踏まえて実証分析しているところです。この分析によると、1986年にアメリカが先に税制改正して税率を引き下げたのを受けて、ヨーロッパ諸国がどのように反応したかを検証したところ、資本課税の税率は両者が戦略的に設定したことが確認できたが、資本課税をシュタッケルベルグ均衡的に設定したということとも、労働所得税をこうしたゲーム理論的に設定したということも認められなかった、という結果を得たということです。1980年代後半に、日本も含めて先進各国で税制改革が行われた一連の動向について、他国の行動を踏まえて各国がどのように振舞ったかを、上記のような視点で実証分析するところが、私は特に印象に残りました。ただ、この論文には日本は分析対象に含まれていませんでしたが。
+<P CLASS="main">
+<A HREF="Pier4.jpg" TARGET="_blank"><IMG WIDTH="30%" SRC="Pier4.jpg" ALIGN="right" ALT="Arthony's Pier 4
+クリックすると写真を拡大できます"></A>
+　この日の夜は、アメリカでの研究滞在最後の夜となりました。そこで、私は家族と地元でも有名なArthony's Pier 4という店に行きました。日本の皇太子やジョン・Ｆ・ケネディを始め歴代のアメリカ大統領などの多くの著名人がこの店に訪れたようで、店の入口にはたくさんの写真が飾ってありました。この店はボストン湾に面していて、海を見ながら頂いた魚介類の料理がおいしかったです。</P>
+<P CLASS="main">
+　ちなみに、この日の日本では、日本経済新聞朝刊の「経済教室」の欄に、<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>で共同研究をした星先生と共著で、「財投の『隠れ損失』78兆円」と題して、日本の財政投融資、そして特殊法人や地方自治体の財務状況の問題点を指摘した論文を発表しました。この論文は、まさにこの１年間、<A HREF="http://www.ucsd.edu/"
+ TARGET="_blank">カリフォルニア大学サンディエゴ校</A>で星先生と共同研究した成果の一端を発表したもので、奇しくもこの日に発表できたことは、私にとってとても感慨深いものでした。すでに、私は帰国後に<A HREF="http://www.mof.go.jp/"
+ TARGET="_blank">財務省</A>に移籍することが決まっていましたが、政府が都合のよいように数字を操作して隠し立てをするより、言論の自由・学問の自由で、正直なことを国民に知らせた方が、国民にとって幸せなことだと確信して書きました。何せ、この日現在ではまだ私は、純粋に慶應義塾大学助教授であって、<A HREF="http://www.mof.go.jp/"
+ TARGET="_blank">財務省</A>
+<A HREF="http://www.mof.go.jp/jouhou/soken/soken.htm"
+ TARGET="_blank">財務総合政策研究所</A>主任研究官ではありませんから。事実、私が<A HREF="http://www.mof.go.jp/"
+ TARGET="_blank">財務省</A>に籍を移してからまもなく、この論文に対する原局原課から強い反論が来ました。それでも、是々非々で、毅然と対応するのが学者に求められることだと確信しています。</P>
+
+<P CLASS="b">
+<BR><A ID="Aug02">2002年８月２日</A></P>
+<P CLASS="main">
+　とうとう、アメリカから日本に帰国する日がやってきました。ボストンからは日本への直行便がないので、ニューヨーク経由で帰国することになりました。<A HREF="http://www.massport.com/logan/"
+ TARGET="_blank">ローガン国際空港</A>から１０時４０分発ニューヨーク<A HREF="http://www.panynj.gov/aviation/jfkframe.HTM"
+ TARGET="_blank">ＪＦＫ空港</A>行の<A HREF="http://www.americanairlines.jp/"
+ TARGET="_blank">アメリカン航空</A>４７９４便で、ボストンを後にしました。そして、ニューヨークの<A HREF="http://www.panynj.gov/aviation/jfkframe.HTM"
+ TARGET="_blank">ＪＦＫ空港</A>で乗り継ぎ、１３時３０分発<A HREF="http://www.narita-airport.jp/jp/"
+ TARGET="_blank">成田空港</A>行の<A HREF="http://www.jal.co.jp/"
+ TARGET="_blank">ＪＡＬ</A>５便で、アメリカを後にしました。この１年間は、アメリカで、私にとってとても得がたい経験をしました。アメリカの全てが良いというわけではありませんが、日本が持っていない、あるいは失った良いものをたくさん見出した気がします。この思いを胸に、帰国の途に就きました。</P>
+
+<BR>
+<BR>
+<P CLASS="r"><A HREF="#top">このページのトップに戻る</A></P>
+<BR>
+<DIV ALIGN="center">
+サンディエゴ、ラホーヤ界隈の地図、名所へのリンクは<A HREF="sandiego.html">サンディエゴの地図</A>をご覧下さい。
+</DIV>
+<BR>
+肩書きは当時のものです。
+<BR>
+Copyright &copy; 2001-2014 Takero DOI. All rights reserved.<BR>
+<P CLASS="b">
+<A HREF="index-J.html" TARGET="_blank"><IMG SRC="back.gif" WIDTH=79 HEIGHT=39 ALT="Back to Top"><BR>
+土居丈朗のサイト(日本語トップページ)へ</A>
+</P>
+</BODY>
+</HTML>

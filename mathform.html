@@ -1,0 +1,578 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=shift_jis">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="keywords" CONTENT="土居, 土居丈朗, Takero, Doi, 慶應義塾大学, 経済学部, 助教授">
+<meta name="description" CONTENT="土居丈朗のサイト・経済学のための数学公式集">
+<link rev="made" title="土居丈朗　経済学のための数学公式集" href="mailto:%74%64%6F%69%40%65%63%6F%6E%2E%6B%65%69%6F%2E%61%63%2E%6A%70">
+<link rel="previous" href="econinfo.html">
+<title>土居丈朗　経済学のための数学公式集</title>
+<style>
+<!--
+
+body {background:#ffffff url("bkecon.jpg") repeat fixed 0% 0%;
+ font-size:12.0pt;}
+
+a:visited {color:#640064;}
+
+a:active {color:#ff0000;}
+
+a:link {color:#0000ff;}
+
+h1 {font-family:ＭＳ ゴシック,sans-serif; color:#238e23;}
+
+p, li.title, dt.title, dd.title
+{font-family:century,verdana,ＭＳ ゴシック, sans-serif;
+ font-size:12.0pt;}
+
+div.adj {margin-top:-54; text-align:left;}
+
+div.adj2 {margin-top:-30; text-align:left;}
+
+div.eqimg {margin-top:-30; font-size:12.0pt; text-align:left;}
+
+dd.withimg {text-valign:0; font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;}
+
+p.b {font-weight:bold;}
+
+p.emph {color:#800000; font-weight:700; font-size:12.0pt;}
+
+dt.math, dd.math, th.math, td.math
+{font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;}
+
+th.mathc, td.mathc
+{text-align:center; font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;}
+
+div.eq, li.eq, dt.eq, dd.eq
+{font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;
+ font-size:12.0pt;}
+
+div.eq1, dd.eq1
+{font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;
+ font-size:12.0pt; margin-top:-12;}
+
+div.eq2 {font-family:times new roman,verdana,ＭＳ ゴシック,sans-serif;
+ font-size:12.0pt; margin-top:-8;}
+
+div.center {text-align:center;}
+
+-->
+</style>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">
+</script>
+</head>
+<body>
+<div class="center">
+<h1>経済学のための数学公式集</h1><br>
+</div>
+<p>
+　ある日、私は大学の研究室で理論モデルの計算をしていました。そのとき、計算に必要な初歩的な数学の公式をうっかり忘れてしまい、その公式が載っている本を研究室の本棚で探しましたが、自宅に置き忘れてきことに気づきました。あまりにも初歩的な公式なので、図書館に行ったりして時間をかけて探すのは馬鹿らしい。かといって、このままではこの続きの計算ができないので弱ってしまいました。</p>
+<p>
+　そのとき、大学の研究室のパソコンはインターネットに常時接続しているので、どこかに公式が載っているウェブサイトがあるだろう、と期待を膨らませて検索しました。しかし、載っているウェブサイトがありませんでした。私は実に残念な思いをしました。私のウェブサイトに経済学で使う数学の公式を載せておけば、今後はそんな不便な思いをする必要がない。そんな経緯から、このページを作ろうと思い立ったのでした（「必要は発明の母」とは、言い得て妙ですね）。皆様にもお役に立てれば幸いです。</p>
+<br>
+<p class="emph">※　使用上の注意　※</p>
+<p>
+　このページは、あくまでも私が研究に必要な数学の公式を、備忘のために列挙しているものです。ここに載っていない公式は経済学にとって重要でないとは、一切意味しません。公式を表示するときに、ノーテーションや書くべき仮定を省略していることがあります（あくまでも私の備忘のためなので、私が思い出すに足る情報しか書いていません）。また、ここに載っている公式の中には、こんな重要なものを忘れてしまうとはなんと記憶力が悪いことか、という極めて初歩的なものも含まれています（最近私は、どうでもいいことを鮮明に覚えていたり、重要なことをすっかり忘れていたり、記憶力に偏りがあるもので…）。さらに、教育上の配慮から言えば、このページに公式だけしか書かれていないからといって、公式を暗記しさえすれば万全だと言いたいわけではありません。公式はその導出過程を理解することが重要です。これらの点をお含み置き下さい。</p>
+<br>
+<ul>
+<li class="title">等比級数の和: the sum of geometric series
+<br>
+<br>
+<ul>
+<li><div class="adj">
+<table>
+<tr><td>
+\[ a\sum_{i=0}^{n-1}r^i=a\frac{1-r^n}{1-r} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="113" height="47" src="geomets1.gif" valign="middle" alt="the sum of geometric series 1" />
+-->
+</div>
+<br>
+<li><div class="adj">
+<table>
+<tr><td>
+\[ a\sum_{i=0}^\infty r^i=\frac{a}{1-r} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="93" height="45" src="geomets2.gif" alt="the sum of geometric series 2" />
+-->
+</div>
+<br>
+<li><div class="adj">
+<table>
+<tr><td>
+\[ a\sum_{i=1}^\infty r^i=\frac{ar}{1-r} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="93" height="45" src="geomets3.gif" alt="the sum of geometric series 3" />
+-->
+</div>
+</ul>
+<br>
+<li class="title">等差級数の和: the sum of arithmetric series
+<br>
+<br>
+<ul>
+<li><div class="adj">
+<table>
+<tr><td>
+\[ \sum_{i=0}^{n-1}(a+id)=an+\frac{n(n-1)d}{2} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="184" height="45" src="arithmet.gif" alt="the sum of arithmetric series" />
+-->
+</div>
+</ul>
+<br>
+<li class="title">変分法: calculus of variations
+<br>
+<br>
+<ul>
+<li><div class="adj">
+<table summary="the objective function">
+<tr><td>
+\[\max_{x(t)} \int_{0}^{T}{F(t,x(t),\dot{x}(t))dt} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width=157 height="37" src="calofvar.gif" ALT="the objective function" />
+-->
+</div>
+<dl><dt class="title">オイラー方程式: Euler equation [必要条件: the necessary condition for optimization]
+<dd>
+<table summary="Euler equation">
+<tr><td>
+\[\frac{\partial F}{\partial x}-\frac{d}{dt}\left(\frac{\partial F}{\partial \dot{x}}\right)=0 \]
+</td></tr>
+</table>
+<!--
+<img width="121" height="45" src="eulereq.gif" alt="Euler equation" />
+-->
+</dl>
+</ul>
+<br>
+<li class="title">ハミルトン関数: Hamiltonian (function)
+<br>
+<br>
+<ul>
+<li><div class="adj">
+<table summary="the objective function">
+<tr><td>
+\[\max_{\mathbf{x}(t)} \int_{0}^{T}{F(t,\mathbf{x}(t),\mathbf{y}(t))dt} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="157" height="37" src="hamilobj.gif" alt="the objective function" />
+-->
+</div>
+<table summary="subject to">
+<tr><td>
+　　　　　s.t.&nbsp;&nbsp;
+</td><td>
+\(\dot{y}_i(t)=g_i(t,\mathbf{x}(t),\mathbf{y}(t)) \)
+</td></tr>
+<tr><td>
+</td><td>
+\[\mathbf{x}(t)=(x_1(t),x_2(t),\ldots,x_m(t)),&nbsp;&nbsp;&nbsp;\mathbf{y}(t)=(y_1(t),y_2(t),\ldots,y_n(t)) \]
+</td></tr>
+</table>
+<!--
+<img width="145" height="24" src="hamiltst.gif" alt="subject to" /><br />
+-->
+<ul>
+<li class="title">ハミルトン関数: Hamiltonian (function)
+<table summary="the Hamiltonian">
+<tr><td>
+\[\mathcal{H}=F(t,\mathbf{x}(t),\mathbf{y}(t))+\sum_{i=1}^{n}\lambda_ig_i(t,\mathbf{x}(t),\mathbf{y}(t)) \]
+</td></tr>
+</table>
+<!--
+<img width="272" height="45" src="hamilton.gif" alt="the Hamiltonian" />
+-->
+<dl><dt class="title">１階条件: first order conditions
+<dd>
+<table summary="first order condition">
+<tr><td>
+\[\frac{\partial \mathcal{H}}{\partial x_i}=0 \]
+</td></tr>
+</table>
+<div class="adj2">
+<table summary="first order condition">
+<tr><td>
+\[\dot{\lambda}_i(t)=-\frac{\partial \mathcal{H}}{\partial y_i} \]
+</td></tr>
+</table>
+<!--
+<img width="52" height="45" src="hamilfc1.gif" alt="first order condition" /><br />
+<img width="86" height="45" src="hamilfc2.gif" alt="first order condition" /><br />
+-->
+</dir>
+</dl>
+</ul>
+</ul>
+<br>
+
+<li class="title">現在価値ハミルトン関数: present value Hamiltonian (function)
+<br>
+<br>
+<ul>
+<li>
+<div class="adj">
+<table summary="the objective function">
+<tr><td>
+\[\max_{\mathbf{x}(t)} \int_{0}^{T}{f(t,\mathbf{x}(t),\mathbf{y}(t))e^{-\rho t}dt} \]
+</td></tr>
+</table>
+<!--
+<div class="eqimg"><img width="181" height="37" src="pvhamiob.gif" alt="the objective function" />
+-->
+</div>
+<table summary="subject to">
+<tr><td>
+　　　　　s.t.&nbsp;&nbsp;
+</td><td>
+\(\dot{y}_i(t)=g_i(t,\mathbf{x}(t),\mathbf{y}(t)) \)
+</td></tr>
+<tr><td>
+</td><td>
+\[\mathbf{x}(t)=(x_1(t),x_2(t),\ldots,x_m(t)), \mathbf{y}(t)=(y_1(t),y_2(t),\ldots,y_n(t)) \]
+</td></tr>
+</table>
+<!--
+<img width="145" height="24" src="hamiltst.gif" alt="subject to" /><br />
+-->
+<ul>
+<li class="title">現在価値ハミルトン関数: present value Hamiltonian (function)
+<table summary="the present value Hamiltonian">
+<tr><td>
+\[\mathcal{H}=f(t,\mathbf{x}(t),\mathbf{y}(t))+\sum_{i=1}^{n}\mu_ig_i(t,\mathbf{x}(t),\mathbf{y}(t)) \]
+</td></tr>
+</table>
+<!--
+<img width="273" height="45" src="pvhamilt.gif" alt="the Hamiltonian">
+-->
+<dl><dt class="title">１階条件: first order conditions
+<dd>
+<table summary="first order condition">
+<tr><td>
+\[\frac{\partial \mathcal{H}}{\partial x_i}=0 \]
+</td></tr>
+</table>
+<div class="adj2">
+<table summary="first order condition">
+<tr><td>
+\[\dot{\mu}_i(t)-\rho\mu_i(t)=-\frac{\partial \mathcal{H}}{\partial y_i} \]
+</td></tr>
+</table>
+<!--
+<img width="52" height="45" src="hamilfc1.gif" alt="first order condition" /><br />
+<img width="146" height="452 src="pvhamifc.gif" alt="first order condition" /><br />
+-->
+</ul>
+</ul>
+<br>
+
+<li class="title">中間値の定理: mean theorem
+<dl><dt class="math">関数\(f(x) \)が閉区間\( \left[ a,b \right] \)において連続で開区間\( \left(a,b \right) \)において微分可能であるとする。このとき、<br />
+<table>
+<tr><td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td><td>
+\[ \frac{f(b)-f(a)}{b-a}=f'(c) \]
+</td><td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td><td>
+\[a< c< b \]
+</td></tr>
+</table>
+<!--
+<dd class="eq">
+&nbsp;<EM>f</EM>(<EM>b</EM>) - <EM>f</EM>(<EM>a</EM>)<BR>
+<DIV CLASS="eq2">
+────── = <EM>f'</EM>(<EM>c</EM>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>a</EM>&lt;<EM>c</EM>&lt;<EM>b</EM></DIV>
+<DIV CLASS="eq2">
+&nbsp;&nbsp;&nbsp;<EM>b</EM> - <EM>a</EM></DIV>
+-->
+<dt class="math">を満たす\( c \)&nbsp;が存在する。<br />
+<br />
+関数\( f(x) \)が閉区間\( \left[ a,b \right] \)において連続（だから積分可能）であるとする。このとき、<br />
+<table summary="mean theorem">
+<tr><td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td><td>
+\[ f(c)=\frac{1}{b-a}\int_{a}^{b}f(x)dx \]
+</td><td>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</td><td>
+\[a< c< b \]
+</td></tr>
+</table>
+<!--
+<dd class="withimg"><img width="149" height="41" src="meanthe.gif" alt="mean theorem" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>a</EM>&lt;<EM>c</EM>&lt;<EM>b</EM>
+-->
+<dt class="math">を満たす\( c \)&nbsp;が存在する。
+</dl>
+<br>
+
+<li class="title">１階１次微分方程式: first order linear differential equation
+<dl><dt>
+<div class="adj2">
+<table>
+<tr><td>
+\[\dot{x}+a(t)x+b(t)=0 \]
+</td></tr>
+</table>
+<!--
+<img width="127" height="21" src="foldefeq.gif" alt="first order linear differential equation" />
+-->
+<dd>
+<div class="adj2">
+<table>
+<tr><td>
+\[\mbox{解：　}x=e^{-\int a(t)dt} \{ C-\int b(t)e^{\int a(t)dt}dt \} \]
+</td></tr>
+</table>
+<!--
+<br /><br />
+解：<br /><div class="eqimg">　　　　<img width="204" height="35" src="foldefsl.gif" alt="a solution of first order linear differential equation" />
+-->
+</div>
+</dl>
+<br />
+
+<li class="title">導関数:
+<dl><dt>
+<dd>
+<table summary="１次導関数" border="1">
+<tr><th>\[f(x) \]</th>
+<th>\[ f'(x) \]</th></tr>
+<tr><td>
+\[ \frac{f(x)}{g(x)} &nbsp;&nbsp; (g'(x)\neq 0) \]
+<!--
+&nbsp;&nbsp;&nbsp;<EM>f</EM>(<EM>x</EM>)<BR>
+<DIV CLASS="eq2">
+────&nbsp;&nbsp;(<EM>g'</EM>(<EM>x</EM>)≠0)</DIV>
+<DIV CLASS="eq2">
+&nbsp;&nbsp;&nbsp;<EM>g</EM>(<EM>x</EM>)</DIV>
+-->
+</td>
+<td>
+\[\frac{f'(x)g(x)-f(x)g'(x)}{\{g(x) \}^2} \]
+<!--
+<EM>f'</EM> (<EM>x</EM>)<EM>g</EM>(<EM>x</EM>) - <EM>f</EM>(<EM>x</EM>)<EM>g'</EM> (<EM>x</EM>)<BR>
+<DIV CLASS="eq2">
+────────────</DIV>
+<DIV CLASS="eq2">
+{<EM>g</EM>(<EM>x</EM>)}<SUP>2</SUP></DIV>
+-->
+</td></tr>
+<tr><td>
+\[ a^x &nbsp;&nbsp;(a \neq 1,a>0) \]
+<!--
+<EM>a</EM><SUP><EM>x</EM></SUP>&nbsp;&nbsp;(<EM>a</EM>≠1, <EM>a</EM>&gt;0)
+-->
+</td>
+<td>
+\[ a^x \log a \]
+<!--
+<EM>a</EM><SUP><EM>x</EM></SUP> log <EM>a</EM>
+-->
+</td></tr>
+<tr><td>
+\[ e^x \]
+<!--
+<EM>e</EM><SUP><EM>x</EM></SUP>
+-->
+</td>
+<td>
+\[ e^x \]
+</td></tr>
+<tr><td>
+\[ e^{-x} \]
+<!--
+<EM>e</EM><SUP><EM>x</EM></SUP>
+-->
+</td>
+<td>
+\[ -e^{-x} \]
+</td></tr>
+</table>
+<br />
+<table summary="導関数" border="1">
+<tr><th>\[f(x) \]</th>
+<th>\[ f^{(n)}(x) \]</th></tr>
+<tr><td>
+\[ x^a \]
+<!--
+<EM>x</EM><SUP><EM>a</EM></SUP>
+-->
+</td>
+<td>
+\[ a(a-1)\ldots(a-n+1)x^{a-n} \]
+<!--
+<EM>a</EM>(<EM>a</EM> - 1)...(<EM>a</EM> - <EM>n</EM> + 1)<EM>x</EM><SUP><EM>a</EM> - <EM>n</EM></SUP>
+-->
+</td></tr>
+<tr><td>
+\[ a^x &nbsp;&nbsp;(a \neq 1,a>0) \]
+</td>
+<td>
+\[ a^x (\log a)^n \]
+</td></tr>
+<tr><td>
+\[ \log|x| &nbsp;&nbsp;(x \neq 0) \]
+<!--
+log |<EM>x</EM>|&nbsp;&nbsp;(<EM>x</EM>≠0)
+-->
+</td>
+<td>
+\[ (-1)^{n-1} \frac{(n-1)!}{x^n} \]
+<!--
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<EM>n</EM> - 1)!<BR>
+<DIV CLASS="eq2">
+&nbsp;&nbsp;&nbsp;&nbsp;(-1)<SUP><EM>n</EM> -1</SUP> ─────</DIV>
+<DIV CLASS="eq2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>x</EM><SUP><EM>n</EM></SUP></DIV>
+-->
+</td></tr>
+</table>
+</dl>
+<br />
+
+<li class="title">合成関数の微分:
+<dl><dt class="math">関数\(z=f(x,y) \)の１次の偏導関数が連続で、\(x=g(w) \)と\(y=h(w) \)が微分可能とする。このとき、\(z=f(g(w),h(w)) \)について、<br />
+<dd>
+<table>
+<tr><td>
+\[\frac{dz}{dw}=f_x\frac{dx}{dw}+f_y\frac{dy}{dw} \]
+</td></tr>
+</table>
+<!--
+<dd class="math">
+&nbsp;<em>dz</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>dx</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>dy</em><br>
+<div class="eq2">
+── = <em>f</em><sub><em>x</em></sub>── + <em>f</em><sub><em>y</em></sub>──</div>
+<div class="eq2">
+<em>dw</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>dw</em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>dw</em></div></td>
+<br>
+-->
+</dl>
+<li class="title">陰関数微分：
+<dl><dt class="math">陰関数\(f(x,y) \)= 0が全微分可能ならば、<br />
+<dd>
+<table>
+<tr><td>
+\[\frac{dy}{dx}=-\frac{f_x}{f_y} \]
+</td></tr>
+</table>
+
+<!--
+<DD CLASS="math">
+&nbsp;<EM>dy</EM>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>f</EM><SUB><EM>x</EM></SUB><BR>
+<DIV CLASS="eq2">
+── = - ──</DIV>
+<DIV CLASS="eq2">
+&nbsp;<EM>dx</EM>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<EM>f</EM><SUB><EM>y</EM></SUB></DIV></TD>
+-->
+</dl>
+
+<li class="title">オイラーの公式: Euler's formula
+<dl><dt class="math">\(k \)次同次関数\(f(x,y) \)に対して<br />
+<dd>
+<table>
+<tr><td>
+\[kf(x,y)=xf_x(x,y)+yf_y(x,y) \]
+</td></tr>
+</table>
+<!--
+<EM>kf</EM>(<EM>x</EM>, <EM>y</EM>) = <EM>x f<SUB>x</SUB></EM>(<EM>x</EM>, <EM>y</EM>) + <EM>y f<SUB>y</SUB></EM>(<EM>x</EM>, <EM>y</EM>)
+-->
+</dl>
+
+<li class="title">２次方程式: second order equation
+<dl><dt>
+<div class="adj2">
+<table>
+<tr><td>
+\[ax^2+bx+c=0 \]
+</td></tr>
+</table>
+<dd><div class="adj2">
+<table>
+<tr><td>
+\[\mbox{解：　}x=\frac{-b \pm \sqrt{b^2-4ac}}{2a} \]
+</td></tr>
+</table>
+<!--
+<dt class="eq"><em>ax</em><sup>2</sup> + <em>bx</em> + <em>c</em> = 0
+　　　　　　　&nbsp;────<br>
+<div class="eq1">
+　　　　　　&nbsp;-<em>b</em> <span style="font-family:symbol,ＭＳ ゴシック">±&Ouml;</span><em>b</em><sup>2</sup>- 4<em>ac</em></div>
+<div class="eq2">
+　　　　<em>x</em> = ─────────</div>
+<div class="eq2">
+　　　　　　　　&nbsp;2<em>a</em>
+-->
+</div>
+<p>
+学生時代は忘れたことがない程なじみの公式でしたが、最近はたまにしか使わなくないので、部分的に一瞬忘れてしまうことがあるんですよね、意外と。</p>
+</ul>
+<br />
+
+<P CLASS="emph">※　ここに載っていない公式を一目で見たい方は　※</P>
+<P>
+　私は、<A HREF="http://aserve.procen.net/nippyo/books/bookinfo.asp?No=239"
+ TARGET="_top">ピ－ター・バーグ＝クヌート・シュドセーテル著（鈴村興太郎・丹野忠晋訳）『エコノミスト数学マニュアル』</A>
+<A HREF="http://www.nippyo.co.jp/"
+ TARGET="_top">日本評論社</A>を使っています。でも、この本をいちいち持って出かけるのは面倒ですから、こうしてウェブサイトに載せようと思い立ったわけです。もちろん、公式はその導出が重要です。どのようにして導出されたかは、上記の本には書かれていませんから、各自で導出が書かれている本を参照して下さい。</p>
+<br />
+
+<ul>
+<li>ギリシャ文字<br />
+<dl><dt>
+<dd>
+<TABLE SUMMARY="ギリシャ文字" BORDER=1>
+<TR><TD>Α</TD><TD>α</TD><TD>alpha</TD><TD>アルファ</TD></TR>
+<TR><TD>Β</TD><TD>β</TD><TD>beta</TD><TD>ベータ</TD></TR>
+<TR><TD>Γ</TD><TD>γ</TD><TD>gamma</TD><TD>ガンマ</TD></TR>
+<TR><TD>Δ</TD><TD>δ</TD><TD>delta</TD><TD>デルタ</TD></TR>
+<TR><TD>Ε</TD><TD>ε</TD><TD>epsilon</TD><TD>イプシロン／エプシロン</TD></TR>
+<TR><TD>Ζ</TD><TD>ζ</TD><TD>zeta</TD><TD>ゼータ</TD></TR>
+<TR><TD>Η</TD><TD>η</TD><TD>eta</TD><TD>イータ／エータ</TD></TR>
+<TR><TD>Θ</TD><TD>θ</TD><TD>theta</TD><TD>シータ／テータ</TD></TR>
+<TR><TD>Ι</TD><TD>ι</TD><TD>iota</TD><TD>イオタ</TD></TR>
+<TR><TD>Κ</TD><TD>κ</TD><TD>kappa</TD><TD>カッパ</TD></TR>
+<TR><TD>Λ</TD><TD>λ</TD><TD>lambda</TD><TD>ラムダ</TD></TR>
+<TR><TD>Μ</TD><TD>μ</TD><TD>mu</TD><TD>ミュー</TD></TR>
+<TR><TD>Ν</TD><TD>ν</TD><TD>nu</TD><TD>ニュー</TD></TR>
+<TR><TD>Ξ</TD><TD>ξ</TD><TD>xi</TD><TD>グザイ</TD></TR>
+<TR><TD>Ο</TD><TD>ο</TD><TD>omicron</TD><TD>オミクロン</TD></TR>
+<TR><TD>Π</TD><TD>π</TD><TD>pi</TD><TD>パイ</TD></TR>
+<TR><TD>Ρ</TD><TD>ρ</TD><TD>rho</TD><TD>ロー</TD></TR>
+<TR><TD>Σ</TD><TD>σ</TD><TD>sigma</TD><TD>シグマ</TD></TR>
+<TR><TD>Τ</TD><TD>τ</TD><TD>tau</TD><TD>タウ</TD></TR>
+<TR><TD>Υ</TD><TD>υ</TD><TD>upsilon</TD><TD>ウプシロン</TD></TR>
+<TR><TD>Φ</TD><TD>φ</TD><TD>phi</TD><TD>ファイ／フィー</TD></TR>
+<TR><TD>Χ</TD><TD>χ</TD><TD>chi</TD><TD>カイ</TD></TR>
+<TR><TD>Ψ</TD><TD>ψ</TD><TD>psi</TD><TD>プサイ／プシー</TD></TR>
+<TR><TD>Ω</TD><TD>ω</TD><TD>omega</TD><TD>オメガ</TD></TR>
+</TABLE>
+</DL>
+<p>ギリシャ文字は、読み方は覚えていても、順番や英語でのつづりをうっかり忘れたりするんですよね。そんな訳で、公式とは関係ありませんが、理論モデルを書くときの記号としてお世話になるギリシャ文字も載せておきました。</p>
+</ul>
+
+<p>
+<br />
+Copyright &copy; 2002-2014 Takero DOI. All rights reserved.</P>
+<p class="b">
+<a href="index-J.html" target="_top"><img src="back.gif" alt="Back to Top"><br />
+土居丈朗のサイト(日本語トップページ)へ</a></p>
+</body>
+</html>

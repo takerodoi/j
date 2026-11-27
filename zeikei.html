@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="ja">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<META NAME="Keywords" CONTENT="土居, 土居丈朗, Takero, Doi, 慶應義塾大学, 経済学部, 教授">
+<META NAME="description" CONTENT="土居丈朗のサイト・研究業績一覧"> 
+<LINK REV="MADE" TITLE="土居丈朗　研究業績一覧" HREF="mailto:%74%64%6F%69%40%65%63%6F%6E%2E%6B%65%69%6F%2E%61%63%2E%6A%70">
+<TITLE>土居丈朗　研究業績一覧</TITLE>
+<STYLE TYPE="text/css">
+<!--
+
+HTML {overflow-y:scroll; line-break:strict}
+
+BODY {background:#FFFFFF; color:#000000; font-size:13.0pt}
+
+A:visited {color:#640064}
+
+A:active {color:#FF0000}
+
+A:link {color:#0000FF}
+
+A:hover {color:#008040}
+
+SPAN.paper {visibility:visible}
+
+SPAN.org {color:#FF7F00; font-size:large; visibility:visible}
+
+SPAN.update {color:#CC3299; font-weight:bold}
+
+SPAN.new {color:#FF0000; font-weight:bold; text-decoration:blink}
+
+SPAN.Batang {font-family:Batang; mso-bidi-font-family:Batang; font-size:110%; visibility:visible}
+
+P.title {font-family:"ＭＳ ゴシック",sans-serif; font-size:130%; font-weight:bold; visibility:visible}
+
+P.ttitle {font-family:"Times New Roman","ＭＳ 明朝",serif; font-size:130%; font-weight:bold; visibility:visible}
+
+SPAN.goth {font-family:"ＭＳ ゴシック",sans-serif; font-weight:bold}
+
+H1, DIV.cnt {text-align:center}
+
+TABLE {background-color:#E2C09D}
+
+-->
+</STYLE>
+<SCRIPT TYPE="text/javascript">
+<!--
+
+taihi = new Array();
+function abst(abno){
+  if(document.layers){
+    abkazu = document.layers.length /2;
+    ablay_name = document.layers["ablay" + abno];
+    tit_name = document.layers["title" + abno];
+      if(ablay_name.visibility == 'show'){
+        ablay_name.visibility = 'hidden';
+        dotti = 1;
+      } else {
+          ablay_name.visibility = 'show';
+          tate = tit_name.pageY + tit_name.clip.height ;
+          yoko = tit_name.pageX ;
+          ablay_name.top = tate;
+          ablay_name.left = yoko;
+          dotti = 0;
+      }
+    if(abno<abkazu-1){
+      for(i=abno+1; i<abkazu; i++){
+        tate = document.layers["ablay" + abno].clip.height;
+        if(dotti == 1)
+          document.layers["title" + i].moveBy(0,-tate);
+        else
+          document.layers["title" + i].moveBy(0,tate);
+            if(document.layers["ablay" + i].visibility == 'show'){
+              if(dotti == 1)
+                document.layers["ablay" + i].moveBy(0,-tate);
+              else 
+                document.layers["ablay" + i].moveBy(0,tate);
+            }
+      }
+    }
+  } else if((document.getElementById) && (!document.all)){
+      ablay_name = document.getElementById("ablay" + abno);
+      if(ablay_name.style.visibility == 'visible') {
+        ablay_name.style.visibility = 'hidden';
+        ablay_name.style.display = "none";
+      } else {
+          ablay_name.style.visibility = 'visible';
+          ablay_name.style.display = "block";
+      }
+  } else if(document.all){
+      ablay_name = document.all("ablay" + abno);
+      if(ablay_name.style.visibility == 'visible'){
+        ablay_name.style.visibility = 'hidden';
+        ablay_name.style.display = "none";
+        if(navigator.appVersion.indexOf("MSIE 4.") != -1)
+          ablay_name.innerHTML = taihi[abno];
+      } else {
+          ablay_name.style.visibility = 'visible';
+          ablay_name.style.display = "block";
+          taihi[abno] = ablay_name.innerHTML ;
+          if(navigator.appVersion.indexOf("MSIE 4.") != -1)
+            ablay_name.innerHTML = "<BR>" + taihi[abno];
+      }
+  }
+}
+
+if(document.layers){
+  document.write('<STYLE TYPE=\"text/css\">SPAN.ab {position:absolute; visibility:hidden} <\/STYLE>');
+} else if((document.getElementById) && (!document.all)){
+    document.write('<STYLE TYPE=\"text/css\">SPAN.ab {position:relative; display:none} <\/STYLE>');
+} else if(document.all){
+    document.write('<STYLE TYPE=\"text/css\">SPAN.ab {position:relative; display:none} <\/STYLE>');
+}
+
+  //メニューをマウスポインタからどの程度離すのか、横の距離を指定する
+x_purasu=-10;
+  //メニューをマウスポインタからどの程度離すのか、縦の距離を指定する
+y_purasu=-50;
+  //メニューが全部で幾つあるのか、数を指定する　※要旨表示の個数を変更するたびに、数を必ず修正すること
+kazu=17;
+
+function hyouji(doko,event){
+  hihyouji(doko);
+  if(document.layers){
+    x_iti = event.pageX ;
+    y_iti = event.pageY ;
+    document.layers["lay" + doko].moveTo(x_iti + x_purasu,y_iti);
+    document.layers["lay" + doko].visibility = 'show';
+  } else if((document.getElementById) && (!document.all)){
+      x_iti = event.pageX ;
+      y_iti = event.pageY ;
+      document.getElementById("lay" + doko).style.left = x_iti + x_purasu ;
+      document.getElementById("lay" + doko).style.top = y_iti + y_purasu;
+      document.getElementById("lay" + doko).style.visibility = 'visible';
+  } else if(document.all){
+      x_iti = event.x ;
+      y_iti = event.y ;
+      document.all("lay" + doko).style.pixelLeft = x_iti + x_purasu;
+      document.all("lay" + doko).style.pixelTop = y_iti + y_purasu;
+      document.all("lay" + doko).style.visibility = 'visible';
+  }
+}
+
+function ie_hyouji(doko){
+  if((document.getElementById) && (!document.all))
+    document.getElementById("lay" + doko).style.visibility = 'visible';
+  else if(document.all)
+    document.all("lay" + doko).style.visibility = 'visible';
+}
+
+function hihyouji(doko){
+  for(i=0; i<kazu; i++){
+    if(doko != i){
+      if(document.layers)
+        document.layers["lay" + i].visibility = 'hidden';
+      else if((document.getElementById) && (!document.all))
+        document.getElementById("lay" + i).style.visibility = 'hidden';
+      else if(document.all)
+        document.all("lay" + i).style.visibility = 'hidden';
+    }
+  }
+  return;
+}
+
+function hajime(){
+  for(i=0; i<kazu; i++)
+    if(document.layers)
+      document.layers["lay" + i].onmouseout = hihyouji;
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY onLoad="hajime()">
+<P><SPAN CLASS="org">・</SPAN>
+<SPAN CLASS="paper">「税と経済学の交差点」, <A HREF="http://www.zaik.jp/jirei/"
+ TARGET="_blank">『月刊税務事例』</A>,
+<A HREF="http://www.zaik.jp/"
+ TARGET="_blank">財経詳報社</A>,
+2005年9月号～</SPAN></P>
+<P><SPAN CLASS="paper">
+　◇１「経済学から見た法人税と消費税」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=58"
+ TARGET="_blank">2005年9月号</A>, 38-39頁, 2005年9月.<BR>
+　◇２「法人課税に固執すると日本の産業は衰退する」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=59"
+ TARGET="_blank">2005年10月号</A>, 28-29頁, 2005年10月.<BR>
+　◇３「消費税『増税』にただ乗りできる地方自治体」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=60"
+ TARGET="_blank">2005年11月号</A>, 36-37頁, 2005年11月.<BR>
+　◇４「消費税は逆進的な税ではない」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=61"
+ TARGET="_blank">2005年12月号</A>, 32-33頁, 2005年12月.<BR>
+　◇５「地方税制における固定資産税の重要性」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=62"
+ TARGET="_blank">2006年1月号</A>, 44-45頁, 2006年1月.<BR>
+　◇６「無意味な『税収の地域間格差』論」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=63"
+ TARGET="_blank">2006年2月号</A>, 2006年2月.<BR>
+　◇７「道路特定財源のあり方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=64"
+ TARGET="_blank">2006年3月号</A>, 2006年3月.<BR>
+　◇８「明日の増税を恐れて明後日の大増税を招く愚策」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=65"
+ TARGET="_blank">2006年4月号</A>, 2006年4月.<BR>
+　◇９「少子化対策の税がどこまで効くか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=66"
+ TARGET="_blank">2006年5月号</A>, 2006年5月.<BR>
+　◇10「国税と地方税の税源配分」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=67"
+ TARGET="_blank">2006年6月号</A>, 2006年6月.<BR>
+　◇11「『消費税の社会保障財源化』による財政規律」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=68"
+ TARGET="_blank">2006年7月号</A>, 2006年7月.<BR>
+　◇12「『育児保険』というより『子育て支援目的税』か」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=69"
+ TARGET="_blank">2006年8月号</A>, 32-33頁, 2006年8月.<BR>
+　◇13「温暖化対策税より排出権取引（上）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=70"
+ TARGET="_blank">2006年9月号</A>, 36-37頁, 2006年9月.<BR>
+　◇14「温暖化対策税より排出権取引（下）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=72"
+ TARGET="_blank">2006年10月号</A>, 36-37頁, 2006年10月.<BR>
+　◇15「地方債の食い逃げには『転出税』」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=84"
+ TARGET="_blank">2006年11月号</A>, 38-39頁, 2006年11月.<BR>
+　◇16「政府税制調査会に期待すること」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=85"
+ TARGET="_blank">2006年12月号</A>, 26-27頁, 2006年12月.<BR>
+　◇17「新型交付税のメリット」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=86"
+ TARGET="_blank">2007年1月号</A>, 42-43頁, 2007年1月.<BR>
+　◇18「我が国の政党は『増税』を選挙公約に掲げないのか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=87"
+ TARGET="_blank">2007年2月号</A>, 42-43頁, 2007年2月.<BR>
+　◇19「格差と成長と税の政治経済学」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=88"
+ TARGET="_blank">2007年3月号</A>, 36-37頁, 2007年3月.<BR>
+　◇20「政府税制調査会『調査分析部会』での今後の議論」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=89"
+ TARGET="_blank">2007年4月号</A>, 42-43頁, 2007年4月.<BR>
+　◇21「増税に責任を負うドイツの地方政府」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=90"
+ TARGET="_blank">2007年5月号</A>, 44-45頁, 2007年5月.<BR>
+　◇22「税収格差是正再論」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=91"
+ TARGET="_blank">2007年6月号</A>, 34-35頁, 2007年6月.<BR>
+　◇23「年金記録問題は税制改革議論に波及するか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=92"
+ TARGET="_blank">2007年7月号</A>, 38-39頁, 2007年7月.<BR>
+　◇24「世代による租税負担の差異と社会保障財源」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=93"
+ TARGET="_blank">2007年8月号</A>, 38-39頁, 2007年8月.<BR>
+　◇25「租税理論の新潮流」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=94"
+ TARGET="_blank">2007年9月号</A>, 44-45頁, 2007年9月.<BR>
+　◇26「農政にそれほど税金は必要か？」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=95"
+ TARGET="_blank">2007年10月号</A>, 40-41頁, 2007年10月.<BR>
+　◇27「高齢者の医療費負担をどう考えるか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=96"
+ TARGET="_blank">2007年11月号</A>, 44-45頁, 2007年11月.<BR>
+　◇28「逆進性が問題なのは消費税でなく社会保険料」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=97"
+ TARGET="_blank">2007年12月号</A>, 44-45頁, 2007年12月.<BR>
+　◇29「税法をめぐる与野党攻防の行方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=98"
+ TARGET="_blank">2008年1月号</A>, 44-45頁, 2008年1月.<BR>
+　◇30「平成20年度与党税制改正大綱の評価」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=99"
+ TARGET="_blank">2008年2月号</A>, 44-45頁, 2008年2月.<BR>
+　◇31「消費税による基礎年金の全額税方式化提案」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=100"
+ TARGET="_blank">2008年3月号</A>, 44-45頁, 2008年3月.<BR>
+　◇32「道路特定財源論議の行方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=101"
+ TARGET="_blank">2008年4月号</A>, 44-45頁, 2008年4月.<BR>
+　◇33「租税特別措置のあり方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=102"
+ TARGET="_blank">2008年5月号</A>, 44-45頁, 2008年5月.<BR>
+　◇34「後期高齢者医療制度を「廃止」した後に何が…」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=103"
+ TARGET="_blank">2008年6月号</A>, 44-45頁, 2008年6月.<BR>
+　◇35「三すくみの政治状況を打破せよ」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=104"
+ TARGET="_blank">2008年7月号</A>, 44-45頁, 2008年7月.<BR>
+　◇36「増税なき基礎年金の国庫負担増はごまかしに警戒」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=105"
+ TARGET="_blank">2008年8月号</A>, 44-45頁, 2008年8月.<BR>
+　◇37「政府税制調査会の立ち位置」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=106"
+ TARGET="_blank">2008年9月号</A>, 44-45頁, 2008年9月.<BR>
+　◇38「定額減税の効果」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=107"
+ TARGET="_blank">2008年10月号</A>, 44-45頁, 2008年10月.<BR>
+　◇39「税金の無駄遣いをどうなくすか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=108"
+ TARGET="_blank">2008年11月号</A>, 44-45頁, 2008年11月.<BR>
+　◇40「追加経済対策は効果があるか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=109"
+ TARGET="_blank">2008年12月号</A>, 44-45頁, 2008年12月.<BR>
+　◇41「社会保障国民会議最終報告を受けて」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=110"
+ TARGET="_blank">2009年1月号</A>, 44-45頁, 2009年1月.<BR>
+　◇42「税方式基礎年金に対応した報酬比例年金は？」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=111"
+ TARGET="_blank">2009年2月号</A>, 44-45頁, 2009年2月.<BR>
+　◇43「郵政四分社体制の修正は納税者の負担増の恐れ」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=112"
+ TARGET="_blank">2009年3月号</A>, 44-45頁, 2009年3月.<BR>
+　◇44「悩ましい公的資金注入」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=113"
+ TARGET="_blank">2009年4月号</A>, 44-45頁, 2009年4月.<BR>
+　◇45「『需要不足』のトラウマ」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=114"
+ TARGET="_blank">2009年5月号</A>, 44-45頁, 2009年5月.<BR>
+　◇46「税制における中小企業と大企業のあいだ（上）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=115"
+ TARGET="_blank">2009年6月号</A>, 44-45頁, 2009年6月.<BR>
+　◇47「税制における中小企業と大企業のあいだ（下）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=116"
+ TARGET="_blank">2009年7月号</A>, 44-45頁, 2009年7月.<BR>
+　◇48「どうする地方分権改革推進委員会」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=117"
+ TARGET="_blank">2009年8月号</A>, 44-45頁, 2009年8月.<BR>
+　◇49「高速道路は税金で造るべきか否かの問題」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=118"
+ TARGET="_blank">2009年9月号</A>, 44-45頁, 2009年9月.<BR>
+　◇50「財務大臣の権限強化こそがカギ」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=119"
+ TARGET="_blank">2009年10月号</A>, 44-45頁, 2009年10月.<BR>
+　◇51「2010年度予算、財源確保の盲点」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=120"
+ TARGET="_blank">2009年11月号</A>, 44-45頁, 2009年11月.<BR>
+　◇52「鳩山内閣での環境政策の行方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=121"
+ TARGET="_blank">2009年12月号</A>, 44-45頁, 2009年12月.<BR>
+　◇53「鳩山内閣での環境政策の行方（２）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=122"
+ TARGET="_blank">2010年1月号</A>, 44-45頁, 2010年1月.<BR>
+　◇54「国債金利の上昇圧力、間近に迫る」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=123"
+ TARGET="_blank">2010年2月号</A>, 44-45頁, 2010年2月.<BR>
+　◇55「マニフェスト実現は「埋蔵金」依存では持続不可能」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=124"
+ TARGET="_blank">2010年3月号</A>, 44-45頁, 2010年3月.<BR>
+　◇56「子ども手当てと扶養控除廃止の影響」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=125"
+ TARGET="_blank">2010年4月号</A>, 44-45頁, 2010年4月.<BR>
+　◇57「低金利の悪い均衡からいかに脱却するか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=126"
+ TARGET="_blank">2010年5月号</A>, 44-45頁, 2010年5月.<BR>
+　◇58「独立行政法人の事業仕分け」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=127"
+ TARGET="_blank">2010年6月号</A>, 44-45頁, 2010年6月.<BR>
+　◇59「『銀行税』は必要か？」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=128"
+ TARGET="_blank">2010年7月号</A>, 44-45頁, 2010年7月.<BR>
+　◇60「増税なしに基礎的財政収支黒字化は不可能」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=129"
+ TARGET="_blank">2010年8月号</A>, 44-45頁, 2010年8月.<BR>
+　◇61「所在不明高齢者は平均寿命に影響するか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=130"
+ TARGET="_blank">2010年9月号</A>, 44-45頁, 2010年9月.<BR>
+　◇62「介護保険の財源はどうするか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=131"
+ TARGET="_blank">2010年10月号</A>, 44-45頁, 2010年10月.<BR>
+　◇63「法人税の『ゾンビ企業』課税導入：試論」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=132"
+ TARGET="_blank">2010年11月号</A>, 44-45頁, 2010年11月.<BR>
+　◇64「特別会計事業仕分けの効果」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=133"
+ TARGET="_blank">2010年12月号</A>, 44-45頁, 2010年12月.<BR>
+　◇65「社会保障改革論議を進めよ」, 2011年1月号, 44-45頁, 2011年1月.<BR>
+　◇66「平成23年度税制改正大綱の評価」, 2011年2月号, 44-45頁, 2011年2月.<BR>
+　◇67「消費税増税反対論はヘッジファンドの好餌」, 2011年3月号, 44-45頁, 2011年3月.<BR>
+　◇68「消費税増税反対論の誤謬」, 2011年4月号, 44-45頁, 2011年月.<BR>
+　◇69「震災復興のための財政支出の財源」, 2011年5月号, 44-45頁, 2011年月.<BR>
+　◇70「復興増税論議の論点」, 2011年6月号, 44-45頁, 2011年6月.<BR>
+　◇71「復興国債の日銀引受けは期待した効果はあるか」, 2011年7月号, 44-45頁, 2011年7月.<BR>
+　◇72「社会保障と税の一体改革成案をめぐる国と地方の税配分」, 2011年8月号, 44-45頁, 2011年8月.<BR>
+　◇73「アメリカの政府債務危機は他人事にあらず」, 2011年9月号, 44-45頁, 2011年9月.<BR>
+　◇74「『貯蓄税』導入は消費税増税と同等以下の意味しかない」, 2011年10月号, 44-45頁, 2011年10月.<BR>
+　◇75「『貯蓄税』導入と消費税増税：続論」, 2011年11月号, 44-45頁, 2011年11月.<BR>
+　◇76「ポルトガルの財政健全化」, 2011年12月号, 44-45頁, 2011年12月.<BR>
+　◇77「税から見た大阪都構想（1）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=146"
+ TARGET="_blank">2012年1月号</A>, 44-45頁, 2012年1月.<BR>
+　◇78「税から見た大阪都構想（2）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=147"
+ TARGET="_blank">2012年2月号</A>, 44-45頁, 2012年2月.<BR>
+　◇79「最低保障年金の含意」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=148"
+ TARGET="_blank">2012年3月号</A>, 44-45頁, 2012年3月.<BR>
+　◇80「地方交付税廃止に意義あり」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=149"
+ TARGET="_blank">2012年4月号</A>, 44-45頁, 2012年4月.<BR>
+　◇81「社会保障における「国庫負担」と「地方負担」」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=150"
+ TARGET="_blank">2012年5月号</A>, 44-45頁, 2012年5月.<BR>
+　◇82「消費税を軸とした「累進課税」」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=151"
+ TARGET="_blank">2012年6月号</A>, 44-45頁, 2012年6月.<BR>
+　◇83「低所得者対策の課題」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=152"
+ TARGET="_blank">2012年7月号</A>, 44-45頁, 2012年7月.<BR>
+　◇84「電気料金はどう決めるべきか（上）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=153"
+ TARGET="_blank">2012年8月号</A>, 44-45頁, 2012年8月.<BR>
+　◇85「電気料金はどう決めるべきか（下）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=154"
+ TARGET="_blank">2012年9月号</A>, 44-45頁, 2012年9月.<BR>
+　◇86「消費税増税時の金利動向」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=155"
+ TARGET="_blank">2012年10月号</A>, 44-45頁, 2012年10月.<BR>
+　◇87「公的年金等控除の改革」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=156"
+ TARGET="_blank">2012年11月号</A>, 44-45頁, 2012年11月.<BR>
+　◇88「高齢者利用者負担のあり方と税負担」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=157"
+ TARGET="_blank">2012年12月号</A>, 44-45頁, 2012年12月.<BR>
+　◇89「「消費税増税は財政再建を阻む」ことはない」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=158"
+ TARGET="_blank">2013年1月号</A>, 44-45頁, 2013年1月.<BR>
+　◇90「「消費税増税は財政再建を阻む」ことはない（続）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=159"
+ TARGET="_blank">2013年2月号</A>, 44-45頁, 2013年2月.<BR>
+　◇91「内部留保は容易に取り崩せない（上）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=160"
+ TARGET="_blank">2013年3月号</A>, 44-45頁, 2013年3月.<BR>
+　◇92「内部留保は容易に取り崩せない（下）」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=161"
+ TARGET="_blank">2013年4月号</A>, 44-45頁, 2013年4月.<BR>
+　◇93「地方法人特別税の行方」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=162"
+ TARGET="_blank">2013年5月号</A>, 44-45頁, 2013年5月.<BR>
+　◇94「2014年の年金の財政検証」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=163"
+ TARGET="_blank">2013年6月号</A>, 44-45頁, 2013年6月.<BR>
+　◇95「「基本方針2013」が示唆する今後の財政運営」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=164"
+ TARGET="_blank">2013年7月号</A>, 44-45頁, 2013年7月.<BR>
+　◇96「マイナンバーの活用と税制」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=165"
+ TARGET="_blank">2013年8月号</A>, 44-45頁, 2013年8月.<BR>
+　◇97「消費税増税を判断する上での視点」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=166"
+ TARGET="_blank">2013年9月号</A>, 44-45頁, 2013年9月.<BR>
+　◇98「マイナンバーで金融資産は捕捉できるか」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=167"
+ TARGET="_blank">2013年10月号</A>, 44-45頁, 2013年10月.<BR>
+　◇99「介護保険の利用者負担」, <A HREF="http://www.zaik.jp/sys/zei_contents.php?no=168"
+ TARGET="_blank">2013年11月号</A>, 44-45頁, 2013年11月.<BR>
+</SPAN></P>
+
+</BODY>
+</HTML>
