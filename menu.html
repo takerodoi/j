@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<HTML LANG="ja">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=shift_jis">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+<LINK REV="MADE" TITLE="Takero DOI (Japanese)" HREF="mailto:%74%64%6F%69%40%65%63%6F%6E%2E%6B%65%69%6F%2E%61%63%2E%6A%70">
+<TITLE>Takero DOI (Japanese)</TITLE>
+<SCRIPT TYPE="text/javascript">
+<!--
+
+agent = navigator.userAgent;
+browserVer = 0;
+
+browser = (((navigator.appName == "Netscape") && (parseInt(navigator.appVersion) >= 3 )) ||
+  ((navigator.appName == "Microsoft Internet Explorer") && (parseInt(navigator.appVersion) >= 4 )));
+
+if (browser) {browserVer = 1}
+
+if (browserVer == 1) {
+
+  menu1off = new Image();
+  menu1off.src = "tpp.gif";
+  menu1on = new Image();
+  menu1on.src = "tpph.gif";
+
+  menu2off = new Image(); 
+  menu2off.src = "grt.gif";
+  menu2on = new Image();
+  menu2on.src = "grth.gif";
+
+  menu3off = new Image();
+  menu3off.src = "per.gif";
+  menu3on = new Image();
+  menu3on.src = "perh.gif";
+
+  menu4off = new Image();
+  menu4off.src = "lst.gif";
+  menu4on = new Image();
+  menu4on.src = "lsth.gif";
+
+  menu5off = new Image();
+  menu5off.src = "dwn.gif";
+  menu5on = new Image();
+  menu5on.src = "dwnh.gif";
+
+  menu6off = new Image();
+  menu6off.src = "myl.gif";
+  menu6on = new Image();
+  menu6on.src = "mylh.gif";
+
+  menu7off = new Image();
+  menu7off.src = "pub.gif";
+  menu7on = new Image();
+  menu7on.src = "pubh.gif";
+
+  menu8off = new Image();
+  menu8off.src = "dat.gif";
+  menu8on = new Image();
+  menu8on.src = "dath.gif";
+
+  menu9off = new Image();
+  menu9off.src = "jpp.gif";
+  menu9on = new Image();
+  menu9on.src = "jpph.gif";
+
+  menu10off = new Image();
+  menu10off.src = "jnl.gif";
+  menu10on = new Image();
+  menu10on.src = "jnlh.gif";
+
+  menu11off = new Image();
+  menu11off.src = "hst.gif";
+  menu11on = new Image();
+  menu11on.src = "hsth.gif";
+
+  menu12off = new Image();
+  menu12off.src = "ofi.gif";
+  menu12on = new Image();
+  menu12on.src = "ofih.gif";
+
+  menu13off = new Image();
+  menu13off.src = "ecn.gif";
+  menu13on = new Image();
+  menu13on.src = "ecnh.gif";
+
+  menu14off = new Image();
+  menu14off.src = "lec.gif";
+  menu14on = new Image();
+  menu14on.src = "lech.gif";
+
+  menu15off = new Image();
+  menu15off.src = "tou.gif";
+  menu15on = new Image();
+  menu15on.src = "touh.gif";
+
+  menu16off = new Image();
+  menu16off.src = "pec.gif";
+  menu16on = new Image();
+  menu16on.src = "pech.gif";
+
+  menu17off = new Image();
+  menu17off.src = "pbe.gif";
+  menu17on = new Image();
+  menu17on.src = "pbeh.gif";
+
+  menu18off = new Image();
+  menu18off.src = "lj.gif";
+  menu18on = new Image();
+  menu18on.src = "ljh.gif";
+
+  menu19off = new Image();
+  menu19off.src = "ebu.gif";
+  menu19on = new Image();
+  menu19on.src = "ebuh.gif";
+
+  menu20off = new Image();
+  menu20off.src = "pfj.gif";
+  menu20on = new Image();
+  menu20on.src = "pfjh.gif";
+
+  menu21off = new Image();
+  menu21off.src = "ari.gif";
+  menu21on = new Image();
+  menu21on.src = "arih.gif";
+
+  menu22off = new Image();
+  menu22off.src = "lclb.gif";
+  menu22on = new Image();
+  menu22on.src = "lclbh.gif";
+
+  menu23off = new Image();
+  menu23off.src = "book.gif";
+  menu23on = new Image();
+  menu23on.src = "bookh.gif";
+
+}
+
+function img_act(imgName) {
+	if (browserVer == 1) {
+		imgOn = eval(imgName + "on.src");
+	  	document [imgName].src = imgOn;
+	}
+}
+
+function img_inact(imgName) {
+	if (browserVer == 1) {
+		imgOff = eval(imgName + "off.src");
+		document [imgName].src = imgOff;
+  	}
+}
+
+Sm1="　　　　　　　　　　　　　　　　　";
+Sm2="土居丈朗のウェブサイトへようこそ！";
+Sm3="『平成の経済政策はどう決められたか』(中央公論新社刊)発売中です";
+Sm4="ただいま、多忙につき、このウェブサイトや拙著・拙稿に関する質問を頂いても、すぐにお返事できない場合がございます。";
+//メッセージ内容
+TC=200;
+//流れる早さを指定
+
+a=0;
+sc=0;
+function scll(){
+  Smess=Sm1+Sm2+Sm1+Sm3+Sm1+Sm4;
+  slen=Smess.length+1;
+  status = Smess.substring(sc,slen);
+  sc = (sc > slen)?0:sc+1;
+  clearTimeout(a);
+  a = setTimeout('scll()',TC);
+}
+//文字を動かす
+
+// -->
+</SCRIPT>
+<STYLE TYPE="text/css">
+<!--
+
+HTML {overflow-y:scroll; line-break:strict}
+
+BODY {background:#FFFFFF url("menu.jpg") repeat fixed 0% 0%; color:#000000; font-size:12.0pt}
+
+A:visited {color:#640064}
+
+A:active {color:#FF0000}
+
+A:link {color:#0000FF}
+
+A:hover {color:#008040}
+
+SPAN.doi {font-size:175%; font-family:"ＭＳ ゴシック",sans-serif}
+
+SPAN.site {font-size=140%; font-family:"ＭＳ ゴシック",sans-serif; color:#0000FF}
+
+DIV.cnt, P.cnt {text-align:center}
+
+SPAN.sb {font-size:80%; font-weight:bold}
+
+TD.new {font-weight:bold; color:#00FFFF; text-decorate:blink}
+
+TD.up {font-weight:bold; color:#058899}
+
+P.b {font-family:"ＭＳ ゴシック",sans-serif; font-weight:bold}
+
+IMG {border-width:0}
+
+-->
+</STYLE>
+</HEAD>
+<BODY onLoad="scll()">
+<DIV CLASS="cnt">
+<STRONG><SPAN CLASS="doi">土居丈朗</SPAN><BR>
+<SPAN CLASS="site">のサイト</SPAN></STRONG>
+</DIV>
+
+<TABLE BORDER=0 cellpadding=0 cellspacing=0 SUMMARY="目次">
+<TR>
+<TD WIDTH=165>
+<A HREF="index.html" TARGET="_top" TITLE="to English pages"
+ onMouseOver="img_act('menu1')" onMouseOut="img_inact('menu1')">
+<IMG NAME="menu1" SRC="tpp.gif" ALT="to English pages"></A>
+</TD>
+<TD>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="title.html" TARGET="main" TITLE="ご挨拶"
+ onMouseOver="img_act('menu2')" onMouseOut="img_inact('menu2')">
+<IMG NAME="menu2" SRC="grt.gif" ALT="ご挨拶"></A>
+</TD>
+<TD>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="pershist.html" TARGET="main" TITLE="自己紹介"
+ onMouseOver="img_act('menu3')" onMouseOut="img_inact('menu3')">
+<IMG NAME="menu3" SRC="per.gif" ALT="自己紹介"></A>
+</TD>
+<TD CLASS="up">改
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="list.html" TARGET="main" TITLE="研究業績一覧"
+ onMouseOver="img_act('menu4')" onMouseOut="img_inact('menu4')">
+<IMG NAME="menu4" SRC="lst.gif" ALT="研究業績一覧"></A>
+</TD>
+<TD CLASS="up">改
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="download.html" TARGET="main" TITLE="拙稿が無料でダウンロード"
+ onMouseOver="img_act('menu5')" onMouseOut="img_inact('menu5')">
+<IMG NAME="menu5" SRC="dwn.gif" ALT="拙稿が無料でダウンロード"></A>
+</TD>
+<TD CLASS="up">改
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="mylinks.html" TARGET="main" TITLE="私がめぐり会った素晴らしき人達"
+ onMouseOver="img_act('menu6')" onMouseOut="img_inact('menu6')">
+<IMG NAME="menu6" SRC="myl.gif" ALT="私がめぐり会った素晴らしき人達"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="pubfina.html" TARGET="main" TITLE="財政学情報集"
+ onMouseOver="img_act('menu7')" onMouseOut="img_inact('menu7')">
+<IMG NAME="menu7" SRC="pub.gif" ALT="財政学情報集"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="econinfo.html" TARGET="main" TITLE="経済学情報集"
+ onMouseOver="img_act('menu13')" onMouseOut="img_inact('menu13')">
+<IMG NAME="menu13" SRC="ecn.gif" ALT="経済学情報集"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="journals.html" TARGET="main" TITLE="Academic Journalのサイトへのリンク集"
+ onMouseOver="img_act('menu10')" onMouseOut="img_inact('menu10')">
+<IMG NAME="menu10" SRC="jnl.gif" ALT="Academic Journalのサイトへのリンク集"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="pfdata.html" TARGET="main" TITLE="経済財政データバンク"
+ onMouseOver="img_act('menu8')" onMouseOut="img_inact('menu8')">
+<IMG NAME="menu8" SRC="dat.gif" ALT="経済財政データバンク"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="books.html" TARGET="main" TITLE="本や書評にまつわる話「本トウの話」"
+ onMouseOver="img_act('menu23')" onMouseOut="img_inact('menu23')">
+<IMG NAME="menu23" SRC="book.gif" ALT="本や書評にまつわる話「本トウの話」"></A>
+</TD>
+<TD CLASS="up">
+<!--
+<TD CLASS="new">新
+-->
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="localbond.html" TARGET="main" TITLE="土居丈朗著『地方債改革の経済学』(日本経済新聞出版社刊)のページ"
+ onMouseOver="img_act('menu22')" onMouseOut="img_inact('menu22')">
+<IMG NAME="menu22" SRC="lclb.gif" ALT="土居丈朗著
+『地方債改革の経済学』
+(日本経済新聞出版社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="pubecon.html" TARGET="main" TITLE="土居丈朗著『入門｜公共経済学』(日本評論社刊)のページ"
+ onMouseOver="img_act('menu17')" onMouseOut="img_inact('menu17')">
+<IMG NAME="menu17" SRC="pbe.gif" ALT="土居丈朗著
+『入門｜公共経済学』
+(日本評論社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+<TR>
+<TD>
+<A HREF="pfjpn.html" TARGET="main" TITLE="土居丈朗著『財政学から見た日本経済』(光文社新書)のページ"
+ onMouseOver="img_act('menu20')" onMouseOut="img_inact('menu20')">
+<IMG NAME="menu20" SRC="pfj.gif" ALT="土居丈朗著
+『財政学から見た日本経済』
+(光文社新書)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="ari-kiri.html" TARGET="main" TITLE="土居丈朗著『アリとキリギリスの日本経済入門』(東洋経済新報社刊)のページ"
+ onMouseOver="img_act('menu21')" onMouseOut="img_inact('menu21')">
+<IMG NAME="menu21" SRC="ari.gif" ALT="土居丈朗著
+『アリとキリギリスの日本経済入門』
+(東洋経済新報社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="IhoriDoi.html" TARGET="main" TITLE="井堀利宏・土居丈朗著『日本政治の経済分析』(木鐸社刊)のページ"
+ onMouseOver="img_act('menu9')" onMouseOut="img_inact('menu9')">
+<IMG NAME="menu9" SRC="jpp.gif" ALT="井堀利宏・土居丈朗著
+『日本政治の経済分析』
+(木鐸社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="touhon6.html" TARGET="main" TITLE="井堀利宏・土居丈朗著『財政読本（第６版）』(東洋経済新報社刊)のページ"
+ onMouseOver="img_act('menu15')" onMouseOut="img_inact('menu15')">
+<IMG NAME="menu15" SRC="tou.gif" ALT="井堀利宏・土居丈朗著
+『財政読本（第６版）』
+(東洋経済新報社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TR>
+
+<TR>
+<TD>
+<A HREF="chizai.html" TARGET="main" TITLE="土居丈朗著『地方財政の政治経済学』(東洋経済新報社刊)のページ"
+ onMouseOver="img_act('menu16')" onMouseOut="img_inact('menu16')">
+<IMG NAME="menu16" SRC="pec.gif" ALT="土居丈朗著
+『地方財政の政治経済学』
+(東洋経済新報社刊)のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="econbure.html" TARGET="main" TITLE="経済学の論理・霞が関の論理"
+ onMouseOver="img_act('menu19')" onMouseOut="img_inact('menu19')">
+<IMG NAME="menu19" SRC="ebu.gif" ALT="経済学の論理・霞が関の論理"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="lajolla.html" TARGET="main" TITLE="サンディエゴ滞在時に書いた「ラホーヤの浜辺から」"
+ onMouseOver="img_act('menu18')" onMouseOut="img_inact('menu18')">
+<IMG NAME="menu18" SRC="lj.gif" ALT="サンディエゴ滞在時に書いた
+「ラホーヤの浜辺から」"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="history.html" TARGET="main" TITLE="これまでの我がサイト"
+ onMouseOver="img_act('menu11')" onMouseOut="img_inact('menu11')">
+<IMG NAME="menu11" SRC="hst.gif" ALT="これまでの我がサイト"></A>
+</TD>
+<TD CLASS="up">改
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="lecture.html" TARGET="main" TITLE="担当講義のページ"
+ onMouseOver="img_act('menu14')" onMouseOut="img_inact('menu14')">
+<IMG NAME="menu14" SRC="lec.gif" ALT="担当講義のページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+<TR>
+<TD>
+<A HREF="https://www.keio.ac.jp/ja/econ/research/t-interview/staff01/"
+ TARGET="_top" TITLE="私の学部公式ページ"
+ onMouseOver="img_act('menu12')" onMouseOut="img_inact('menu12')">
+<IMG NAME="menu12" SRC="ofi.gif" ALT="私の学部公式ページ"></A>
+</TD>
+<TD CLASS="up">
+</TD>
+</TR>
+
+</TABLE>
+
+<SPAN CLASS="sb"><A HREF="menuold.html" TARGET="menu">
+上記の項目でエラーが出るときはここを押して下さい</A></SPAN><BR>
+<P>
+<A HREF="http://validator.w3.org/check?uri=referer"
+ TARGET="_black"><IMG SRC="http://www.w3.org/Icons/valid-html401"
+ ALT="Valid HTML 4.01!" HEIGHT="31" WIDTH="88"></A>
+</P>
+<P CLASS="b">
+<IMG SRC="ya-gr.gif" ALT="慶應義塾大学経済学部トップページへ"><A HREF="https://www.keio.ac.jp/ja/econ/"
+ TARGET="_top">慶應義塾大学経済学部のトップページへ</A></P>
+</BODY>
+</HTML>
